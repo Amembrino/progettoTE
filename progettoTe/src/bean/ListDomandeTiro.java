@@ -27,5 +27,9 @@ public class ListDomandeTiro {
     	DomandaTirocinio dom = new  DomandaTirocinio(idDOcu,azienda,data,firma_tutor_universitario,firma_tutor_aziendale,SyttutoUnirEmanil,tirocinanteEmail, tutoAzrEmanil);
     	domande.add(dom);
     }
+    
+    public void aggiungi(DomandaTirocinio domanda){
+    	domande.add(domanda);
+    }
 
 }

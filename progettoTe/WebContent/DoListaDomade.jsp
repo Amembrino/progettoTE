@@ -4,9 +4,9 @@
     class="bean.DomandaTirocinio"
      scope="request"/>
     
-     <jsp:useBean id="lista" 
+     <jsp:useBean id="listaDomande" 
     class="bean.ListDomandeTiro"
-     scope="session"/>
+     scope="request"/>
      
  <jsp:useBean id="tutorAz" 
     class="bean.tutorAz"
@@ -14,6 +14,8 @@
      
   <%
   DoDomaTirociDAO dom= new DoDomaTirociDAO();
-  dom.fillDomadeTiroTA(lista, tutorAz.getEmail() );
-    %>
+  
+  dom.fillDomadeTiroTA(listaDomande, tutorAz.getEmail().toString() );
+   
+  %>
     <jsp:forward page="ViewDomandetirocinio.jsp"></jsp:forward>

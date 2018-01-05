@@ -78,28 +78,50 @@ public class DoDomaTirociDAO {
 	
 	
 	
-	public void fillDomadeTiroTA(ListDomandeTiro lista, String taz) throws SQLException{
-		Connection con = DriverManagerConnectionPool.getConnection(); 
-		  
-	 
+	public void fillDomadeTiroTA(ListDomandeTiro listaDomande, String taz) throws SQLException{
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
 		
-		Statement st= (Statement) con.createStatement();
-		String sql="select * from domandatirocinio where TutorAziendaleEmail="+taz+" ";
-		
+	    
+	    
+		String nome=taz;
+		String selectSQL="select * from domandatirocinio where TutorAziendaleEmail= '"+taz+"' ";
+	
 		try {
-			ResultSet res=st.executeQuery(sql);
+			connection = DriverManagerConnectionPool.getConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
+			preparedStatement.setInt(1, 1111);
+  
+			
+		
+			ResultSet res = preparedStatement.executeQuery();
+
 			while (res.next()) {
-				  lista.aggiungi(res.getInt("IdDoccumento"),res.getString("azienda"),res.getDate("data"),res.getBoolean("FirmatutorUniversitario"),res.getBoolean("FirmaTutorAziendale") ,res.getString("TutorUniversitarioEmail"), res.getString("TirocinanteEmail") , res.getString("TutorAziendaleEmail"));
+				DomandaTirocinio domanda=new DomandaTirocinio();
+				
+				domanda.setId_Documento(res.getInt("IdDoccumento"));
+				domanda.setAttivato(false);
+				domanda.setAzienda(res.getString("azienda"));
+				domanda.setData(res.getDate("data"));
+				domanda.setFirma_tutor_universitario(res.getBoolean("FirmatutorUniversitario"));
+				domanda.setFirma_tutor_aziendale( res.getBoolean("FirmaTutorAziendale") );
+				domanda.setTutoUnirEmanil(	res.getString("TutorUniversitarioEmail"));
+				domanda.setTirocinanteEmail( res.getString("TirocinanteEmail"));
+				domanda.setTutoAzrEmanil(res.getString("TutorAziendaleEmail"));
+			
+				listaDomande.aggiungi(  domanda );
 				
 			}
-			
-			 st.close();
-			con.close();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
+			 
+		}  finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				DriverManagerConnectionPool.releaseConnection(connection);
+			}
 		
 	}
+  }
+	
 }
