@@ -7,11 +7,17 @@ package GestDomTirocino;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Random;
 
+import com.mysql.jdbc.Statement;
+
 import bean.DomandaTirocinio;
+import bean.ListDomandeTiro;
+import bean.tutorAz;
+ 
 import GestDomTirocino.DriverManagerConnectionPool;
  
 
@@ -69,4 +75,31 @@ public class DoDomaTirociDAO {
 	}
    }
   }
+	
+	
+	
+	public void fillDomadeTiroTA(ListDomandeTiro lista, String taz) throws SQLException{
+		Connection con = DriverManagerConnectionPool.getConnection(); 
+		  
+	 
+		
+		Statement st= (Statement) con.createStatement();
+		String sql="select * from domandatirocinio where TutorAziendaleEmail="+taz+" ";
+		
+		try {
+			ResultSet res=st.executeQuery(sql);
+			while (res.next()) {
+				  lista.aggiungi(res.getInt("IdDoccumento"),res.getString("azienda"),res.getDate("data"),res.getBoolean("FirmatutorUniversitario"),res.getBoolean("FirmaTutorAziendale") ,res.getString("TutorUniversitarioEmail"), res.getString("TirocinanteEmail") , res.getString("TutorAziendaleEmail"));
+				
+			}
+			
+			 st.close();
+			con.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+	}
 }

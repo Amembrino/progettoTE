@@ -14,6 +14,21 @@ public class DomandaTirocinio {
  
 	private Boolean Firma_tutor_universitario,  Firma_tutor_aziendale ,	Firma_dirigente_az, attivato;
 
+	
+	public DomandaTirocinio(int id_Documento, String azienda,Date data, Boolean firma_tutor_universitario,  
+			Boolean firma_tutor_aziendale, String tutoUnirEmanil , String tirocinanteEmail, String tutoAzrEmanil ) {
+		 
+		Id_Documento = id_Documento;
+		Azienda = azienda;
+		TirocinanteEmail = tirocinanteEmail;
+		this.tutoAzrEmanil = tutoAzrEmanil;
+		this.tutoUnirEmanil = tutoUnirEmanil;
+		Firma_tutor_universitario = firma_tutor_universitario;
+		Firma_tutor_aziendale = firma_tutor_aziendale;
+		Data = data;
+	}
+	
+
 	private java.util.Date Data = new java.util.Date();
 	java.sql.Date oggi = new java.sql.Date(Data.getTime());
 	SimpleDateFormat dt1 = new SimpleDateFormat("yyyy-MM-dd");

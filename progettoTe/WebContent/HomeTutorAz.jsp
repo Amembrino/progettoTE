@@ -1,11 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+ 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<jsp:useBean id="tutorAz" class="bean.tutorAz" scope="session"/>>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Home Tutor Aziendale</title>
-</head>
+
 <style>
 .sidenav {
     width: 130px;
@@ -37,22 +40,22 @@
 }
 
 </style>
+</head>
 <body>
 
-
-<body>
+ 
 
 <div class="sidenav">
   <a href="">logout</a>
   <a href="RegistroTirocinioView.jsp">Visualizza Registro </a>
-  <a href="DomandaTirocinioVew.jsp">Firma domanda tirocinio</a>
- 
+  <a href="ViewDomadetirocinio.jsp">Firma domanda tirocinio</a>
+  <a href="listaDomandeTirocinio.jsp">convalida registro tirocinio</a>
 </div>
 
 <div class="main">
   <h2>home Tutor Aziendale</h2>
-  
-</div>  
+    <% out.print("<p> benvenuto "+tutorAz.getEmail().toString()+"</p>");%>
+   </div>
   
 </body>
 </html>

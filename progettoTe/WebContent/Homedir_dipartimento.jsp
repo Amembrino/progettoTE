@@ -40,7 +40,7 @@
 
 </style>
  </head>
-<body>
+ 
 
 
 <body>
@@ -55,7 +55,7 @@
   <h2>home Direttore dIPARTIMENTO</h2>
   <% out.print("<p>benvenuto carissimo direttore :"+ dirDip.getEmail()+"</p>");%>
   
- 
+ </div>
 
 </body>
 </html>

@@ -16,6 +16,7 @@ public class LoginDao {
 	
 	public boolean RicercaAccout(String email, String password, String tipoAcc) throws SQLException
 	{
+		 
 		Connection conn = DriverManagerConnectionPool.getConnection();
 
 		String sql = "SELECT * FROM "+tipoAcc+" WHERE Email='"+email+"' AND Password='"+password+"'";

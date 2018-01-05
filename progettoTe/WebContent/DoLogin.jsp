@@ -5,7 +5,11 @@
 --%>
 
 <%@page import="org.omg.PortableServer.ForwardRequest"%>
+<%@page import="bean.DirettoreDip"%>
+<%@page import="bean.Tirocinante"%>
+<%@page import="bean.tutorAz"%>
 <%@page import="bean.TutorUni"%>
+
 <%@page import="GestAutenticazione.LoginDao"%>
 <jsp:useBean id="tirocinan" class="bean.Tirocinante" scope="session"/>
 <jsp:useBean id="dirDip" class="bean.DirettoreDip" scope="session"/> 
@@ -26,10 +30,8 @@ LoginDao userdata = new LoginDao();
  
 %>
         <jsp:forward page="HomeTirocinante.jsp" />
+  <%
         
-        
-        
-        <%
     }  else if(loginresult == true && tipe.equals("Tutor_universitario") ) {
     	TutorUni.setEmail(email);
     	TutorUni.setPassword(password);
@@ -37,26 +39,28 @@ LoginDao userdata = new LoginDao();
 %>
  <jsp:forward page="HomeTurorUni.jsp" />
        <%
-    }  else  if(loginresult == true && tipe.equals("tutor_aziendale") ) {
-    	tutorAz.setEmail(email);
-    	tutorAz.setPassword(password);
-      
-%>  
- <jsp:forward page="HomeTutorAz.jsp" />
- 
- 
-    <%
     }  else  if(loginresult == true && tipe.equals("dir_dipartimento") ) {
     	dirDip.setEmail(email);
     	dirDip.setPassword(password);
       
 %>  
  <jsp:forward page="Homedir_dipartimento.jsp" />
+ 
+ <%
+    }  else  if(loginresult == true && tipe.equals("tutor_aziendale") ) {
+    	tutorAz.setEmail(email);
+    	tutorAz.setPassword(password);
+      
+%>  
+ <jsp:forward page="HomeTutorAz.jsp" />
        <%
        
-    }  else{
-      
+    } 
+    else{
+    System.out.println( email.toString()+"...non trovato");
       }
+   
 %>
+ 
 <jsp:forward page="Login.jsp" />
 
