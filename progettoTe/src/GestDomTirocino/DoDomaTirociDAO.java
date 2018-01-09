@@ -6,10 +6,12 @@
 package GestDomTirocino;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Random;
 
 import com.mysql.jdbc.Statement;
@@ -78,50 +80,63 @@ public class DoDomaTirociDAO {
 	
 	
 	
-	public void fillDomadeTiroTA(ListDomandeTiro listaDomande, String taz) throws SQLException{
-		Connection connection = null;
-		PreparedStatement preparedStatement = null;
+	public void fillDomadeTiroTA_DB(ListDomandeTiro listaDomande, String taz) throws SQLException, ClassNotFoundException{
+    	Connection newConnection = null;
+//		PreparedStatement preparedStatement = null;
 		
-	    
+		
 	    
 		String nome=taz;
-		String selectSQL="select * from domandatirocinio where TutorAziendaleEmail= '"+taz+"' ";
-	
-		try {
-			connection = DriverManagerConnectionPool.getConnection();
-			preparedStatement = connection.prepareStatement(selectSQL);
-			preparedStatement.setInt(1, 1111);
-  
-			
-		
-			ResultSet res = preparedStatement.executeQuery();
+		String sql="select * from domandatirocinio where TutorAziendaleEmail= '"+nome+"' and FirmaTutorAziendale='0'";
+     
+    
+		    //STEP 2: Register JDBC driver
+		    Class.forName("com.mysql.jdbc.Driver");
 
-			while (res.next()) {
-				DomandaTirocinio domanda=new DomandaTirocinio();
-				
-				domanda.setId_Documento(res.getInt("IdDoccumento"));
-				domanda.setAttivato(false);
-				domanda.setAzienda(res.getString("azienda"));
-				domanda.setData(res.getDate("data"));
-				domanda.setFirma_tutor_universitario(res.getBoolean("FirmatutorUniversitario"));
-				domanda.setFirma_tutor_aziendale( res.getBoolean("FirmaTutorAziendale") );
-				domanda.setTutoUnirEmanil(	res.getString("TutorUniversitarioEmail"));
-				domanda.setTirocinanteEmail( res.getString("TirocinanteEmail"));
-				domanda.setTutoAzrEmanil(res.getString("TutorAziendaleEmail"));
-			
-				listaDomande.aggiungi(  domanda );
-				
-			}
-			 
-		}  finally {
-			try {
-				if (preparedStatement != null)
-					preparedStatement.close();
-			} finally {
-				DriverManagerConnectionPool.releaseConnection(connection);
-			}
+		String ip = "localhost";
+		String port = "3306";
+		String db = "tiro";
+		String username = "root";
+		String password = "root";
+        
+		newConnection = DriverManager.getConnection("jdbc:mysql://"+ ip+":"+ port+"/"+db, username, password);
 		
+		 	try{
+		 		 java.sql.Statement st  = newConnection.createStatement();
+		 		  ResultSet rs = st.executeQuery(sql);
+     	while(rs.next()){
+			
+		    //Retrieve by column name
+		    int id  = rs.getInt("IdDoccumento");
+		    String azienda = rs.getString("Azienda");
+		    Date data = rs.getDate("data") ;
+		    boolean FirmatutorUniversitario = rs.getBoolean("FirmatutorUniversitario");
+		    String TutorUniversitarioEmail=rs.getString("TutorUniversitarioEmail");
+		    String TirocinanteEmail=rs.getString("TirocinanteEmail");
+		    String TutorAziendaleEmail=rs.getString("TutorAziendaleEmail");
+         
+		  DomandaTirocinio doma =new DomandaTirocinio(id, azienda, data, FirmatutorUniversitario, false, TutorUniversitarioEmail, TirocinanteEmail, TutorAziendaleEmail);
+		  listaDomande.aggiungi(doma);
 	}
-  }
+	
+		
+  }catch (SQLException  e) {
+	e.printStackTrace();
+ }
+	
+	}
+	
+	  public void fillListaDomande (ListDomandeTiro domande,  String taz) {
+	      
+		  try {
+			fillDomadeTiroTA_DB(domande, taz);
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	    }	
 	
 }
