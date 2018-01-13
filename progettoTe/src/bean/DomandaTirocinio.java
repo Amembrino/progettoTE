@@ -12,11 +12,11 @@ public class DomandaTirocinio {
 	private	int Id_Documento  ;
 	private String Azienda , autore , TirocinanteEmail, tutoAzrEmanil, tutoUnirEmanil;
  
-	private Boolean Firma_tutor_universitario,  Firma_tutor_aziendale ,	Firma_dirigente_az, attivato;
+	private int Firma_tutor_universitario,  Firma_tutor_aziendale ,	Firma_dirigente_az, attivato;
 
 	
-	public DomandaTirocinio(int id_Documento, String azienda,Date data, Boolean firma_tutor_universitario,  
-			Boolean firma_tutor_aziendale, String tutoUnirEmanil , String tirocinanteEmail, String tutoAzrEmanil ) {
+	public DomandaTirocinio(int id_Documento, String azienda,Date data, int firma_tutor_universitario,  
+			int firma_tutor_aziendale, String tutoUnirEmanil , String tirocinanteEmail, String tutoAzrEmanil ) {
 		 
 		Id_Documento = id_Documento;
 		Azienda = azienda;
@@ -78,28 +78,28 @@ public class DomandaTirocinio {
 	public void setData(Date data) {
 		 this.Data=data;
 	}
-	public Boolean getFirma_tutor_universitario() {
+	public int getFirma_tutor_universitario() {
 		return Firma_tutor_universitario;
 	}
-	public void setFirma_tutor_universitario(Boolean firma_tutor_universitario) {
+	public void setFirma_tutor_universitario(int firma_tutor_universitario) {
 		this.Firma_tutor_universitario = firma_tutor_universitario;
 	}
-	public Boolean getFirma_tutor_aziendale() {
+	public int getFirma_tutor_aziendale() {
 		return Firma_tutor_aziendale;
 	}
-	public void setFirma_tutor_aziendale(Boolean firma_tutor_aziendale) {
+	public void setFirma_tutor_aziendale(int firma_tutor_aziendale) {
 		this.Firma_tutor_aziendale = firma_tutor_aziendale;
 	}
-	public Boolean getFirma_dirigente_az() {
+	public int getFirma_dirigente_az() {
 		return Firma_dirigente_az;
 	}
-	public void setFirma_dirigente_az(Boolean firma_dirigente_az) {
+	public void setFirma_dirigente_az(int firma_dirigente_az) {
 		this.Firma_dirigente_az = firma_dirigente_az;
 	}
-	public Boolean getAttivato() {
+	public int getAttivato() {
 		return attivato;
 	}
-	public void setAttivato(Boolean attivato) {
+	public void setAttivato(int attivato) {
 		this.attivato = attivato;
 	}
 		

@@ -12,6 +12,7 @@
 <div class="sidenav">
    <a href="Login.jsp">login</a>
   <a href="pageinfo.jsp"> info</a>
+   <a href="viewListaAziende.jsp"> listaAZIEW</a>
  </div>
  
 

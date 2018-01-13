@@ -13,9 +13,12 @@ import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import com.mysql.jdbc.Statement;
 
+import Db.Connector;
 import bean.DomandaTirocinio;
 import bean.ListDomandeTiro;
 import bean.tutorAz;
@@ -24,7 +27,13 @@ import GestDomTirocino.DriverManagerConnectionPool;
  
 
 public class DoDomaTirociDAO {
-
+	String ip = "localhost";
+	String port = "3306";
+	String db = "tiro";
+	String username = "root";
+	String password = "root";
+	
+	
 	public DoDomaTirociDAO()   {
 	 }
 	
@@ -93,29 +102,27 @@ public class DoDomaTirociDAO {
 		    //STEP 2: Register JDBC driver
 		    Class.forName("com.mysql.jdbc.Driver");
 
-		String ip = "localhost";
-		String port = "3306";
-		String db = "tiro";
-		String username = "root";
-		String password = "root";
+		
         
 		newConnection = DriverManager.getConnection("jdbc:mysql://"+ ip+":"+ port+"/"+db, username, password);
 		
 		 	try{
 		 		 java.sql.Statement st  = newConnection.createStatement();
 		 		  ResultSet rs = st.executeQuery(sql);
-     	while(rs.next()){
+     	
+		 		  while(rs.next()){
 			
 		    //Retrieve by column name
 		    int id  = rs.getInt("IdDoccumento");
 		    String azienda = rs.getString("Azienda");
 		    Date data = rs.getDate("data") ;
-		    boolean FirmatutorUniversitario = rs.getBoolean("FirmatutorUniversitario");
+		    int FirmatutorUniversitario = rs.getInt("FirmatutorUniversitario");
+		    int firma_tutor_aziendale = rs.getInt("FirmaTutorAziendale");
 		    String TutorUniversitarioEmail=rs.getString("TutorUniversitarioEmail");
 		    String TirocinanteEmail=rs.getString("TirocinanteEmail");
 		    String TutorAziendaleEmail=rs.getString("TutorAziendaleEmail");
          
-		  DomandaTirocinio doma =new DomandaTirocinio(id, azienda, data, FirmatutorUniversitario, false, TutorUniversitarioEmail, TirocinanteEmail, TutorAziendaleEmail);
+		  DomandaTirocinio doma =new DomandaTirocinio(id, azienda, data, FirmatutorUniversitario, firma_tutor_aziendale, TutorUniversitarioEmail, TirocinanteEmail, TutorAziendaleEmail);
 		  listaDomande.aggiungi(doma);
 	}
 	
@@ -126,7 +133,7 @@ public class DoDomaTirociDAO {
 	
 	}
 	
-	  public void fillListaDomande (ListDomandeTiro domande,  String taz) {
+	  public void fillListaDomandeTAZ (ListDomandeTiro domande,  String taz) {
 	      
 		  try {
 			fillDomadeTiroTA_DB(domande, taz);
@@ -138,5 +145,43 @@ public class DoDomaTirociDAO {
 			e.printStackTrace();
 		}
 	    }	
-	
+	  
+	  
+public void firmaTAz(int id) {
+   Connection conn=null;
+ 
+	 try {
+		Class.forName("com.mysql.jdbc.Driver");
+	} catch (ClassNotFoundException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	 try {
+		conn = DriverManager.getConnection("jdbc:mysql://"+ ip+":"+ port+"/"+db, username, password);
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+  
+ try {
+	int  firma=1;
+	 java.sql.Statement  stmt = conn.createStatement();
+	 String sql="UPDATE domandatirocinio  SET FirmaTutorAziendale = "+firma+" WHERE IdDoccumento= '"+id+"' ";
+    System.out.println(sql);
+	 stmt.executeUpdate(sql);
+       
+
+	 stmt.close();
+     conn.close();
+
+ } catch (SQLException ex) {
+    ex.printStackTrace();
+ }
+ 
+
+}	
+
+
+
+
 }

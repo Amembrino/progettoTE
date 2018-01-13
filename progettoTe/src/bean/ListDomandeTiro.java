@@ -22,11 +22,11 @@ public class ListDomandeTiro {
     }
     
     
-    public void aggiungi(int idDOcu , String azienda, Date data, Boolean firma_tutor_universitario, Boolean firma_tutor_aziendale, String SyttutoUnirEmanil, String tirocinanteEmail, String tutoAzrEmanil)
-    		{
-    	DomandaTirocinio dom = new  DomandaTirocinio(idDOcu,azienda,data,firma_tutor_universitario,firma_tutor_aziendale,SyttutoUnirEmanil,tirocinanteEmail, tutoAzrEmanil);
-    	domande.add(dom);
-    }
+//    public void aggiungi(int idDOcu , String azienda, Date data, Boolean firma_tutor_universitario, Boolean firma_tutor_aziendale, String SyttutoUnirEmanil, String tirocinanteEmail, String tutoAzrEmanil)
+//    		{
+//    	DomandaTirocinio dom = new  DomandaTirocinio(idDOcu,azienda,data,firma_tutor_universitario,firma_tutor_aziendale,SyttutoUnirEmanil,tirocinanteEmail, tutoAzrEmanil);
+//    	domande.add(dom);
+//    }
     
     public void aggiungi(DomandaTirocinio domanda){
     	domande.add(domanda);

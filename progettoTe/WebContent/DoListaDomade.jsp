@@ -11,7 +11,7 @@
   <%
  String taz= tutorAz.getEmail();
   DoDomaTirociDAO dom= new DoDomaTirociDAO();
-  dom.fillListaDomande(listaDomande, taz);
+  dom.fillListaDomandeTAZ(listaDomande, taz);
    
   %>
     <jsp:forward page="ViewDomadetirocinio.jsp"></jsp:forward>
