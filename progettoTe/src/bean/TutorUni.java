@@ -1,10 +1,12 @@
 package bean;
 
-public class TutorUni {
+public class TutorUni  extends user {
 	private String nome, cognome, email, password;
 	
 	
-	
+
+
+
 	public String getNome() {
 		return nome;
 	}

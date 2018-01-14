@@ -1,7 +1,6 @@
  
 <%@page import="GestDomTirocino.DomaTirociDAO"%>
-
-<jsp:useBean id="tutorAz" class="bean.tutorAz" scope="session"/>
+ <jsp:useBean id="TutorUni" class="bean.TutorUni" scope="session"/> 
  
 <jsp:useBean id="domanda"
              class="bean.DomandaTirocinio"
@@ -14,9 +13,9 @@
   DomaTirociDAO dom= new  DomaTirociDAO();
  
  int id=Integer.parseInt(request.getParameter("iddomanda"));
-  dom.firmaTAz(id);
+  dom.firmaTuni(id);
  
  //dom.fillListaDomandeTAZ(listaDomande, tutorAz.getEmail());
 
  %>
-<jsp:forward page="firmaDomanda.jsp" />
+<jsp:forward page="HomeTurorUni.jsp" />

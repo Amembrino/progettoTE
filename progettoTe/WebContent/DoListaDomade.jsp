@@ -1,17 +1,41 @@
- <%@page import="GestDomTirocino.DoDomaTirociDAO"%>
+<%@page import="bean.tutorAz"%>
+<%@page import="bean.user"%>
+<%@page import="bean.TutorUni"%>
+<%@page import="GestDomTirocino.DomaTirociDAO"%>
 
   <jsp:useBean id="listaDomande" 
     class="bean.ListDomandeTiro"
      scope="request"/>
      
- <jsp:useBean id="tutorAz" 
-    class="bean.tutorAz"
+ <jsp:useBean id="user" 
+    class="bean.user"
      scope="session"/>   
+    
+     <jsp:useBean id="tutorAz" 
+    class="bean.tutorAz"
+     scope="session"/>  
      
+      <jsp:useBean id="TutorUni" 
+    class="bean.TutorUni"
+     scope="session"/>   
   <%
- String taz= tutorAz.getEmail();
-  DoDomaTirociDAO dom= new DoDomaTirociDAO();
-  dom.fillListaDomandeTAZ(listaDomande, taz);
-   
+ String us= user.getTipoacc();
+  
+   DomaTirociDAO dom= new  DomaTirociDAO();
+  
+   if( us.equals("tutor_aziendale")){
+	  
+  dom.fillListaDomandeTAZ(listaDomande, tutorAz.getEmail() );
+  
+  }
+  else   if( us.equals("Tutor_universitario")) {
+	dom.fillListaDomandeTUNI(listaDomande, TutorUni.getEmail() );
+  }
+   System.out.println(user.getTipoacc());     
+    
+
   %>
     <jsp:forward page="ViewDomadetirocinio.jsp"></jsp:forward>
+    
+    
+    

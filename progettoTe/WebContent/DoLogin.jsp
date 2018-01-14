@@ -9,10 +9,12 @@
 <%@page import="bean.Tirocinante"%>
 <%@page import="bean.tutorAz"%>
 <%@page import="bean.TutorUni"%>
+<%@page import="bean.user"%>
 
 <%@page import="GestAutenticazione.LoginDao"%>
 <jsp:useBean id="tirocinan" class="bean.Tirocinante" scope="session"/>
 <jsp:useBean id="dirDip" class="bean.DirettoreDip" scope="session"/> 
+<jsp:useBean id="user" class="bean.user" scope="session"/>
 <jsp:useBean id="tutorAz" class="bean.tutorAz" scope="session"/>
 <jsp:useBean id="TutorUni" class="bean.TutorUni" scope="session"/> 
 <%
@@ -35,6 +37,7 @@ LoginDao userdata = new LoginDao();
     }  else if(loginresult == true && tipe.equals("Tutor_universitario") ) {
     	TutorUni.setEmail(email);
     	TutorUni.setPassword(password);
+    	user.setTipoacc("Tutor_universitario");
        
 %>
  <jsp:forward page="HomeTurorUni.jsp" />
@@ -50,7 +53,7 @@ LoginDao userdata = new LoginDao();
     }  else  if(loginresult == true && tipe.equals("tutor_aziendale") ) {
     	tutorAz.setEmail(email);
     	tutorAz.setPassword(password);
-      
+    	user.setTipoacc("tutor_aziendale");
 %>  
  <jsp:forward page="HomeTutorAz.jsp" />
        <%

@@ -26,7 +26,7 @@ import bean.tutorAz;
 import GestDomTirocino.DriverManagerConnectionPool;
  
 
-public class DoDomaTirociDAO {
+public class DomaTirociDAO {
 	String ip = "localhost";
 	String port = "3306";
 	String db = "tiro";
@@ -34,7 +34,7 @@ public class DoDomaTirociDAO {
 	String password = "root";
 	
 	
-	public DoDomaTirociDAO()   {
+	public DomaTirociDAO()   {
 	 }
 	
 	public void compilaDoma(DomandaTirocinio Data) throws SQLException    {
@@ -101,10 +101,8 @@ public class DoDomaTirociDAO {
     
 		    //STEP 2: Register JDBC driver
 		    Class.forName("com.mysql.jdbc.Driver");
-
-		
-        
-		newConnection = DriverManager.getConnection("jdbc:mysql://"+ ip+":"+ port+"/"+db, username, password);
+   
+		   newConnection = DriverManager.getConnection("jdbc:mysql://"+ ip+":"+ port+"/"+db, username, password);
 		
 		 	try{
 		 		 java.sql.Statement st  = newConnection.createStatement();
@@ -147,6 +145,66 @@ public class DoDomaTirociDAO {
 	    }	
 	  
 	  
+	  
+		public void fillDomadeTiroTu_DB(ListDomandeTiro listaDomande, String TUNI) throws SQLException, ClassNotFoundException{
+	    	Connection newConnection = null;
+//			PreparedStatement preparedStatement = null;
+			
+			
+		    
+			String nome=TUNI;
+			String sql="select * from domandatirocinio where TutorUniversitarioEmail='"+nome+"' and FirmatutorUniversitario='0'";
+	     
+	    
+			    //STEP 2: Register JDBC driver
+			    Class.forName("com.mysql.jdbc.Driver");
+
+			
+	        
+			newConnection = DriverManager.getConnection("jdbc:mysql://"+ ip+":"+ port+"/"+db, username, password);
+			
+			 	try{
+			 		 java.sql.Statement st  = newConnection.createStatement();
+			 		  ResultSet rs = st.executeQuery(sql);
+	     	
+			 		  while(rs.next()){
+				
+			    //Retrieve by column name
+			    int id  = rs.getInt("IdDoccumento");
+			    String azienda = rs.getString("Azienda");
+			    Date data = rs.getDate("data") ;
+			    int FirmatutorUniversitario = rs.getInt("FirmatutorUniversitario");
+			    int firma_tutor_aziendale = rs.getInt("FirmaTutorAziendale");
+			    String TutorUniversitarioEmail=rs.getString("TutorUniversitarioEmail");
+			    String TirocinanteEmail=rs.getString("TirocinanteEmail");
+			    String TutorAziendaleEmail=rs.getString("TutorAziendaleEmail");
+	         
+			  DomandaTirocinio doma =new DomandaTirocinio(id, azienda, data, FirmatutorUniversitario, firma_tutor_aziendale, TutorUniversitarioEmail, TirocinanteEmail, TutorAziendaleEmail);
+			  listaDomande.aggiungi(doma);
+		}
+		
+			
+	  }catch (SQLException  e) {
+		e.printStackTrace();
+	 }
+		
+		}
+		
+		  public void fillListaDomandeTUNI (ListDomandeTiro domande,  String TUNI) {
+		      
+			  try {
+				  fillDomadeTiroTu_DB(domande, TUNI);
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		    }	
+	  
+	  
+	  
 public void firmaTAz(int id) {
    Connection conn=null;
  
@@ -179,7 +237,42 @@ public void firmaTAz(int id) {
  }
  
 
-}	
+}
+
+
+public void firmaTuni(int id) {
+	   Connection conn=null;
+	 
+		 try {
+			Class.forName("com.mysql.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		 try {
+			conn = DriverManager.getConnection("jdbc:mysql://"+ ip+":"+ port+"/"+db, username, password);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	  
+	 try {
+		int  firma=1;
+		 java.sql.Statement  stmt = conn.createStatement();
+		 String sql="UPDATE domandatirocinio  SET FirmatutorUniversitario= "+firma+" WHERE IdDoccumento= '"+id+"' ";
+	    System.out.println(sql);
+		 stmt.executeUpdate(sql);
+	       
+
+		 stmt.close();
+	     conn.close();
+
+	 } catch (SQLException ex) {
+	    ex.printStackTrace();
+	 }
+	 
+
+	}
 
 
 

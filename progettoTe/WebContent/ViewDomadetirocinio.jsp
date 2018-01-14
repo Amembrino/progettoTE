@@ -1,7 +1,10 @@
 <%@page import="java.sql.SQLException"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
- 
+
+<%@page import="bean.tutorAz"%>
+<%@page import="bean.TutorUni"%>
+
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.Connection"%>
 <%@page import="bean.ListDomandeTiro"%>
@@ -11,8 +14,9 @@
              class="bean.ListDomandeTiro"
              scope="request" />
              
- <jsp:useBean id="tutorAz" class="bean.tutorAz" scope="session"/>
-               
+ <jsp:useBean id="user" class="bean.user" scope="session"/>
+<jsp:useBean id="tutorAz" class="bean.tutorAz" scope="session"/>
+<jsp:useBean id="TutorUni" class="bean.TutorUni" scope="session"/> 
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -44,6 +48,14 @@ tr:nth-child(even) {
 </head>
 <body>
 
+<% if (user.getTipoacc().equals("Tutor_universitario"))
+	
+	%><jsp:include page="menuTutorUni.jsp"></jsp:include>
+<% if (user.getTipoacc().equals("tutor_aziendale"))
+	
+	%><jsp:include page="menuTutorAz.jsp"></jsp:include>
+	
+	
   <div class="main">
                 
                 <div id="searchconsole">
@@ -62,25 +74,27 @@ tr:nth-child(even) {
      </thead>
      <tbody>
 <% 
- 
+     
+
 
    for (DomandaTirocinio domanda : listaDomande.getDomande()  ) {
                     
                  
                     String tirocinante = domanda.getTirocinanteEmail();
                      
-                    
-                    out.print("<tr>");
+                     out.print("<tr>");
                      
                     out.print("<td><p class=\"descrizioned\" >"+tirocinante+"</p></td>");
                     out.print("<td><p class=> richiesta il:" +domanda.getData()+"</p></td>");
                     out.print("<td><p class=>id n:" +domanda.getId_Documento()+"</p></td>");
-                    out.print("<td> <a href=\"DofirmaTutorAz.jsp?iddomanda="+domanda.getId_Documento()+"\">firma</a> </td>");
-                     
-                  //  System.out.println("domanda  "+domanda.getId_Documento() );
+                 if (user.getTipoacc().equals("tutor_aziendale")){
+                    out.print("<td> <a href=\"DofirmaTutorAz.jsp?iddomanda="+domanda.getId_Documento()+"\">firma taz</a> </td>");
+                 }else if (user.getTipoacc().equals("Tutor_universitario")){
+                	 out.print("<td> <a href=\"DofirmaTutorUni.jsp?iddomanda="+domanda.getId_Documento()+"\">firma tuni</a> </td>");
+                 }
+                  //  lista delle domande da firmare per ogni tipo di accaunt;
                     out.print("</tr>");                
-   }
-              
+   }     
                 %>
                 </tbody>
    </table>

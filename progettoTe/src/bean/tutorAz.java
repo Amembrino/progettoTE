@@ -1,11 +1,10 @@
 package bean;
 
-public class tutorAz {
+public class tutorAz extends user{
 
-private String nome, cognome, email, password;
+private String nome, cognome, email, password   ;
 	
-	
-	
+	 
 	public String getNome() {
 		return nome;
 	}
@@ -54,7 +53,7 @@ private String nome, cognome, email, password;
 
 	
 	public tutorAz() {
-		// TODO Auto-generated constructor stub
+	super();
 	}
 
 }
