@@ -22,7 +22,7 @@ import Db.Connector;
 import bean.DomandaTirocinio;
 import bean.ListDomandeTiro;
 import bean.tutorAz;
- 
+import gestRegTir.RegistroDAO;
 import GestDomTirocino.DriverManagerConnectionPool;
  
 
@@ -116,11 +116,13 @@ public class DomaTirociDAO {
 		    Date data = rs.getDate("data") ;
 		    int FirmatutorUniversitario = rs.getInt("FirmatutorUniversitario");
 		    int firma_tutor_aziendale = rs.getInt("FirmaTutorAziendale");
+		    int firma_dir_az=rs.getInt("Firma_dirigente_az");
+		    int firma_dir_dip=rs.getInt("Firma_dir_dip");
 		    String TutorUniversitarioEmail=rs.getString("TutorUniversitarioEmail");
 		    String TirocinanteEmail=rs.getString("TirocinanteEmail");
 		    String TutorAziendaleEmail=rs.getString("TutorAziendaleEmail");
          
-		  DomandaTirocinio doma =new DomandaTirocinio(id, azienda, data, FirmatutorUniversitario, firma_tutor_aziendale, TutorUniversitarioEmail, TirocinanteEmail, TutorAziendaleEmail);
+		  DomandaTirocinio doma =new DomandaTirocinio(id, azienda, data, FirmatutorUniversitario, firma_tutor_aziendale, firma_dir_az, firma_dir_dip, TutorUniversitarioEmail, TirocinanteEmail, TutorAziendaleEmail);
 		  listaDomande.aggiungi(doma);
 	}
 	
@@ -175,12 +177,14 @@ public class DomaTirociDAO {
 			    Date data = rs.getDate("data") ;
 			    int FirmatutorUniversitario = rs.getInt("FirmatutorUniversitario");
 			    int firma_tutor_aziendale = rs.getInt("FirmaTutorAziendale");
+			    int firma_dir_az=rs.getInt("Firma_dirigente_az");
+			    int firma_dir_dip=rs.getInt("Firma_dir_dip");
 			    String TutorUniversitarioEmail=rs.getString("TutorUniversitarioEmail");
 			    String TirocinanteEmail=rs.getString("TirocinanteEmail");
 			    String TutorAziendaleEmail=rs.getString("TutorAziendaleEmail");
 	         
-			  DomandaTirocinio doma =new DomandaTirocinio(id, azienda, data, FirmatutorUniversitario, firma_tutor_aziendale, TutorUniversitarioEmail, TirocinanteEmail, TutorAziendaleEmail);
-			  listaDomande.aggiungi(doma);
+			    DomandaTirocinio doma =new DomandaTirocinio(id, azienda, data, FirmatutorUniversitario, firma_tutor_aziendale, firma_dir_az, firma_dir_dip, TutorUniversitarioEmail, TirocinanteEmail, TutorAziendaleEmail);
+				  listaDomande.aggiungi(doma);
 		}
 		
 			
@@ -273,8 +277,79 @@ public void firmaTuni(int id) {
 	 
 
 	}
+/** Metodo per la firma del dirigente aziendale*/
+public void firmaDirAz(int id) {
+	   Connection conn=null;
+	 
+		 try {
+			Class.forName("com.mysql.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		 try {
+			conn = DriverManager.getConnection("jdbc:mysql://"+ ip+":"+ port+"/"+db, username, password);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	  
+	 try {
+		int  firma=1;
+		 java.sql.Statement  stmt = conn.createStatement();
+		 String sql="UPDATE domandatirocinio  SET Firma_dirigente_az= "+firma+" WHERE IdDoccumento= '"+id+"' ";
+	    System.out.println(sql);
+		 stmt.executeUpdate(sql);
+	       
 
+		 stmt.close();
+	     conn.close();
 
+	 } catch (SQLException ex) {
+	    ex.printStackTrace();
+	 }
+	 
 
+	}
+
+/** Metodo per la firma del direttore di dipartimento*/
+public void firmaDirDip(int id) {
+	   Connection conn=null;
+	 
+		 try {
+			Class.forName("com.mysql.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		 try {
+			conn = DriverManager.getConnection("jdbc:mysql://"+ ip+":"+ port+"/"+db, username, password);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	  
+	 try {
+		int  firma=1;
+		 java.sql.Statement  stmt = conn.createStatement();
+		 String sql="UPDATE domandatirocinio  SET Firma_dir_dip= "+firma+" WHERE IdDoccumento= '"+id+"' ";
+	    System.out.println(sql);
+	    
+	    /** Creazione nuovo registro tirocinante in seguito alla firma del direttore.. da finire*/
+	    RegistroDAO nuovoreg=new RegistroDAO();
+	    
+	
+		 stmt.executeUpdate(sql);
+	       
+
+		 stmt.close();
+	     conn.close();
+
+	 } catch (SQLException ex) {
+	    ex.printStackTrace();
+	 }
+	 
+
+	}
 
 }

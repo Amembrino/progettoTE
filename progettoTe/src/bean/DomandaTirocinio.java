@@ -10,19 +10,22 @@ public class DomandaTirocinio {
   }
 	
 	private	int Id_Documento  ;
+	/** Aggiunte stringhe dirigente e direttore*/
 	private String Azienda , autore , TirocinanteEmail, tutoAzrEmanil, tutoUnirEmanil;
  
-	private int Firma_tutor_universitario,  Firma_tutor_aziendale ,	Firma_dirigente_az, attivato;
+	private int Firma_tutor_universitario,  Firma_tutor_aziendale , firma_dir_az, firma_dir_dip;
 
-	
+	/** Modifica del costruttore. Angrisani ha aggiunto la firma del dirigente e del direttore di dipartimento con relativi set e get */
 	public DomandaTirocinio(int id_Documento, String azienda,Date data, int firma_tutor_universitario,  
-			int firma_tutor_aziendale, String tutoUnirEmanil , String tirocinanteEmail, String tutoAzrEmanil ) {
+			int firma_tutor_aziendale, int firma_dir_az, int firma_dir_dip, String tutoUnirEmanil ,  String tirocinanteEmail, String tutoAzrEmanil ) {
 		 
 		Id_Documento = id_Documento;
 		Azienda = azienda;
 		TirocinanteEmail = tirocinanteEmail;
 		this.tutoAzrEmanil = tutoAzrEmanil;
 		this.tutoUnirEmanil = tutoUnirEmanil;
+		this.firma_dir_az=firma_dir_az;
+		this.firma_dir_dip=firma_dir_dip;
 		Firma_tutor_universitario = firma_tutor_universitario;
 		Firma_tutor_aziendale = firma_tutor_aziendale;
 		Data = data;
@@ -69,6 +72,19 @@ public class DomandaTirocinio {
 	public String getTutoUnirEmanil() {
 		return tutoUnirEmanil;
 	}
+	
+	public int getFirma_dir_az() {
+		return firma_dir_az;
+	}
+	public void setFirma_dir_az(int firma_dir_az) {
+		this.firma_dir_az = firma_dir_az;
+	}
+	public int getFirma_dir_dip() {
+		return firma_dir_dip;
+	}
+	public void setFirma_dir_dip(int firma_dir_dip) {
+		this.firma_dir_dip = firma_dir_dip;
+	}
 	public void setTutoUnirEmanil(String tutoUnirEmanil) {
 		this.tutoUnirEmanil = tutoUnirEmanil;
 	}
@@ -84,24 +100,16 @@ public class DomandaTirocinio {
 	public void setFirma_tutor_universitario(int firma_tutor_universitario) {
 		this.Firma_tutor_universitario = firma_tutor_universitario;
 	}
+	/** set e get aggiunti*/
 	public int getFirma_tutor_aziendale() {
 		return Firma_tutor_aziendale;
 	}
 	public void setFirma_tutor_aziendale(int firma_tutor_aziendale) {
 		this.Firma_tutor_aziendale = firma_tutor_aziendale;
 	}
-	public int getFirma_dirigente_az() {
-		return Firma_dirigente_az;
-	}
-	public void setFirma_dirigente_az(int firma_dirigente_az) {
-		this.Firma_dirigente_az = firma_dirigente_az;
-	}
-	public int getAttivato() {
-		return attivato;
-	}
-	public void setAttivato(int attivato) {
-		this.attivato = attivato;
-	}
+
+	
+/**cancellato attivato perché non serve*/
 		
 	
     

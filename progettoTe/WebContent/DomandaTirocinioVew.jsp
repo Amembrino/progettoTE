@@ -16,9 +16,9 @@
 
 <form name="richiediTirocinioform" action="doDomanda.jsp" method="post">
  
-  <input type="text"    name="nome">   
+  nome<input type="text"    name="nome">   <br>
   
-   <input type="text"  name="cognome">  
+   cognome<input type="text"  name="cognome">  <br>
    <br>email
   <input type="text"  name="Email"> 
 

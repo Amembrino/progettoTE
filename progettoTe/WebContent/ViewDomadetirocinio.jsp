@@ -48,13 +48,13 @@ tr:nth-child(even) {
 </head>
 <body>
 
-<% if (user.getTipoacc().equals("Tutor_universitario"))
+<% if (user.getTipoacc().equals("Tutor_universitario")){
 	
 	%><jsp:include page="menuTutorUni.jsp"></jsp:include>
-<% if (user.getTipoacc().equals("tutor_aziendale"))
+<% }if (user.getTipoacc().equals("tutor_aziendale")){
 	
 	%><jsp:include page="menuTutorAz.jsp"></jsp:include>
-	
+	<%} %>
 	
   <div class="main">
                 

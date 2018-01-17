@@ -1,12 +1,69 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!doctype html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="style.css">
+<title>Documento senza titolo</title>
 </head>
+
 <body>
-form per il registro di tirocinio
+
+<div class="container">
+  <header>
+  <!--<a href="#"><img src="https://i.imgur.com/hQ9S6Em.png" width="864" height="187" alt=""/></a> -->
+  </header>
+  
+  
+  <article class="content">
+    <h1>Visualizza Registro Tirocinio</h1>
+    <section>Antonio e&grave felice</section>
+    <section>fasf </section>
+    <section>
+      <h2>&nbsp;</h2>
+    </section>
+
+
+
+
+<%@ page language="java" import="java.sql.*" %>
+
+  <form name="compilatirocinio" action="doRegistro.jsp" method="post">
+ <div class="tableRow">
+		<p> Ore ti attività: </p>
+		<p> <input type="number" name="bags" min="1" max="10"> </p>
+	</div>
+	<div class="tableRow label">
+		<p> Data: </p>
+		<p> <input type="date" name="date"> </p>
+	</div>
+
+	<div class="tableRow">
+		<p> Attività: </p>
+		<p>
+            <textarea name="comments"></textarea>
+		</p>
+	</div>
+	<div class="tableRow">
+		<p></p>
+		<p> <input type="submit" value="Compila"> </p>
+	</div>
+</form>
+
+
+
+
+
+  <!-- end .content --></article>
+  <aside>
+    <h4>Sfondi</h4>
+    <p>Normalmente, il colore di sfondo di un elemento di blocco viene visualizzato solo per tutta la lunghezza del contenuto. Se desiderate visualizzare una linea di divisione anziché un colore, inserite un bordo sul lato del blocco .content  (ma solo se esso conterrà sempre una quantità maggiore di contenuto).</p>
+  </aside>
+  <footer>
+    <p>Ciao a tutti</p>
+    <address>
+      Contenuto indirizzo
+    </address>
+  </footer>
+<!-- end .container --></div>
 </body>
 </html>
