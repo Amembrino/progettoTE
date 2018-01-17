@@ -12,7 +12,7 @@
   <div>
        <form action="DoLogin.jsp" method="post">
                                        
-    <input type="text" name="email" placeholder="email"/>
+    <input type="text" name="email" placeholder="email" pattern/>
 
       <input type="password"  name="pass" placeholder="password"/>
     
