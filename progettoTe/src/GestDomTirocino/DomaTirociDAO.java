@@ -1,8 +1,4 @@
-/**
- * 
- * @author antonio
- * 
- */
+
 package GestDomTirocino;
 
 import java.sql.Connection;
@@ -13,23 +9,18 @@ import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Random;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
-import com.mysql.jdbc.Statement;
 
 import Db.Connector;
 import bean.DomandaTirocinio;
 import bean.ListDomandeTiro;
-import bean.tutorAz;
-import gestRegTir.RegistroDAO;
+import gestRegTir.createRegistroDAO;
 import GestDomTirocino.DriverManagerConnectionPool;
  
 
 public class DomaTirociDAO {
 	String ip = "localhost";
 	String port = "3306";
-	String db = "tiro";
+	String db = "tirocinioeasy";
 	String username = "root";
 	String password = "root";
 	
@@ -38,7 +29,7 @@ public class DomaTirociDAO {
 	 }
 	
 	public void compilaDoma(DomandaTirocinio Data) throws SQLException    {
-		 System.out.println("tutor aziendaleemail  "+ Data.getTutoAzrEmanil().toString()+" email tirocinante   "+ Data.getTirocinanteEmail().toString()+" email tutr uni   "+Data.getTutoUnirEmanil());
+  System.out.println("tutor aziendaleemail  "+ Data.getTutoAzrEmanil().toString()+" email tirocinante   "+ Data.getTirocinanteEmail().toString()+" email tutr uni   "+Data.getTutoUnirEmanil());
 		 
 		Random ran=new Random();
 	int x=	ran.nextInt(200);
@@ -48,32 +39,32 @@ public class DomaTirociDAO {
 		SimpleDateFormat dt1 = new SimpleDateFormat("yyyy-MM-dd");
 		   String da=dt1.format(Dat );
 		
-		  
-         
-		  int flse=0;
+		 
 		 
 		  Connection connection = null;
 			PreparedStatement st = null;
      
 		
-       String sql2=" INSERT INTO  domandaTirocinio (IdDoccumento, Azienda, data,"
-    		+ " FirmatutorUniversitario, FirmaTutorAziendale, TutorUniversitarioEmail,"
-    		+ " TirocinanteEmail, TutorAziendaleEmail, attivato) "
-    		+ "VALUES (?,?,?,?,?,?,?,?,?) ";
+       String sql2=" INSERT INTO domanda_di_tirocinio  (Id_Documento, Data, Firma_tutor_universitario, Firma_tutor_aziendale, "
+       		+ "Firma_dirigente_az, Firma_dir_dip, Tutor_UniversitarioEmail, TirocinanteEmail, dir_dipartimentoEmail, Tutor_Aziendale_Email) "
+    		+ "VALUES (?,?,?,?,?,?,?,?,?,?) ";
    	try { 
        connection = DriverManagerConnectionPool.getConnection();
 		st = connection.prepareStatement(sql2);
 		
-	st.setInt(1, x );
-	st.setString(2,Data.getAzienda());
-	st.setString(3,da );
-	st.setInt(4, 0);
-	st.setInt(5, 0);	
-	st.setString(6, Data.getTutoUnirEmanil());
-	st.setString(7, Data.getTirocinanteEmail() );
-	st.setString(8, Data.getTutoAzrEmanil() );
-    st.setInt(9, 0);	
-   
+	st.setInt(1,Integer.parseInt(null));
+	st.setString(2,da );
+	st.setInt(3,0 );
+	st.setInt(4,0 );
+	st.setInt(5, 0);
+	st.setInt(6, 0);
+	st.setString(7, Data.getTutoUnirEmanil());
+	st.setString(8, Data.getTirocinanteEmail() );
+	st.setString(8, "Fulgenzio@unisa.it");
+	 st.setString(2,Data.getAzienda());
+	 
+	
+ 
     st.executeUpdate();
 
 	connection.commit();
@@ -125,7 +116,9 @@ public class DomaTirociDAO {
 		  DomandaTirocinio doma =new DomandaTirocinio(id, azienda, data, FirmatutorUniversitario, firma_tutor_aziendale, firma_dir_az, firma_dir_dip, TutorUniversitarioEmail, TirocinanteEmail, TutorAziendaleEmail);
 		  listaDomande.aggiungi(doma);
 	}
-	
+
+			 		 st.close();
+			 		newConnection.close();
 		
   }catch (SQLException  e) {
 	e.printStackTrace();
@@ -187,7 +180,8 @@ public class DomaTirociDAO {
 				  listaDomande.aggiungi(doma);
 		}
 		
-			
+			 		 st.close();
+			 		newConnection.close();
 	  }catch (SQLException  e) {
 		e.printStackTrace();
 	 }
@@ -205,7 +199,42 @@ public class DomaTirociDAO {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		    }	
+		    }
+	
+		  
+		  public void  fillListaDomandeDirDip(ListDomandeTiro listaDomande, String dirdip){
+			
+			  Connection newConnection=Connector.getConnection();
+			try{
+		 		 java.sql.Statement st  = newConnection.createStatement();
+		 		  String sql ="select * from domandatirocinio where dir_dipartimentoEmail='"+dirdip+"' and FirmatutorUniversitario='1' "
+		 		  		      + "and Firma_tutor_aziendale= '1' and  Firma_dir_dip='0'";
+				ResultSet rs = st.executeQuery(sql );
+    	
+		 		  while(rs.next()){
+			
+		    //Retrieve by column name
+		    int id  = rs.getInt("IdDoccumento");
+		    String azienda = rs.getString("Azienda");
+		    Date data = rs.getDate("data") ;
+		    int FirmatutorUniversitario = rs.getInt("FirmatutorUniversitario");
+		    int firma_tutor_aziendale = rs.getInt("FirmaTutorAziendale");
+		    int firma_dir_az=rs.getInt("Firma_dirigente_az");
+		    int firma_dir_dip=rs.getInt("Firma_dir_dip");
+		    String TutorUniversitarioEmail=rs.getString("TutorUniversitarioEmail");
+		    String TirocinanteEmail=rs.getString("TirocinanteEmail");
+		    String TutorAziendaleEmail=rs.getString("TutorAziendaleEmail");
+        
+		    DomandaTirocinio doma =new DomandaTirocinio(id, azienda, data, FirmatutorUniversitario, firma_tutor_aziendale, firma_dir_az, firma_dir_dip, TutorUniversitarioEmail, TirocinanteEmail, TutorAziendaleEmail);
+			  listaDomande.aggiungi(doma);
+	}
+	
+		
+ }catch (SQLException  e) {
+	e.printStackTrace();
+}
+			
+		}
 	  
 	  
 	  
@@ -335,8 +364,12 @@ public void firmaDirDip(int id) {
 		 String sql="UPDATE domandatirocinio  SET Firma_dir_dip= "+firma+" WHERE IdDoccumento= '"+id+"' ";
 	    System.out.println(sql);
 	    
-	    /** Creazione nuovo registro tirocinante in seguito alla firma del direttore.. da finire*/
-	    RegistroDAO nuovoreg=new RegistroDAO();
+	    /** Creazione registro in seguito all'accettazione della domanda*/
+	    createRegistroDAO cr=new createRegistroDAO();
+	    /**vengono prelevati i dati del nuovo registro direttamente dalla domanda*/
+	    cr.getDatiDomanda(id);
+	    /**viene creato il registro nel db*/
+	    cr.CreaRegistro(id, 0);
 	    
 	
 		 stmt.executeUpdate(sql);

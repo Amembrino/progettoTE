@@ -47,7 +47,7 @@
 
 <div class="sidenav">
   <a href="">logout</a>
-  <a href="DomandaTirocinioVew.jsp">ATTIVA tirocinio</a>
+  <a href="ViewDomadetirocinio.jsp">ATTIVA tirocinio</a>
  
 </div>
 

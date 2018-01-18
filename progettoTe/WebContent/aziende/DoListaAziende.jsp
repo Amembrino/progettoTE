@@ -10,7 +10,7 @@
   <%
  
   ListaAziendeDAO Az= new ListaAziendeDAO();
-  Az.fillListaAziende(lista);
+  Az.fillListaAziende1(lista);
    
   %>
     <jsp:forward page="viewListaAziende.jsp"></jsp:forward>

@@ -21,4 +21,4 @@
 
  %>
  /** home direttore da creare*/
-<jsp:forward page="HomeDirDip.jsp" />
+<jsp:forward page="Homedir_dipartimento.jsp" />

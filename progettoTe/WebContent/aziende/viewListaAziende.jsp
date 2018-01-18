@@ -7,10 +7,9 @@
 <%@page import="bean.ListaAziende"%>
 <%@page import="bean.Azienda"%>
 
-
 <jsp:useBean id="lista"
-             class="bean.ListaAziende"
-             scope="session" />
+ class="bean.ListaAziende"  
+ scope="request" />
 
                
 
@@ -23,16 +22,16 @@
 <title>Lista Aziende</title>
 </head>
 <body>
-  <div id="main">
+
                 
                 <div id="searchconsole">
-                    <form id="theform" name="theform" action="DodoListaAziende.jsp" method="POST">
+                    <form id="theform" name="theform" action="DoListaAziende.jsp" method="POST">
                          
                         <span><input type="submit" value="cerca"></span>
                     </form>
                     
                 </div>
-                
+                <div id="main">  
     <div id="searchresult">        
      <dl>  
 <% 

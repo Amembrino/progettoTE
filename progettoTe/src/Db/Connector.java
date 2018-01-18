@@ -7,15 +7,16 @@ import java.sql.SQLException;
 public class Connector {
 	static String ip = "localhost";
 	static String port = "3306";
-	static String db = "tiro";
+	static String db = "tirocinioeasy";
 	static String username = "root";
 	static String password = "root";
 
     public static Connection getConnection() {
-        try {
+    	Connection  con=null;
+    	try {
         	Class.forName("com.mysql.jdbc.Driver");
             try {
-            	Connection con = DriverManager.getConnection("jdbc:mysql://"+ ip+":"+ port+"/"+db, username, password);
+            	 con = DriverManager.getConnection("jdbc:mysql://"+ ip+":"+ port+"/"+db, username, password);
             	   return con;
             } catch (SQLException ex) {
                 // log an exception. fro example:
@@ -25,7 +26,7 @@ public class Connector {
             // log an exception. for example:
             System.out.println("Driver not found."); 
         }
-		return null;
+		return con;
      
     }
 

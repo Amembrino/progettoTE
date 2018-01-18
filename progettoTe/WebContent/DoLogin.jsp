@@ -29,6 +29,7 @@ LoginDao userdata = new LoginDao();
     if (loginresult == true && tipe.equals("tirocinante") ) {
     	tirocinan.setEmail(email);
     	tirocinan.setPassword(password);
+    	user.setTipoacc("tirocinante");
  
 %>
         <jsp:forward page="HomeTirocinante.jsp" />
@@ -45,7 +46,7 @@ LoginDao userdata = new LoginDao();
     }  else  if(loginresult == true && tipe.equals("dir_dipartimento") ) {
     	dirDip.setEmail(email);
     	dirDip.setPassword(password);
-      
+    	user.setTipoacc("dir_dipartimento");
 %>  
  <jsp:forward page="Homedir_dipartimento.jsp" />
  
@@ -54,6 +55,7 @@ LoginDao userdata = new LoginDao();
     	tutorAz.setEmail(email);
     	tutorAz.setPassword(password);
     	user.setTipoacc("tutor_aziendale");
+    	
 %>  
  <jsp:forward page="HomeTutorAz.jsp" />
        <%

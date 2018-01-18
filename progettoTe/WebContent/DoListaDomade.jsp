@@ -18,6 +18,10 @@
       <jsp:useBean id="TutorUni" 
     class="bean.TutorUni"
      scope="session"/>   
+     
+    <jsp:useBean id="dirDip" 
+    class="bean.DirettoreDip" 
+    scope="session"/> 
   <%
  String us= user.getTipoacc();
   
@@ -31,6 +35,9 @@
   else   if( us.equals("Tutor_universitario")) {
 	dom.fillListaDomandeTUNI(listaDomande, TutorUni.getEmail() );
   }
+  else   if( us.equals("dir_dipartimento")) {
+		dom.fillListaDomandeDirDip(listaDomande, dirDip.getEmail() );
+	  }
    System.out.println(user.getTipoacc());     
     
 

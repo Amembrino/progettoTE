@@ -16,7 +16,7 @@ import bean.Tirocinante;
 public class RegistroDAO {
 	String ip = "localhost";
 	String port = "3306";
-	String db = "tiro";
+	String db = "tirocinioeasy";
 	String username = "root";
 	String password = "root";
     
