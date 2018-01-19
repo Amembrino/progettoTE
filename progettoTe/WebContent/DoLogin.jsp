@@ -24,15 +24,14 @@ String email=request.getParameter("email");
 String password= request.getParameter("pass");
    
 LoginDao userdata = new LoginDao();
-    Boolean loginresult= userdata.RicercaAccout(request.getParameter("email"),request.getParameter("pass"), request.getParameter("tipo"));
-    
+    Boolean loginresult= userdata.RicercaAccout(email, password, tipe  );
     if (loginresult == true && tipe.equals("tirocinante") ) {
     	tirocinan.setEmail(email);
     	tirocinan.setPassword(password);
     	user.setTipoacc("tirocinante");
  
 %>
-        <jsp:forward page="HomeTirocinante.jsp" />
+        <jsp:forward page="Homepage.jsp" />
   <%
         
     }  else if(loginresult == true && tipe.equals("Tutor_universitario") ) {
@@ -41,14 +40,14 @@ LoginDao userdata = new LoginDao();
     	user.setTipoacc("Tutor_universitario");
        
 %>
- <jsp:forward page="HomeTurorUni.jsp" />
+ <jsp:forward page="Homepage.jsp" />
        <%
     }  else  if(loginresult == true && tipe.equals("dir_dipartimento") ) {
     	dirDip.setEmail(email);
     	dirDip.setPassword(password);
     	user.setTipoacc("dir_dipartimento");
 %>  
- <jsp:forward page="Homedir_dipartimento.jsp" />
+ <jsp:forward page="Homepage.jsp" />
  
  <%
     }  else  if(loginresult == true && tipe.equals("tutor_aziendale") ) {
@@ -57,7 +56,7 @@ LoginDao userdata = new LoginDao();
     	user.setTipoacc("tutor_aziendale");
     	
 %>  
- <jsp:forward page="HomeTutorAz.jsp" />
+ <jsp:forward page="Homepage.jsp" />
        <%
        
     } 

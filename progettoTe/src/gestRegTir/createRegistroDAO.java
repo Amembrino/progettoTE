@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Date;
 
+import Db.Connector;
 import GestDomTirocino.DriverManagerConnectionPool;
 import bean.Azienda;
 import bean.ListaAziende;
@@ -19,9 +20,45 @@ public class createRegistroDAO {
 	String db = "tirocinioeasy";
 	String username = "root";
 	String password = "root";
-    
+
+	  Statement st;
+	  ResultSet rs;
+	  String Tirocinante, Tutor_Aziendale_Email,data;
+	
 	public createRegistroDAO() {
 	}
+	
+	/**Metodo che preleva i dati dalla domanda di tirocinio*/
+	public void getDatiDomanda(int id){ //Restituisce in output i dati riguardanti il contratto dalla tabella "parco"
+		Connection con= Connector.getConnection();
+		 
+			
+		
+	
+		String query="SELECT * FROM domanda_di_tirocinio WHERE Id_Documento="+id;
+		try{
+			java.sql.Statement  stmt = con.createStatement();
+			 rs=stmt.executeQuery(query);
+			 
+	while(rs.next())
+			 {
+		Tirocinante=rs.getString("TirocinanteEmail");
+		Tutor_Aziendale_Email=rs.getString("Tutor_Aziendale_Email");
+
+			 }
+	stmt.close();
+	con.close();
+		 }
+		catch(Exception ex){System.out.println(ex);
+		 }
+		/**Istanzia un oggetto Registro con i dati prelevati*/
+		Registro rg=new Registro(id,0,Tirocinante, Tutor_Aziendale_Email);
+		/**Preleva la data odierna dal Registro creato*/
+		data=rg.getData();
+		
+	}
+	
+	
 				/**metodo che crea il registro all'interno del db*/
 				public void CreaRegistro(int ID_Tirocinio, int Convalida_Tutor_Az)  {
 					try {
@@ -32,9 +69,10 @@ public class createRegistroDAO {
 					}
 					Connection conn = null;
 					 Statement stmt = null;
-					
-					String sql=" INSERT INTO  Registro_Tirocinio  (ID_Tirocinio, Data_Attivazione, Convalida_Tutor_Az, Tirocinante_Email, Tutor_Aziendale_Email) "
-							+ "VALUES ('"+ID_Tirocinio+"' '"+data+"', '"+Convalida_Tutor_Az+"', '"+Tirocinante+"','"+Tutor_Aziendale_Email+"')";
+					 System.out.println(Tirocinante.toString());
+					 
+					String sql=" INSERT INTO  registro_tirocinio  (ID_Tirocinio, Data_Attivazione, Convalida_Tutor_Az, Tirocinante_Email, Tutor_Aziendale_Email)"
+							+ " VALUES ('"+ID_Tirocinio+"', '"+data+"', '"+Convalida_Tutor_Az+"', '"+Tirocinante+"','"+Tutor_Aziendale_Email+"');";
 					
 					 
 					 try {
@@ -62,30 +100,8 @@ public class createRegistroDAO {
 					 
 					System.out.println(sql);	
 			}
-				/**Metodo che preleva i dati dalla domanda di tirocinio*/
-				public void getDatiDomanda(int id){ //Restituisce in output i dati riguardanti il contratto dalla tabella "parco"
-					
-					String query="SELECT * FROM domanda_di_tirocinio WHERE Id_Documento="+id;
-					try{
-					
-						 rs=st.executeQuery(query);
-						 
-				while(rs.next())
-						 {
-					Tirocinante=rs.getString("Tirocinante_Email");
-					Tutor_Aziendale_Email=rs.getString("Tutor_Aziendale_Email");
-
-						 }
-					 }catch(Exception ex){System.out.println(ex);
-					 }
-					/**Istanzia un oggetto Registro con i dati prelevati*/
-					Registro rg=new Registro(id,0,Tirocinante, Tutor_Aziendale_Email);
-					/**Preleva la data odierna dal Registro creato*/
-					data=rg.getData();
-					
-				}
-				private Statement st;
-				private ResultSet rs;
-				private String Tirocinante, Tutor_Aziendale_Email,data;
+				
+				
+		
 		}
 	

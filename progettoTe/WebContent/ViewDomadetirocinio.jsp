@@ -92,6 +92,9 @@ tr:nth-child(even) {
                  }else if (user.getTipoacc().equals("Tutor_universitario")){
                 	 out.print("<td> <a href=\"DofirmaTutorUni.jsp?iddomanda="+domanda.getId_Documento()+"\">firma tuni</a> </td>");
                  }
+                 else if (user.getTipoacc().equals("dir_dipartimento")){
+                	 out.print("<td> <a href=\"DofirmaDirDip.jsp?iddomanda="+domanda.getId_Documento()+"\">firma dir dip</a> </td>");
+                 }
                   //  lista delle domande da firmare per ogni tipo di accaunt;
                     out.print("</tr>");                
    }     

@@ -4,14 +4,9 @@
  
   <%
  int ore=Integer.parseInt(request.getParameter("bags"));
- 
-   
-     
-     String data =  request.getParameter("date" );
-   
+ String data =  request.getParameter("date" );
   String com= request.getParameter("comments");
-  
-  RegistroDAO Reg= new RegistroDAO();
+ RegistroDAO Reg= new RegistroDAO();
   Reg.RegistroTirocinante(ore, data, com);
    
   %>

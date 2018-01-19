@@ -5,7 +5,8 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 
 public class DomandaTirocinio {
-  public DomandaTirocinio(){
+ 
+	public DomandaTirocinio(){
 	  
   }
 	
@@ -15,28 +16,32 @@ public class DomandaTirocinio {
  
 	private int Firma_tutor_universitario,  Firma_tutor_aziendale , firma_dir_az, firma_dir_dip;
 
+
+	private java.util.Date DataO = new java.util.Date();
+	java.sql.Date oggi = new java.sql.Date(DataO.getTime());
+	SimpleDateFormat dt1 = new SimpleDateFormat("yyyy-MM-dd");
+	
+	private String da=dt1.format(DataO);
+	
+	
 	/** Modifica del costruttore. Angrisani ha aggiunto la firma del dirigente e del direttore di dipartimento con relativi set e get */
+ 	
 	public DomandaTirocinio(int id_Documento, String azienda,Date data, int firma_tutor_universitario,  
-			int firma_tutor_aziendale, int firma_dir_az, int firma_dir_dip, String tutoUnirEmanil ,  String tirocinanteEmail, String tutoAzrEmanil ) {
-		 
-		Id_Documento = id_Documento;
-		Azienda = azienda;
-		TirocinanteEmail = tirocinanteEmail;
-		this.tutoAzrEmanil = tutoAzrEmanil;
-		this.tutoUnirEmanil = tutoUnirEmanil;
-		this.firma_dir_az=firma_dir_az;
-		this.firma_dir_dip=firma_dir_dip;
-		Firma_tutor_universitario = firma_tutor_universitario;
-		Firma_tutor_aziendale = firma_tutor_aziendale;
-		Data = data;
+ 		int firma_tutor_aziendale, int firma_dir_az, int firma_dir_dip, String tutoUnirEmanil ,  String tirocinanteEmail, String tutoAzrEmanil ) {
+ 		 
+ 		this.Id_Documento = id_Documento;
+ 	    this.Azienda  = azienda;
+ 		this.TirocinanteEmail = tirocinanteEmail;
+ 		this.tutoAzrEmanil = tutoAzrEmanil;
+      	this.tutoUnirEmanil = tutoUnirEmanil;
+ 	    this.firma_dir_az=firma_dir_az;
+ 		this.firma_dir_dip=firma_dir_dip;
+      	this.Firma_tutor_universitario = firma_tutor_universitario;
+    	this.Firma_tutor_aziendale = firma_tutor_aziendale;
+ 		DataO = data;
 	}
 	
 
-	private java.util.Date Data = new java.util.Date();
-	java.sql.Date oggi = new java.sql.Date(Data.getTime());
-	SimpleDateFormat dt1 = new SimpleDateFormat("yyyy-MM-dd");
-	
-	private String da=dt1.format(Data);
 	
 
 	public int getId_Documento() {
@@ -92,7 +97,7 @@ public class DomandaTirocinio {
 		return  da;
 	}
 	public void setData(Date data) {
-		 this.Data=data;
+		 this.DataO=data;
 	}
 	public int getFirma_tutor_universitario() {
 		return Firma_tutor_universitario;
@@ -109,7 +114,6 @@ public class DomandaTirocinio {
 	}
 
 	
-/**cancellato attivato perché non serve*/
 		
 	
     

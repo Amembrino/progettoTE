@@ -1,5 +1,4 @@
- 
- /**Firma direttore dipartimento con creazione del nuovo registro*/
+  
  
 <%@page import="GestDomTirocino.DomaTirociDAO"%>
  <jsp:useBean id="DirettoreDip" class="bean.DirettoreDip" scope="session"/> 
@@ -20,5 +19,5 @@
  //dom.fillListaDomandeTAZ(listaDomande, tutorAz.getEmail());
 
  %>
- /** home direttore da creare*/
+  
 <jsp:forward page="Homedir_dipartimento.jsp" />
