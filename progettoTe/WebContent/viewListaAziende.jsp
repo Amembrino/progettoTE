@@ -10,7 +10,11 @@
 
 <jsp:useBean id="lista"
              class="bean.ListaAziende"
-             scope="session" />
+             scope="request" />
+             
+             <jsp:useBean id="azienda"
+             class="bean.Azienda"
+             scope="request" />
 
 
 <!doctype html>
@@ -18,7 +22,7 @@
 <head>
 <meta charset="utf-8">
 <title>Lista Aziende</title>
-<link rel="stylesheet" type="text/css" href="style.css">
+<!--<link rel="stylesheet" type="text/css" href="style.css"> e --> 
 
 <!--[if lt IE 9]>
 <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -28,28 +32,31 @@
 
   
 
-<div class="container">
+<!--<div class="container">
   <header>
-    <a href="#"><img src="https://i.imgur.com/hQ9S6Em.png" width="864" height="187" alt=""/></a>
+<!--    <a href="#"><img src="https://i.imgur.com/hQ9S6Em.png" width="864" height="187" alt=""/></a> -->
   </header>
+  </div>
+<!--<jsp:include page="menuStudente.jsp"></jsp:include>e --> 
   
-<jsp:include page="menuStudente.jsp"></jsp:include>
-  
-  <article class="content">
+ <!-- <article class="content">
     <h1>Consulta aziende</h1>
+     
+  <!--  <jsp:include page="HomeTirocinante.jsp"></jsp:include>e 
     
-    <jsp:include page="HomeTirocinante.jsp"></jsp:include>
-    
-    <div> <div id="main">
-                
+     <div id="main">
+                --> 
+  
                 <div id="searchconsole">
                     <form id="theform" name="theform" action="DoListaAziende.jsp" method="POST">
                          
                         <span><input type="submit" value="cerca"></span>
                     </form>
+                    
+                      <div id="searchresult"> 
+                    
                     <% 
-
-
+                  
    for (Azienda x : lista.getAzienda()) {
 
 
@@ -63,7 +70,7 @@
                     out.print("<h3> "+x.getTutor_AziendaEmail()+"</h3>");
                     
                 
-
+System.out.println(x.getNome().toString());
                     
                     
                     out.println("</div>");
@@ -71,12 +78,11 @@
                    }
               
                 %>
-               
-   </dl>
-                </div>
+      
+     <!--             </div>
+                 </div>
                 
-    <div id="searchresult">        
-     <dl>  </div>
+         </div>
     <section></section>
     <section> </section>
     

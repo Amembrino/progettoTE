@@ -16,7 +16,7 @@ public class ListaAziendeDAO {
 
 			String ip = "localhost";
 			String port = "3306";
-			String db = "tiro";
+			String db = "tirocinioeasy";
 			String username = "root";
 			String password = "root";
 	        
@@ -30,10 +30,10 @@ public class ListaAziendeDAO {
  
 			 		    int Id_Azienda = rs.getInt("Id_Azienda");
 			 		    String Nome = rs.getString("Nome");
-			 		    String Sede_Operativa = rs.getString("sede_Operativa");
-			 		    String Amministrativa  = rs.getString("sede_Amministrativa");
-			 		    Boolean Convenzionata = rs.getBoolean("convenzionata");
-			 		   	String Dir_AziendaEmail = rs.getString("dir_AziendaEmail");
+			 		    String Sede_Operativa = rs.getString("Sede_Operativa");
+			 		    String Amministrativa  = rs.getString("Sede_Amministrativa");
+			 		    Boolean Convenzionata = rs.getBoolean("Convenzionata");
+			 		   	String Dir_AziendaEmail = rs.getString("Dir_AziendaEmail");
 			 		  	String Tutor_AziendaEmail =rs.getString("Tutor_AziendaleEmail");
 			 		  	Azienda a= new Azienda( Nome, Sede_Operativa, Amministrativa, Dir_AziendaEmail, Tutor_AziendaEmail, Id_Azienda, Convenzionata);
 			 		  	Azienda.aggiungi(a);

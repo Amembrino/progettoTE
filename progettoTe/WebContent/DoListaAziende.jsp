@@ -1,5 +1,5 @@
  <%@page import="bean.ListaAziendeDAO"%>
-
+ <%@page import="bean.Azienda"%>
 
 <jsp:useBean id="lista"
  class="bean.ListaAziende"  

@@ -57,41 +57,34 @@ public class createRegistroDAO {
 		data=rg.getData();
 		
 	}
-	
-	
-				/**metodo che crea il registro all'interno del db*/
-				public void CreaRegistro(int ID_Tirocinio, int Convalida_Tutor_Az)  {
-					try {
-						Class.forName("com.mysql.jdbc.Driver");
-					} catch (ClassNotFoundException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
+
+/**metodo che crea il registro all'interno del db*/
+	public void CreaRegistro(int ID_Tirocinio, int Convalida_Tutor_Az)  {
+	try {		
+		
+  Class.forName("com.mysql.jdbc.Driver");
+  } catch (ClassNotFoundException e) {
+		
+				e.printStackTrace();
 					}
-					Connection conn = null;
-					 Statement stmt = null;
-					 System.out.println(Tirocinante.toString());
+			Connection conn = null;
+		 Statement stmt = null;
+		 System.out.println(Tirocinante.toString());
+			 String t=Tirocinante;
+		 String tu=Tutor_Aziendale_Email;
+		 
+		String sql=" INSERT INTO  registro_tirocinio  (ID_Tirocinio, Data_Attivazione, Convalida, "
+				+ "Tirocinante_Email, Tutor_Aziendale_Email)"
+				+ " VALUES ('"+ID_Tirocinio+"', '"+data+"', '"+Convalida_Tutor_Az+"', '"+t+"','"+tu+"');";
+				 
+		try {
+			conn = DriverManager.getConnection("jdbc:mysql://"+ ip+":"+ port+"/"+db, username, password);
 					 
-					String sql=" INSERT INTO  registro_tirocinio  (ID_Tirocinio, Data_Attivazione, Convalida_Tutor_Az, Tirocinante_Email, Tutor_Aziendale_Email)"
-							+ " VALUES ('"+ID_Tirocinio+"', '"+data+"', '"+Convalida_Tutor_Az+"', '"+Tirocinante+"','"+Tutor_Aziendale_Email+"');";
-					
 					 
-					 try {
-						conn = DriverManager.getConnection("jdbc:mysql://"+ ip+":"+ port+"/"+db, username, password);
-					} catch (SQLException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-						
-					 try {
-						stmt = conn.createStatement();
-						stmt.executeUpdate(sql);
-					} catch (SQLException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}	 
-					 
-					 try {
-						 stmt.close();
+			stmt = conn.createStatement();
+			stmt.executeUpdate(sql);
+					  
+						stmt.close();
 						conn.close();
 					} catch (SQLException e) {
 						// TODO Auto-generated catch block
