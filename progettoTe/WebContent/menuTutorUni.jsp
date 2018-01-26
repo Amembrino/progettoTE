@@ -8,14 +8,19 @@
 <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-<body>
 
-<div class="sidenav">
-  <a href="">logout</a>
-  <a href="RegistroTirocinioView.jsp">Visualizza Registro </a>
-  <a href="ViewDomadetirocinio.jsp">Firma domanda tirocinio</a>
+  <div class="sidebar1">
+    <ul class="nav">
+  <li><a href="index.jsp">logout</a></li>
+  <li><a href="VisualizzaRegistroDi.jsp">Visualizza Registro </a></li>
+  <li><a href="ViewDomadetirocinio.jsp">Firma domanda tirocinio</a></li>
+  </ul>
  
-</div>
+ <aside>
+      <p> Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua.</p>
+      <p>Scrivo qualcosa tanto per</p>
+    </aside>
+  <!-- end .sidebar1 --></div>
 
 </body>
 </html>

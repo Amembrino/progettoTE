@@ -45,13 +45,6 @@
 
  
 
-<div class="sidenav">
-  <a href="">logout</a>
-  <a href="RegistroTirocinioView.jsp">Visualizza Registro </a>
-  <a href="ViewDomadetirocinio.jsp">Firma domanda tirocinio</a>
-  <a href="listaDomandeTirocinio.jsp">convalida registro tirocinio</a>
-</div>
-
 <div class="main">
   <h2>home Tutor Aziendale</h2>
     <% out.print("<p> benvenuto "+tutorAz.getEmail().toString()+"</p>");%>

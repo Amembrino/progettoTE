@@ -26,39 +26,37 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>domande tirocinio</title>
 <link rel="stylesheet" type="text/css" href="style.css">
+<link rel="stylesheet" type="text/css" href="table.css">
 
-<style>
-table {
-    border-collapse: collapse;
-    border-spacing: 0;
-    width: 100%;
-    border: 1px solid #ddd;
-}
-
-th, td {
-    text-align: left;
-    padding: 16px;
-}
-
-tr:nth-child(even) {
-    background-color: #f2f2f2
-}
-</style>
 
 </head>
 <body>
-
+<div class="container">
+  <header>
+    <a href="#"><img src="https://i.imgur.com/hQ9S6Em.png" width="864" height="187" alt=""/></a> 
+  </header>
+  
 <% if (user.getTipoacc().equals("Tutor_universitario")){
 	
 	%><jsp:include page="menuTutorUni.jsp"></jsp:include>
 <% }if (user.getTipoacc().equals("tutor_aziendale")){
 	
 	%><jsp:include page="menuTutorAz.jsp"></jsp:include>
-	<%} %>
+	<%} if (user.getTipoacc().equals("dir_azienda")){
 	
-  <div class="main">
+	%><jsp:include page="menuDirAz.jsp"></jsp:include>
+	<% }if (user.getTipoacc().equals("dir_dipartimento")){
+		
+		%><jsp:include page="menudir_dipartimento.jsp"></jsp:include>
+		<% } %>
+	
+	
+	
+	<article class="content">
+    <h1>Lista Domande</h1>
+    <section> <div id="main">
                 
-                <div id="searchconsole">
+  <div id="searchconsole">
                     <form id="theform" name="theform" action="DoListaDomade.jsp" method="POST">
                          
                         <span><input type="submit" value="cerca"></span>
@@ -91,17 +89,43 @@ tr:nth-child(even) {
                     out.print("<td> <a href=\"DofirmaTutorAz.jsp?iddomanda="+domanda.getId_Documento()+"\">firma taz</a> </td>");
                  }else if (user.getTipoacc().equals("Tutor_universitario")){
                 	 out.print("<td> <a href=\"DofirmaTutorUni.jsp?iddomanda="+domanda.getId_Documento()+"\">firma tuni</a> </td>");
+
                  }
                  else if (user.getTipoacc().equals("dir_dipartimento")){
                 	 out.print("<td> <a href=\"DofirmaDirDip.jsp?iddomanda="+domanda.getId_Documento()+"\">firma dir dip</a> </td>");
+                 }else if (user.getTipoacc().equals("dir_azienda")){
+                	 out.print("<td> <a href=\"DofirmaDirAz.jsp?iddomanda="+domanda.getId_Documento()+"\">firma dir az</a> </td>");
+
                  }
                   //  lista delle domande da firmare per ogni tipo di accaunt;
                     out.print("</tr>");                
    }     
                 %>
+                
+                 
                 </tbody>
+                
+                
+                
+                
    </table>
-      </div>
-            </div>
+               </div>
+                
+                
+                
+         </div></section>
+ 
+
+  <!-- end .content  </article>
+  <aside>
+    <h4>Sfondi</h4>
+    <p>Normalmente, il colore di sfondo di un elemento di blocco viene visualizzato solo per tutta la lunghezza del contenuto. Se desiderate visualizzare una linea di divisione anziché un colore, inserite un bordo sul lato del blocco .content  (ma solo se esso conterrà sempre una quantità maggiore di contenuto).</p>
+  </aside>-->
+  <footer>
+    <p>Ciao a tutti</p>
+    <address>
+      Contenuto indirizzo
+    </address>
+  </footer>
+<!-- end .container --></div>
 </body>
-</html>

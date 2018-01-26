@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import Db.Connector;
 import GestDomTirocino.DriverManagerConnectionPool;
  
 
@@ -17,32 +18,34 @@ public class LoginDao {
 	public boolean RicercaAccout(String email, String password, String tipoAcc) throws SQLException
 	{
 		 
-		Connection conn = DriverManagerConnectionPool.getConnection();
+		Connection conn = Connector.getConnection();
 
 		String sql = "SELECT * FROM "+tipoAcc+" WHERE Email='"+email+"' AND Password='"+password+"'";
 
-		try
-		{
+		
 			PreparedStatement st = conn.prepareStatement(sql);
 
 
 			ResultSet rs = st.executeQuery();
-
+			  //boolean x=((rs.getString("password").equalsIgnoreCase(password.toString())));
+			boolean x=false;
 			boolean userExists = rs.next();
-
-			st.close();
-			conn.close();
+    // System.out.println(x);
+			
+        
 
 			if (userExists)
-				return true;
+			{
+				if(rs.getString("password").equals(password.toString()))
+					x=true;
+			}
+			
+			st.close();
+			conn.close();
+			if(x) return true;
 			else return false;
-
-		}
-		catch (SQLException e)
-		{
-			throw new RuntimeException(
-					"Database error in UserDataDao.RicercaAccount", e);
-		}
+			
+			
 	}
 
 }

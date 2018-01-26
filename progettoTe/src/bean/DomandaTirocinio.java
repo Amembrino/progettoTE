@@ -2,13 +2,10 @@ package bean;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.GregorianCalendar;
 
 public class DomandaTirocinio {
  
-	public DomandaTirocinio(){
-	  
-  }
+  
 	
 	private	int Id_Documento  ;
 	/** Aggiunte stringhe dirigente e direttore*/
@@ -26,11 +23,11 @@ public class DomandaTirocinio {
 	
 	/** Modifica del costruttore. Angrisani ha aggiunto la firma del dirigente e del direttore di dipartimento con relativi set e get */
  	
-	public DomandaTirocinio(int id_Documento, String azienda,Date data, int firma_tutor_universitario,  
+	public DomandaTirocinio(int id_Documento,/* String az ,*/int firma_tutor_universitario,  
  		int firma_tutor_aziendale, int firma_dir_az, int firma_dir_dip, String tutoUnirEmanil ,  String tirocinanteEmail, String tutoAzrEmanil ) {
  		 
  		this.Id_Documento = id_Documento;
- 	    this.Azienda  = azienda;
+// 		this.Azienda=az;
  		this.TirocinanteEmail = tirocinanteEmail;
  		this.tutoAzrEmanil = tutoAzrEmanil;
       	this.tutoUnirEmanil = tutoUnirEmanil;
@@ -38,11 +35,11 @@ public class DomandaTirocinio {
  		this.firma_dir_dip=firma_dir_dip;
       	this.Firma_tutor_universitario = firma_tutor_universitario;
     	this.Firma_tutor_aziendale = firma_tutor_aziendale;
- 		DataO = data;
+
 	}
 	
 
-	
+
 
 	public int getId_Documento() {
 		return Id_Documento;

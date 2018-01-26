@@ -1,16 +1,32 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page language="java" import="java.sql.*" %>
+<!doctype html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Registra Utente</title>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="style.css">
+<title>Registrazione</title>
 </head>
+
 <body>
 
-<div>
+<div class="container">
+  <header>
+    <a href="#"><img src="https://i.imgur.com/hQ9S6Em.png" width="864" height="187" alt=""/></a> 
+  </header>
+  <jsp:include page="menuAdmin.jsp"></jsp:include>
+  
+  <article class="content">
+    <h1>Registrazione</h1>
+    <section></section>
+    <section></section>
+    <section>
+      <h2>&nbsp;</h2>
+    </section>
 
-       <form action="DoRegistrazione.jsp" method="post">
+
+
+
+     <form action="DoRegistrazione.jsp" method="post">
        
         <select name="tipo">
     <option value="1">dirigente aziendale</option>
@@ -21,7 +37,7 @@
    
     </select>
                                        
-    <input type="text" name="email" placeholder="email"/>
+    <input type="email" name="email" placeholder="email"/>
     
     <input type="text" name="nome" placeholder="nome"/>
     
@@ -29,12 +45,25 @@
 
       <input type="password"  name="password" placeholder="password"/>
       
-      <input type="text" name="adminemail" placeholder="adminemail"/>
       
 
      <input type="submit"  value="Registrazione"/>
   
           </form>
 
+
+
+  <!-- end .content --></article>
+  <aside>
+    <h4>Sfondi</h4>
+    <p>Normalmente, il colore di sfondo di un elemento di blocco viene visualizzato solo per tutta la lunghezza del contenuto. Se desiderate visualizzare una linea di divisione anzich� un colore, inserite un bordo sul lato del blocco .content  (ma solo se esso conterr� sempre una quantit� maggiore di contenuto).</p>
+  </aside>
+  <footer>
+    <p>Ciao a tutti</p>
+    <address>
+      Contenuto indirizzo
+    </address>
+  </footer>
+<!-- end .container --></div>
 </body>
 </html>

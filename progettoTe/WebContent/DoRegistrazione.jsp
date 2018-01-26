@@ -1,3 +1,4 @@
+
 <%@page import="org.omg.PortableServer.ForwardRequest"%>
 <%@page import="bean.DirettoreDip"%>
 <%@page import="bean.Tirocinante"%>
@@ -6,7 +7,7 @@
 <%@page import="gestioneUtenza.RegistraUt"%>
  
 
-
+ <jsp:useBean id="amministratore" class="bean.amministratore" scope="session"/> 
 <jsp:useBean id="tirocinan" class="bean.Tirocinante" scope="request"/>
 <jsp:useBean id="dirDip" class="bean.DirettoreDip" scope="request"/> 
 <jsp:useBean id="tutorAz" class="bean.tutorAz" scope="request"/>
@@ -16,18 +17,20 @@
 String email=request.getParameter("email");
 String nome=request.getParameter("nome");
 String cognome=request.getParameter("cognome");
-String password= request.getParameter("pass");
-String adminemail=request.getParameter("adminemail");
+String password= request.getParameter("password");
+String adminemail=amministratore.getEmail();
  
 String numUtente= request.getParameter("tipo");
 
 int numTipoUtente= Integer.parseInt(numUtente);
  
  
-RegistraUt registraUtente = new RegistraUt(email,nome,cognome,cognome,adminemail);
+RegistraUt registraUtente = new RegistraUt(email,nome,cognome,password,adminemail);
 
  
    registraUtente.insertAccount(numTipoUtente);
     
 
 %>
+
+<jsp:forward page="homepage.jsp" />

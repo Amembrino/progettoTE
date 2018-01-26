@@ -1,29 +1,35 @@
- 
+
 <%@page import=" GestDomTirocino.DomaTirociDAO"%>
 <%@page import="bean.DomandaTirocinio"%>
 
-<jsp:useBean id="doma" class="bean.DomandaTirocinio" scope="request"/>
  
- 
-
 <%
-String nome= request.getParameter("nome");
+//String nome= request.getParameter("nome");
 String email= request.getParameter("Email");
-String cognome= request.getParameter("cognome");
+//String cognome= request.getParameter("cognome");
 String azienda= request.getParameter("azienda");
 String tutorUni= request.getParameter("tutorUni");
 String tutorAzi= request.getParameter("tutorAzi");
+  
+System.out.println(azienda);
+System.out.println(email);
+System.out.println(tutorUni);
+System.out.println(tutorAzi);
  
-
-doma.setAutore(nome);
-doma.setTirocinanteEmail(email);
-doma.setAzienda(azienda);
-doma.setTutoAzrEmanil(tutorAzi);
-doma.setTutoUnirEmanil(tutorUni );
+//doma.setAutore(nome);
+  DomandaTirocinio doma=new DomandaTirocinio(1,0,0,0,0,tutorUni,email,tutorAzi);
+ 
+//doma.setTirocinanteEmail(email);
+//doma.setAzienda(azienda);
+//doma.setTutoAzrEmanil(tutorAzi);
+//doma.setTutoUnirEmanil(tutorUni );
 
 DomaTirociDAO dom= new DomaTirociDAO();
-dom.compilaDoma(doma);
-
-
+dom.compilaDoma(doma); 
  %>
+
+ 
+ 
+ 
+<jsp:forward page="Homepage.jsp" />
  

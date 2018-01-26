@@ -1,6 +1,7 @@
  <jsp:useBean id="user" class="bean.user" scope="session"/>
 <jsp:useBean id="tutorAz" class="bean.tutorAz" scope="session"/>
 <jsp:useBean id="TutorUni" class="bean.TutorUni" scope="session"/> 
+<jsp:useBean id="DirAz" class="bean.DirigenteAzienda" scope="session"/> 
 
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -40,11 +41,18 @@
     <jsp:include page="HomeDirAz.jsp"></jsp:include>
   <%}
   if (user.getTipoacc().equals("dir_dipartimento")){%>
-								<jsp:include page="Homedir_dipartimento.jsp"></jsp:include>
+								<jsp:include page="menudir_dipartimento.jsp"></jsp:include>
 								<article class="content">
     <h1>Homedir_dipartimento</h1>
     
     <jsp:include page="Homedir_dipartimento.jsp"></jsp:include>
+<%}
+  if (user.getTipoacc().equals("amministratore")){%>
+	<jsp:include page="menuAdmin.jsp"></jsp:include>
+	<article class="content">
+<h1>Home Amministratore</h1>
+
+<jsp:include page="HomeAdmin.jsp"></jsp:include>
 <%}
   if (user.getTipoacc().equals("tirocinante")){%> 
 								<jsp:include page="menuStudente.jsp"></jsp:include>
@@ -54,29 +62,14 @@
     <jsp:include page="HomeTirocinante.jsp"></jsp:include>
     <%} %>
   
-            
-    <div id="searchresult">        
-     <dl>  </div>
-    <section></section>
-    <section> </section>
+    
     
   <!-- end .content --></article>
   <article class="content">
     
-    <section></section>
-    <section> </section>
-    
+   
   <!-- end .content --></article>
-  <aside>
-    <h4>Sfondi</h4>
-    <p>Normalmente, il colore di sfondo di un elemento di blocco viene visualizzato solo per tutta la lunghezza del contenuto. Se desiderate visualizzare una linea di divisione anziché un colore, inserite un bordo sul lato del blocco .content  (ma solo se esso conterrà sempre una quantità maggiore di contenuto).</p>
-  </aside>
-  <footer>
-    <p>Ciao a tutti</p>
-    <address>
-      Contenuto indirizzo
-    </address>
-  </footer>
+   
 <!-- end .container --></div>
 </body>
 </html>

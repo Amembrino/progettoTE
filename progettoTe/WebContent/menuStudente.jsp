@@ -12,13 +12,12 @@
 
   <div class="sidebar1">
     <ul class="nav">
-        <li><a href="#">Logout</a></li>
+        <li><a href="index.jsp">Logout</a></li>
         <li><a href="RegistroTirocinioView.jsp">compila registro</a></li>
         <li><a href="DomandaTirocinioVew.jsp">Compila domanda tirocinio</a></li>
-          <li><a href="RegistroTirocinioView.jsp">visualizza registro</a></li>
-            <li><a href="viewListaAziende.jsp">Consulta Aziende Tirocinanti</a></li></ul>
+        <li><a href="viewListaAziende.jsp">Consulta Aziende Tirocinanti</a></li></ul>
     <aside>
-      <p> Alla Ferrucci piace il Garamond. Ad Antonio piace il core.</p>
+      <p> Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua.</p>
       <p>Scrivo qualcosa tanto per</p>
     </aside>
   <!-- end .sidebar1 --></div>

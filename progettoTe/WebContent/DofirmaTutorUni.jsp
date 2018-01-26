@@ -2,9 +2,6 @@
 <%@page import="GestDomTirocino.DomaTirociDAO"%>
  <jsp:useBean id="TutorUni" class="bean.TutorUni" scope="session"/> 
  
-<jsp:useBean id="domanda"
-             class="bean.DomandaTirocinio"
-             scope="request" />
 
  <jsp:useBean id="listaDomande" 
 		    class="bean.ListDomandeTiro"
@@ -18,4 +15,4 @@
  //dom.fillListaDomandeTAZ(listaDomande, tutorAz.getEmail());
 
  %>
-<jsp:forward page="HomeTurorUni.jsp" />
+<jsp:forward page="Homemepage.jsp" />

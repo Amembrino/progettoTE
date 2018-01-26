@@ -29,7 +29,7 @@ public class Azienda {
 	}
 
 	public void setSede_Operativa(String sede_Operativa) {
-		sede_Operativa = sede_Operativa;
+		this.sede_Operativa = sede_Operativa;
 	}
 
 	public String getNome() {
@@ -37,7 +37,7 @@ public class Azienda {
 	}
 
 	public void setNome(String nome) {
-		nome = nome;
+		this.nome = nome;
 	}
 
 	public String getSede_Amministrativa() {
@@ -45,7 +45,7 @@ public class Azienda {
 	}
 
 	public void setSede_Amministrativa(String sede_Amministrativa) {
-		sede_Amministrativa = sede_Amministrativa;
+		this.sede_Amministrativa = sede_Amministrativa;
 	}
 
 	public String getDir_AziendaEmail() {
@@ -53,7 +53,7 @@ public class Azienda {
 	}
 
 	public void setDir_AziendaEmail(String dir_AziendaEmail) {
-		dir_AziendaEmail = dir_AziendaEmail;
+		this.dir_AziendaEmail = dir_AziendaEmail;
 	}
 
 	public String getTutor_AziendaEmail() {
@@ -61,7 +61,7 @@ public class Azienda {
 	}
 
 	public void setTutor_AziendaEmail(String tutor_AziendaEmail) {
-		tutor_AziendaEmail = tutor_AziendaEmail;
+		this.tutor_AziendaEmail = tutor_AziendaEmail;
 	}
 
 	public int getId_Azienda() {
@@ -69,7 +69,7 @@ public class Azienda {
 	}
 
 	public void setId_Azienda(int id_Azienda) {
-		id_Azienda = id_Azienda;
+		this.id_Azienda = id_Azienda;
 	}
 
 	public boolean isConvenzionata() {
@@ -77,7 +77,7 @@ public class Azienda {
 	}
 
 	public void setConvenzionata(boolean convenzionata) {
-		convenzionata = convenzionata;
+		this.convenzionata = convenzionata;
 	}
 	
 	

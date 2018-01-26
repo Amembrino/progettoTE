@@ -21,15 +21,15 @@ a img { /*  Questo selettore rimuove il bordo blu predefinito visualizzato in al
 }
 /* ~~ L'applicazione di stili ai collegamenti del sito deve rispettare questo ordine, compreso il gruppo di selettori che creano l'effetto hover. ~~ */
 a:link {
-	color: #42413C;
-	text-decoration: underline; /*  A meno che non vogliate personalizzare i collegamenti in un modo molto particolare, è bene applicare la sottolineatura per permetterne una rapida identificazione visiva.  */
+	color: #ff0000;
+	text-decoration: underline; /*  A meno che non vogliate personalizzare
+	 i collegamenti in un modo molto particolare, è bene applicare la sottolineatura 
+	 per permetterne una rapida identificazione visiva.  */
 }
-a:visited {
-	color: #6E6C64;
-	text-decoration: underline;
-}
-a:hover, a:active, a:focus { /*  Questo gruppo di selettori conferisce alla navigazione tramite tastiera gli stessi effetti hover che si producono quando si usa il mouse.  */
-	text-decoration: none;
+ 
+a:hover,   { /*  Questo gruppo di selettori conferisce alla navigazione tramite tastiera gli stessi effetti hover che si producono quando si usa il mouse.  */
+	color: blue;
+	}
 }
 /* ~~ Questo contenitore a larghezza fissa circonda tutti gli altri blocchi ~~ */
 .container {

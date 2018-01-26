@@ -73,6 +73,7 @@ public class createRegistroDAO {
 			 String t=Tirocinante;
 		 String tu=Tutor_Aziendale_Email;
 		 
+		 
 		String sql=" INSERT INTO  registro_tirocinio  (ID_Tirocinio, Data_Attivazione, Convalida, "
 				+ "Tirocinante_Email, Tutor_Aziendale_Email)"
 				+ " VALUES ('"+ID_Tirocinio+"', '"+data+"', '"+Convalida_Tutor_Az+"', '"+t+"','"+tu+"');";

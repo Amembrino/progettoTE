@@ -4,18 +4,20 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-
+ 
 <link rel="stylesheet" type="text/css" href="style.css">
 </head>
-<body>
+  
 <body>
 
-<div class="sidenav">
-  <a href="">logout</a>
-  <a href="RegistroTirocinioView.jsp">Visualizza Registro </a>
-  <a href="ViewDomadetirocinio.jsp">Firma domanda tirocinio</a>
-   <a href="ViewDomadetirocinio.jsp"> convalida registro tirocinio</a>
-</div>
-
+  <div class="sidebar1">
+    <ul class="nav">
+        <li><a href="index.jsp">Logout</a></li>
+        <!-- <li><a href="RegistroTirocinioView.jsp">Visualizza Registro </a></li>-->
+        <li><a href="ViewDomadetirocinio.jsp">Firma domanda tirocinio</a></li>
+          <li><a href="ConvalidaRegistriView.jsp"> convalida registro tirocinio</a></li></ul>
+   
+  <!-- end .sidebar1 --></div>
+ 
 </body>
 </html>

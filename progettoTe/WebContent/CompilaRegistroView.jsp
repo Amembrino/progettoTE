@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <link rel="stylesheet" type="text/css" href="style.css">
-<title>Documento senza titolo</title>
+<title>compila registro</title>
 </head>
 
 <body>
@@ -15,21 +15,11 @@
   
   
   <article class="content">
-    <h1>Visualizza Registro Tirocinio</h1>
-    <section>Antonio e&grave felice</section>
-    <section>fasf </section>
-    <section>
-      <h2>&nbsp;</h2>
-    </section>
-
-
-
-
-<%@ page language="java" import="java.sql.*" %>
-
-  <form name="compilatirocinio" action="doRegistro.jsp" method="post">
+    <h1>Compila Registro Tirocinio</h1>
+ 
+  <form name="compilatirocinio" action="doattività.jsp" method="post">
  <div class="tableRow">
-		<p> Ore ti attività: </p>
+		<p> Ore di attività: </p>
 		<p> <input type="number" name="bags" min="1" max="10"> </p>
 	</div>
 	<div class="tableRow label">

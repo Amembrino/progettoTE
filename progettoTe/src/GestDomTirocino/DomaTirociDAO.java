@@ -56,8 +56,7 @@ public class DomaTirociDAO {
 
             return ord;
             }        
-        
-
+     
 	public void compilaDoma(DomandaTirocinio Data) throws SQLException    {
 		
   
@@ -76,10 +75,10 @@ public class DomaTirociDAO {
 		 
 	
 			
-       String sql2=" INSERT INTO domanda_di_tirocinio  (Id_Documento, Azienda, Data, Firma_tutor_universitario, Firma_tutor_aziendale, "
+       String sql2=" INSERT INTO domanda_di_tirocinio  (Id_Documento, Data, Firma_tutor_universitario, Firma_tutor_aziendale, "
        		+ "Firma_dirigente_az, Firma_dir_dip, Tutor_UniversitarioEmail, TirocinanteEmail, dir_dipartimentoEmail, Tutor_Aziendale_Email) "
-    		+ "VALUES (?,?,?,?,?,?,?,?,?,?,?) ";
-   	try { System.out.println("l'azienda mia è......"+Data.getAzienda());
+    		+ "VALUES (?,?,?,?,?,?,?,?,?,?) ";
+   	try { 
        connection = DriverManagerConnectionPool.getConnection();
 		st = connection.prepareStatement(sql2);
 		
@@ -87,16 +86,16 @@ public class DomaTirociDAO {
 		c++;
 		System.out.println(c);
 	st.setInt(1, c);
-     st.setString(2, Data.getAzienda());
-	st.setString(3,da );
-	   st.setInt(4,0 );
+//	st.setString(2,Data.getAzienda() );
+	st.setString(2,da);
+    st.setInt(3,0 );
+	st.setInt(4, 0);
 	st.setInt(5, 0);
 	st.setInt(6, 0);
-	st.setInt(7, 0);
-	st.setString(8, Data.getTutoUnirEmanil());
-	st.setString(9, Data.getTirocinanteEmail() );
-	st.setString(10, "Fulgenzio@unisa.it");
-	st.setString(11,Data.getTutoAzrEmanil());
+	st.setString(7, Data.getTutoUnirEmanil());
+	st.setString(8, Data.getTirocinanteEmail() );
+	st.setString(9, "Fulgenzio@unisa.it");
+	st.setString(10,Data.getTutoAzrEmanil());
 	 
 	System.out.println(sql2);
  
@@ -122,9 +121,11 @@ public class DomaTirociDAO {
 		
 	    
 		String nome=taz;
-		String sql="select * from domandatirocinio where TutorAziendaleEmail= '"+nome+"' and FirmaTutorAziendale='0'";
-     
-    
+		String sql="select * from domanda_di_tirocinio where Tutor_Aziendale_Email= '"+nome+"' and Firma_Tutor_Aziendale='0'";
+      String dirAzEm, TutorUniversitarioEmail, TirocinanteEmail, TutorAziendaleEmail;
+      int id, FirmatutorUniversitario, firma_tutor_aziendale, firma_dir_az, firma_dir_dip;
+      Date data;
+      
 		    //STEP 2: Register JDBC driver
 		    Class.forName("com.mysql.jdbc.Driver");
    
@@ -137,23 +138,81 @@ public class DomaTirociDAO {
 		 		  while(rs.next()){
 			
 		    //Retrieve by column name
-		    int id  = rs.getInt("Id_Documento");
-		    String azienda = rs.getString("Azienda");
-		    Date data = rs.getDate("Data") ;
-		    int FirmatutorUniversitario = rs.getInt("Firma_tutor_universitario");
-		    int firma_tutor_aziendale = rs.getInt("Firma_tutor_aziendale");
-		    int firma_dir_az=rs.getInt("Firma_dirigente_az");
-		    int firma_dir_dip=rs.getInt("Firma_dir_dip");
-		    String TutorUniversitarioEmail=rs.getString("Tutor_UniversitarioEmail");
-		    String TirocinanteEmail=rs.getString("TirocinanteEmail");
-		    String TutorAziendaleEmail=rs.getString("Tutor_Aziendale_Email");
+		     id  = rs.getInt("Id_Documento");
+		     data = rs.getDate("Data") ;
+		     FirmatutorUniversitario = rs.getInt("Firma_tutor_universitario");
+		     firma_tutor_aziendale = rs.getInt("Firma_tutor_aziendale");
+		     firma_dir_az=rs.getInt("Firma_dirigente_az");
+		     firma_dir_dip=rs.getInt("Firma_dir_dip");
+		     TutorUniversitarioEmail=rs.getString("Tutor_UniversitarioEmail");
+		     TirocinanteEmail=rs.getString("TirocinanteEmail");
+		     TutorAziendaleEmail=rs.getString("Tutor_Aziendale_Email");
          
-		  DomandaTirocinio doma =new DomandaTirocinio(id, azienda, data, FirmatutorUniversitario, firma_tutor_aziendale, firma_dir_az, firma_dir_dip, TutorUniversitarioEmail, TirocinanteEmail, TutorAziendaleEmail);
-		  listaDomande.aggiungi(doma);
+		     
+		     DomandaTirocinio doma =new DomandaTirocinio(id, FirmatutorUniversitario, firma_tutor_aziendale, firma_dir_az, firma_dir_dip, TutorUniversitarioEmail, TirocinanteEmail, TutorAziendaleEmail);
+			  listaDomande.aggiungi(doma);
 	}
 
 			 		 st.close();
 			 		newConnection.close();
+			 		
+			 		
+		
+  }catch (SQLException  e) {
+	e.printStackTrace();
+ }
+	
+	}
+	
+	
+	
+	public void fillDomadeTiroDAz_DB(ListDomandeTiro listaDomande, String daz) throws SQLException, ClassNotFoundException{
+    	Connection newConnection = null;
+//		PreparedStatement preparedStatement = null;
+		
+		
+	    
+		String nome=daz;
+		
+		String sql="SELECT domanda_di_tirocinio.* FROM domanda_di_tirocinio, Azienda "
+				+ "where domanda_di_tirocinio.Tutor_Aziendale_Email=azienda.Tutor_AziendaleEmail "
+				+ "AND azienda.Dir_AziendaEmail='"+nome+"' "
+				+ "AND domanda_di_tirocinio.Firma_dirigente_az="+0+" ";
+      String dirAzEm, TutorUniversitarioEmail, TirocinanteEmail, TutorAziendaleEmail;
+      int id, FirmatutorUniversitario, firma_tutor_aziendale, firma_dir_az, firma_dir_dip;
+      Date data;
+      
+		    //STEP 2: Register JDBC driver
+		    Class.forName("com.mysql.jdbc.Driver");
+   
+		   newConnection = DriverManager.getConnection("jdbc:mysql://"+ ip+":"+ port+"/"+db, username, password);
+		
+		 	try{
+		 		 java.sql.Statement st  = newConnection.createStatement();
+		 		  ResultSet rs = st.executeQuery(sql);
+     	
+		 		  while(rs.next()){
+			
+		    //Retrieve by column name
+		     id  = rs.getInt("Id_Documento");
+		     data = rs.getDate("Data") ;
+		     FirmatutorUniversitario = rs.getInt("Firma_tutor_universitario");
+		     firma_tutor_aziendale = rs.getInt("Firma_tutor_aziendale");
+		     firma_dir_az=rs.getInt("Firma_dirigente_az");
+		     firma_dir_dip=rs.getInt("Firma_dir_dip");
+		     TutorUniversitarioEmail=rs.getString("Tutor_UniversitarioEmail");
+		     TirocinanteEmail=rs.getString("TirocinanteEmail");
+		     TutorAziendaleEmail=rs.getString("Tutor_Aziendale_Email");
+         
+		     
+		     DomandaTirocinio doma =new DomandaTirocinio(id, FirmatutorUniversitario, firma_tutor_aziendale, firma_dir_az, firma_dir_dip, TutorUniversitarioEmail, TirocinanteEmail, TutorAziendaleEmail);
+			  listaDomande.aggiungi(doma);
+	}
+
+			 		 st.close();
+			 		newConnection.close();
+			 		
+			 		
 		
   }catch (SQLException  e) {
 	e.printStackTrace();
@@ -183,7 +242,7 @@ public class DomaTirociDAO {
 			
 		    
 			String nome=TUNI;
-			String sql="select * from domandatirocinio where TutorUniversitarioEmail='"+nome+"' and FirmatutorUniversitario='0'";
+			String sql="select * from domanda_di_tirocinio where Tutor_UniversitarioEmail='"+nome+"' and Firma_tutor_Universitario='0'";
 	     
 	    
 			    //STEP 2: Register JDBC driver
@@ -201,7 +260,6 @@ public class DomaTirociDAO {
 				
 			    //Retrieve by column name
 			    int id  = rs.getInt("Id_Documento");
-			    String azienda = rs.getString("Azienda");
 			    Date data = rs.getDate("Data") ;
 			    int FirmatutorUniversitario = rs.getInt("Firma_tutor_universitario");
 			    int firma_tutor_aziendale = rs.getInt("Firma_tutor_aziendale");
@@ -211,7 +269,7 @@ public class DomaTirociDAO {
 			    String TirocinanteEmail=rs.getString("TirocinanteEmail");
 			    String TutorAziendaleEmail=rs.getString("Tutor_Aziendale_Email");
 	         
-			    DomandaTirocinio doma =new DomandaTirocinio(id, azienda, data, FirmatutorUniversitario, firma_tutor_aziendale, firma_dir_az, firma_dir_dip, TutorUniversitarioEmail, TirocinanteEmail, TutorAziendaleEmail);
+			    DomandaTirocinio doma =new DomandaTirocinio(id,FirmatutorUniversitario, firma_tutor_aziendale, firma_dir_az, firma_dir_dip, TutorUniversitarioEmail, TirocinanteEmail, TutorAziendaleEmail);
 				  listaDomande.aggiungi(doma);
 		}
 		
@@ -244,14 +302,15 @@ public class DomaTirociDAO {
 		 		 java.sql.Statement st  = newConnection.createStatement();
 		 		  String sql ="select * from domanda_di_tirocinio where dir_dipartimentoEmail= '"+mail+"' "
 		 		  		+ "and Firma_tutor_universitario="+1+" "
-		 		  		+ "and Firma_tutor_aziendale= "+1+" and Firma_dir_dip="+0+" ";
+		 		  		+ "and Firma_tutor_aziendale= "+1+" "
+		 		  		+ "and Firma_dirigente_az= "+1+" "
+		 		  				+ "and Firma_dir_dip="+0+" ";
 				ResultSet rs = st.executeQuery(sql );
     	
 		 		  while(rs.next()){
 			
 		    //Retrieve by column name
 		    int id  = rs.getInt("Id_Documento");
-		    String azienda = rs.getString("Azienda");
 		    Date data = rs.getDate("Data") ;
 		    int FirmatutorUniversitario = rs.getInt("Firma_tutor_universitario");
 		    int firma_tutor_aziendale = rs.getInt("Firma_tutor_aziendale");
@@ -261,10 +320,11 @@ public class DomaTirociDAO {
 		    String TirocinanteEmail=rs.getString("TirocinanteEmail");
 		    String TutorAziendaleEmail=rs.getString("Tutor_Aziendale_Email");
         
-		    DomandaTirocinio doma =new DomandaTirocinio(id, azienda, data, FirmatutorUniversitario, firma_tutor_aziendale, firma_dir_az, firma_dir_dip, TutorUniversitarioEmail, TirocinanteEmail, TutorAziendaleEmail);
+		    DomandaTirocinio doma =new DomandaTirocinio(id, FirmatutorUniversitario, firma_tutor_aziendale, firma_dir_az, firma_dir_dip, TutorUniversitarioEmail, TirocinanteEmail, TutorAziendaleEmail);
 			  listaDomande.aggiungi(doma);
 	}
-	
+		 		  
+
 		
  }catch (SQLException  e) {
 	e.printStackTrace();
@@ -273,6 +333,13 @@ public class DomaTirociDAO {
 		}
 	  
 	  
+		  
+		  
+		  
+		 
+	
+		  	  
+		  
 	  
 public void firmaTAz(int id) {
    Connection conn=null;
@@ -293,7 +360,7 @@ public void firmaTAz(int id) {
  try {
 	int  firma=1;
 	 java.sql.Statement  stmt = conn.createStatement();
-	 String sql="UPDATE domandatirocinio  SET FirmaTutorAziendale = "+firma+" WHERE Id_Doccumento= '"+id+"' ";
+	 String sql="UPDATE domanda_di_tirocinio  SET Firma_Tutor_Aziendale = "+firma+" WHERE Id_Documento= '"+id+"' ";
     System.out.println(sql);
 	 stmt.executeUpdate(sql);
        
@@ -328,7 +395,7 @@ public void firmaTuni(int id) {
 	 try {
 		int  firma=1;
 		 java.sql.Statement  stmt = conn.createStatement();
-		 String sql="UPDATE domandatirocinio  SET FirmatutorUniversitario= "+firma+" WHERE Id_Documento= '"+id+"' ";
+		 String sql="UPDATE domanda_di_tirocinio  SET Firma_tutor_Universitario= "+firma+" WHERE Id_Documento= '"+id+"' ";
 	    System.out.println(sql);
 		 stmt.executeUpdate(sql);
 	       

@@ -4,9 +4,25 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="style.css">
 </head>
+  
+<body>
+
+  <div class="sidebar1">
+    <ul class="nav">
+        <li><a href="index.jsp">Logout</a></li>
+        <li><a href="ViewDomadetirocinio.jsp">Firma domanda tirocinio</a></li></ul>
+    <aside>
+      <p> Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua.</p>
+      <p>Scrivo qualcosa tanto per</p>
+    </aside>
+  <!-- end .sidebar1 --></div>
+ 
 <body>
 
 </body>
 </html>
+
+
+
