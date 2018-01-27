@@ -14,12 +14,9 @@
     <ul class="nav">
         <li><a href="index.jsp">Logout</a></li>
         <li><a href="Registrazione.jsp">Registra utente</a></li>
-        <li><a href="ModificaPassword.jsp">Modifica Password</a></li>
+    <!--       <li><a href="ModificaPassword.jsp">Modifica Password</a></li>-->
             </ul>
-    <aside>
-      <p> Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua.</p>
-    </aside>
-  <!-- end .sidebar1 --></div>
+     </div>
  
 </body>
 </html>

@@ -41,8 +41,7 @@ td, th {
     <a href="#"><img src="https://i.imgur.com/hQ9S6Em.png" width="864" height="187" alt=""/></a> 
   </header>
   <jsp:include page="menuStudente.jsp"></jsp:include>
-  
-  <article class="content">
+   
     <h1>Lista aziende</h1>
     <section> <div id="main">
                 
@@ -64,11 +63,7 @@ td, th {
     <tbody>
   
     <% 
-        
-
-    
-                    
-                  
+                   
    for (Azienda x : lista.getAzienda()) {
 
 	   %><div>
@@ -92,7 +87,7 @@ td, th {
          </div></section>
  
 
-  <!-- end .content --></article>
+  <!-- end .content </article>
   <aside>
     <h4>Sfondi</h4>
     <p>Normalmente, il colore di sfondo di un elemento di blocco viene visualizzato solo per tutta la lunghezza del contenuto. Se desiderate visualizzare una linea di divisione anziché un colore, inserite un bordo sul lato del blocco .content  (ma solo se esso conterrà sempre una quantità maggiore di contenuto).</p>
@@ -103,6 +98,6 @@ td, th {
       Contenuto indirizzo
     </address>
   </footer>
-<!-- end .container --></div>
+<!-- end .container </div>-->
 </body>
 </html>

@@ -33,4 +33,4 @@ RegistraUt registraUtente = new RegistraUt(email,nome,cognome,password,adminemai
 
 %>
 
-<jsp:forward page="homepage.jsp" />
+<jsp:forward page="Homepage.jsp" />

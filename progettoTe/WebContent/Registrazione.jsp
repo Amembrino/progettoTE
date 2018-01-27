@@ -17,15 +17,8 @@
   
   <article class="content">
     <h1>Registrazione</h1>
-    <section></section>
-    <section></section>
-    <section>
-      <h2>&nbsp;</h2>
-    </section>
-
-
-
-
+     
+ 
      <form action="DoRegistrazione.jsp" method="post">
        
         <select name="tipo">
@@ -52,18 +45,7 @@
           </form>
 
 
-
-  <!-- end .content --></article>
-  <aside>
-    <h4>Sfondi</h4>
-    <p>Normalmente, il colore di sfondo di un elemento di blocco viene visualizzato solo per tutta la lunghezza del contenuto. Se desiderate visualizzare una linea di divisione anzich� un colore, inserite un bordo sul lato del blocco .content  (ma solo se esso conterr� sempre una quantit� maggiore di contenuto).</p>
-  </aside>
-  <footer>
-    <p>Ciao a tutti</p>
-    <address>
-      Contenuto indirizzo
-    </address>
-  </footer>
-<!-- end .container --></div>
+ </article>
+ </div>
 </body>
 </html>

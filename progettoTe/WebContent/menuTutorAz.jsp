@@ -17,7 +17,7 @@
         <li><a href="ViewDomadetirocinio.jsp">Firma domanda tirocinio</a></li>
           <li><a href="ConvalidaRegistriView.jsp"> convalida registro tirocinio</a></li></ul>
    
-  <!-- end .sidebar1 --></div>
+  </div>
  
 </body>
 </html>

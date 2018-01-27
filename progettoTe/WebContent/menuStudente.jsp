@@ -16,11 +16,10 @@
         <li><a href="RegistroTirocinioView.jsp">compila registro</a></li>
         <li><a href="DomandaTirocinioVew.jsp">Compila domanda tirocinio</a></li>
         <li><a href="viewListaAziende.jsp">Consulta Aziende Tirocinanti</a></li></ul>
-    <aside>
-      <p> Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua.</p>
-      <p>Scrivo qualcosa tanto per</p>
+   <!-- <aside>
+       <p>progetto is</p>
     </aside>
-  <!-- end .sidebar1 --></div>
+   end .sidebar1 --></div>
  
 </body>
 </html>

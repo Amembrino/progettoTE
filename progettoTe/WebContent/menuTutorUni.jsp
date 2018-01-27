@@ -12,15 +12,15 @@
   <div class="sidebar1">
     <ul class="nav">
   <li><a href="index.jsp">logout</a></li>
-  <li><a href="VisualizzaRegistroDi.jsp">Visualizza Registro </a></li>
+<!--  <li><a href="VisualizzaRegistroDi.jsp">Visualizza Registro </a></li>-->
   <li><a href="ViewDomadetirocinio.jsp">Firma domanda tirocinio</a></li>
   </ul>
  
- <aside>
+ <!--<aside>
       <p> Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua.</p>
       <p>Scrivo qualcosa tanto per</p>
     </aside>
-  <!-- end .sidebar1 --></div>
+   end .sidebar1 --></div>
 
 </body>
 </html>
