@@ -11,7 +11,7 @@
 </head>
 <body>
 <script type="text/javascript">
-if (window.confirm(' cliccando ok tornerai alla tua homepage ')) 
+if (window.confirm('il tuo registro non è stato attivato, cliccando ok tornerai alla tua homepage ')) 
 {
 window.location.href='Homepage.jsp';
 };
