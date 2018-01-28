@@ -9,7 +9,7 @@ import java.sql.Statement;
 import java.util.Date;
 
 import Db.Connector;
-import GestDomTirocino.DriverManagerConnectionPool;
+
 import bean.Azienda;
 import bean.ListaAziende;
 import bean.Tirocinante;
