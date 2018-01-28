@@ -17,7 +17,7 @@ import Db.Connector;
 import bean.DomandaTirocinio;
 import bean.ListDomandeTiro;
 import gestRegTir.createRegistroDAO;
-import GestDomTirocino.DriverManagerConnectionPool;
+
  
 
 public class DomaTirociDAO {
@@ -68,18 +68,14 @@ public class DomaTirociDAO {
 		SimpleDateFormat dt1 = new SimpleDateFormat("yyyy-MM-dd");
 		   String da=dt1.format(Dat );
 		
-		 
-		 
-		  Connection connection = null;
+		   Connection connection = null;
 			PreparedStatement st = null;
 		 
-	
-			
-       String sql2=" INSERT INTO domanda_di_tirocinio  (Id_Documento, Data, Firma_tutor_universitario, Firma_tutor_aziendale, "
+	    String sql2=" INSERT INTO domanda_di_tirocinio  (Id_Documento, Data, Firma_tutor_universitario, Firma_tutor_aziendale, "
        		+ "Firma_dirigente_az, Firma_dir_dip, Tutor_UniversitarioEmail, TirocinanteEmail, dir_dipartimentoEmail, Tutor_Aziendale_Email) "
     		+ "VALUES (?,?,?,?,?,?,?,?,?,?) ";
    	try { 
-       connection = DriverManagerConnectionPool.getConnection();
+       connection = Connector.getConnection();
 		st = connection.prepareStatement(sql2);
 		
 		int c= getMaxOrd();
@@ -101,16 +97,11 @@ public class DomaTirociDAO {
  
     st.executeUpdate();
 
-	connection.commit();
-} finally {
-	try {
-		if (st != null)
-			st.close();
-	} finally {
-		DriverManagerConnectionPool.releaseConnection(connection);
-	}
-   }
-  }
+ 
+  }catch (Exception e) {
+	  throw new RuntimeException( "Database error   ", e);
+	  }
+}
 	
 	
 	
@@ -127,9 +118,9 @@ public class DomaTirociDAO {
       Date data;
       
 		    //STEP 2: Register JDBC driver
-		    Class.forName("com.mysql.jdbc.Driver");
+		   
    
-		   newConnection = DriverManager.getConnection("jdbc:mysql://"+ ip+":"+ port+"/"+db, username, password);
+		   newConnection = Connector.getConnection();
 		
 		 	try{
 		 		 java.sql.Statement st  = newConnection.createStatement();
