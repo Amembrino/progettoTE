@@ -16,12 +16,12 @@ public class LoginDao {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public boolean RicercaAccout(String email, String password, String tipoAcc) throws SQLException
+	public boolean RicercaAccout(String email, String password, String tipoAcccount) throws SQLException
 	{
 		String mail , pw;
 		Connection conn = Connector.getConnection();
 
-		String sql = "SELECT * FROM "+tipoAcc+" WHERE Email='"+email+"' AND Password='"+password+"'";
+		String sql = "SELECT * FROM "+tipoAcccount+" WHERE Email='"+email+"' AND Password='"+password+"'";
 //
 
 			
