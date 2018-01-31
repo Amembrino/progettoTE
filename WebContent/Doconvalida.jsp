@@ -9,6 +9,9 @@
      RegistroDAO reg= new RegistroDAO();
      int id=Integer.parseInt(request.getParameter("iddomanda"));
      
-     reg.convalidaTaz(id); 
-     %> 
+   boolean x = reg.convalidaTaz(id);
+   if (x==true){
+	   %>   <jsp:forward page="ConvalidaRegistriView.jsp" />  <%  
+   }
+   %> 
      <jsp:forward page="Homepage.jsp" />

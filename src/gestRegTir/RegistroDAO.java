@@ -167,19 +167,23 @@ public class RegistroDAO {
  * @param id Identificativo del tirocinio.
  */   
 
-  public void convalidaTaz(int id) { 
+  public boolean convalidaTaz(int id) { 
     Connection newConnection = Connector.getConnection();
-    int Conv = 1;
+    boolean action = false;
     try {
       String sql = "UPDATE registro_tirocinio SET Convalida="
           + 1 + " WHERE ID_Tirocinio=" + id + " ";
-      java.sql.Statement st = newConnection.createStatement();
-      st.executeUpdate(sql);
+      Statement st = newConnection.createStatement();
+      int count = st.executeUpdate(sql);
+      action = (count > 0);  
+   
       System.out.println(sql);
       st.close();
       newConnection.close();
-    } catch (Exception e) {
+    }catch (Exception e) {
       // TODO: handle exception
     }
+    System.out.println(action);
+	return action;
   }
 }
