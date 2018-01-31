@@ -84,7 +84,9 @@ public class RegistroDAO {
  * @param Att Identificativo dell'attività.
  */
 
-  public void compilaRegistro(int ore, String data, String comm, int id, int Att) {
+  public boolean compilaRegistro(int ore, String data, String comm, int id, int Att) {
+  
+	boolean  att= false;
     Connection conn = null;
     Statement stmt = null;
     String sql = " INSERT INTO  attività  (ID_Attività, Data, Ora,"
@@ -93,44 +95,24 @@ public class RegistroDAO {
     try {
       conn = Connector.getConnection();
       stmt = conn.createStatement();
-      stmt.executeUpdate(sql);
-    } catch (SQLException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-    }
+    if (!(comm.isEmpty()) || ore>0   ){
     
-    try {
-      stmt.close();
-      conn.close();
+    	int x = stmt.executeUpdate(sql);
+    
+        att = (x > 0); 
+    }
+    stmt.close();
+    conn.close();
+    
     } catch (SQLException e) {
       // TODO Auto-generated catch block
       e.printStackTrace();
     }
     System.out.println(sql);
+    return att;
+    
   }
 
-  /**
- * Metodo che serve per convalidare un registro di tirocinio.
- * @param id Identificativo del tirocinio.
- */
-  
-  public void setConvalida(int id) {
-    Connection conn = Connector.getConnection();
-    Statement stmt;
-    int conv = 0;
-    String sql2 = " UPDATE registro_tirocinio SET Convalida ='"
-        + conv + "' WHERE ID_Tirocinio='" + id + "' ;  ";
-    try {
-      stmt = conn.createStatement();
-      stmt.executeUpdate(sql2);
-      stmt.close();
-      conn.close();
-    } catch (SQLException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-    }
-    System.out.println(sql2);
-  }
  
   /**
  * Seleziona i registri di tirocinio che interessano un determinato tutor aziendale.
