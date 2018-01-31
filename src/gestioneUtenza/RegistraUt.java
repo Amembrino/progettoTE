@@ -8,106 +8,174 @@ import java.sql.Statement;
 
 import Db.Connector;
 
-
+/**
+ * Classe RegistraUt, viene usata dall'utenza "Amministratore" per registrare nuovi utenti.
+ */
 public class RegistraUt {
-	
-	public  RegistraUt(){
-		
-	}
-	
-	public RegistraUt(String Email, String Nome, String Cognome, String Password, String AdminEmail){
-		
-		this.setEmail(Email);
-		this.setNome(Nome);
-		this.setCognome(Cognome);
-		this.setPassword(Password);
-		this.setAdminEmail(AdminEmail);
-	}
-	
-	private String Email, Nome, Cognome, Password, AdminEmail;
-	
-	public String getEmail() {
-		return Email;
-	}
 
-	public void setEmail(String email) {
-		Email = email;
-	}
+  private String Email;
+  private String Nome;
+  private String Cognome;
+  private String Password;
+  private String AdminEmail;
+  /**
+* Costruttore nullo.
+*/
 
-	public String getNome() {
-		return Nome;
-	}
+  public  RegistraUt(){
+  }
 
-	public void setNome(String nome) {
-		Nome = nome;
-	}
+  /**
+ * Costruttore parametrico.
+ * @param Email indirizzo email dell'utente da registrare
+ * @param Nome nome dell'utente da registrare
+ * @param Cognome cognome dell'utente da registrare
+ * @param Password password assegnata all'utente da registrare
+ * @param AdminEmail indirizzo email dell'utente da registrare
+ */
 
-	public String getCognome() {
-		return Cognome;
-	}
+  public RegistraUt(String Email, String Nome, String Cognome, String Password, String AdminEmail) {
+    this.setEmail(Email);
+    this.setNome(Nome);
+    this.setCognome(Cognome);
+    this.setPassword(Password);
+    this.setAdminEmail(AdminEmail);
+  }
 
-	public void setCognome(String cognome) {
-		Cognome = cognome;
-	}
+  /**
+* Metodo di accesso.
+* Restituisce l'email del nuovo utente
+* @return Email
+*/
+  public String getEmail() {
+    return Email;
+  }
+  /**
+* Metodo di modifica
+* Prende il parametro in input e aggiorna il corrispondente attributo della classe.
+* @param email Indirizzo email dell'utente da registrare.
+*/
+  
+  public void setEmail(String email) {
+    Email = email;
+  }
+  /**
+* Metodo di accesso.
+* Restituisce il nome del nuovo utente
+* @return Nome
+*/
 
-	public String getPassword() {
-		return Password;
-	}
+  public String getNome() {
+    return Nome;
+  }
+  /**
+* Metodo di modifica
+* Prende il parametro in input e aggiorna il corrispondente attributo della classe.
+* @param nome Nome dell'utente da registrare.
+*/
 
-	public void setPassword(String password) {
-		Password = password;
-	}
+  public void setNome(String nome) {
+    Nome = nome;
+  }
+  /**
+* Metodo di accesso.
+* Restituisce il cognome del nuovo utente
+* @return Cognome
+*/
+  
+  public String getCognome() {
+    return Cognome;
+  }
+  /**
+* Metodo di modifica
+* Prende il parametro in input e aggiorna il corrispondente attributo della classe.
+* @param cognome Cognome dell'utente da registrare
+*/
+  
+  public void setCognome(String cognome) {
+    Cognome = cognome;
+  }
+  /**
+* Metodo di accesso.
+* Restituisce la password assegnata al nuovo utente
+* @return Password
+*/
 
-	public String getAdminEmail() {
-		return AdminEmail;
-	}
+  public String getPassword() {
+    return Password;
+  }
+  /**
+* Metodo di modifica
+* Prende il parametro in input e aggiorna il corrispondente attributo della classe.
+* @param password Password dell'utente da registrare
+*/
 
-	public void setAdminEmail(String adminEmail) {
-		AdminEmail = adminEmail;
-	}
-	
-	public void insertAccount(int tipoUtente) throws SQLException {
-		 
-		
-		Connection conn = Connector.getConnection();
+  public void setPassword(String password) {
+    if ((password.length() >= 6) && (password.length() <= 20)) {
+      Password = password;
+    }
+  }
 
-		Statement st = null;
-		
-		String sql ="INSERT INTO ";
-		if(tipoUtente == 1)
-			sql=sql+"dir_azienda";
-		if(tipoUtente == 2)
-			sql=sql+"dir_dipartimento";
-		if(tipoUtente == 3)
-			sql=sql+"tirocinante";
-		if(tipoUtente == 4)
-			sql=sql+"tutor_aziendale";
-		if(tipoUtente == 5)
-			sql=sql+"tutor_universitario";
-		
-		sql=sql+" VALUES ('"+Email+"','"+Nome+"', '"+Cognome+"','"+Password+"','"+AdminEmail+"')";
-		// "SELECT * FROM "+tipoAcc+" WHERE Email='"+email+"' AND Password='"+password+"'";
-		/*
-		 * INSERT INTO table_name 
-			VALUES (value1, value2, value3, ...); email nome cognome password adminemail*/
-  System.out.println(sql);
-		try
-		{
-			  st = conn.createStatement();
+  /**
+* Metodo di accesso.
+ * Restituisce l'indirizzo email dell'Amministratore
+ * @return AdminEmail
+ */
 
+  public String getAdminEmail() {
+    return AdminEmail;
+  }
+  /**
+* Metodo di modifica
+ * Prende il parametro in input e aggiorna il corrispondente attributo della classe.
+ * @param adminEmail Indirizzo email dell'Amministratore
+ */
 
-			  st.executeUpdate(sql);
+  public void setAdminEmail(String adminEmail) {
+    AdminEmail = adminEmail;
+  }
+  /**
+ * Metodo di inserimento.
+ * Inserisce un nuovo account all'interno del database
+ * @param tipoUtente Indica la categoria di appartenenza dell'utente
+ * @throws SQLException Gestisce errori legati al database
+ */
+  
+  public void insertAccount(int tipoUtente) throws SQLException {
+    Connection conn = Connector.getConnection();
+    Statement st = null;
 
-			 
+    String sql = "INSERT INTO ";
+    if (tipoUtente == 1) {
+      sql = sql + "dir_azienda";
+    }
+    if (tipoUtente == 2) {
+      sql = sql + "dir_dipartimento";
+    }
+    if (tipoUtente == 3) {
+      sql = sql + "tirocinante";
+    }
+    if (tipoUtente == 4) {
+      sql = sql + "tutor_aziendale";
+    }
+    if (tipoUtente == 5) {
+      sql = sql + "tutor_universitario";
+    }
 
-		}
-		catch (SQLException e)
-		{
-			throw new RuntimeException( "Database error in UserDataDao.RicercaAccount", e);
-		}
-
-		st.close();
-		conn.close();
-	
-	}
+    sql = sql + " VALUES ('" + Email + "','" + Nome + "', '" + Cognome + "','"
+        + Password + "','" + AdminEmail + "')";
+    // "SELECT * FROM "+tipoAcc+" WHERE Email='"+email+"' AND Password='"+password+"'";
+    /*
+    * INSERT INTO table_name 
+    VALUES (value1, value2, value3, ...); email nome cognome password adminemail*/
+    System.out.println(sql);
+    try {
+      st = conn.createStatement();
+      st.executeUpdate(sql);
+    } catch (SQLException e) {
+      throw new RuntimeException("Database error in registra utenet", e);
+    }
+    st.close();
+    conn.close();
+  }
 }

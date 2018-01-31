@@ -1,27 +1,43 @@
 package gestRegTir;
 
+import bean.DomandaTirocinio;
+import gestRegTir.Registro;
 import java.util.ArrayList;
 import java.util.List;
 
-import bean.DomandaTirocinio;
-import gestRegTir.Registro;
 
 
+
+/**
+ * Classe ListaRegistri, serve a gestire l'elenco dei registri di tirocinio.
+ */
 public class ListaRegistri {
-	private List<Registro> registri;	
+  private List<Registro> registri;
+  /**
+ * Costruttore nullo.
+ * Crea un oggetto ListaRegistri, come Arraylist di elementi di tipo Registro
+ */
+  
+  public ListaRegistri() {
+    this.registri = new ArrayList<Registro>();
+  }
+  /**
+ * Metodo di accesso.
+ * Restituisce l'elenco dei registri
+ * @return registri
+ */
 
-	 
-	 public ListaRegistri() {
-	        this.registri = new ArrayList<Registro>();
-	    }
+  public List<Registro> getRegistri() {
+    return registri;
+  }
+  /**
+ * Metodo di inserimento
+ * Aggiunge un registro di tirocinio alla lista esistente.
+ * @param reg Oggetto di tipo Registro
+ */
 
-	    public List<Registro> getRegistri() {
-	        return registri;
-	    }
-	    
-	    public void aggiungi(Registro reg){
-	    	registri.add(reg);
-	    }
-
-	    
+  public void aggiungi(Registro reg) {
+    registri.add(reg);
+  }
+   
 }
