@@ -2,7 +2,7 @@
 <jsp:useBean id="tutorAz" class="bean.tutorAz" scope="session"/>
 <jsp:useBean id="TutorUni" class="bean.TutorUni" scope="session"/> 
 <jsp:useBean id="DirAz" class="bean.DirigenteAzienda" scope="session"/> 
-
+<jsp:useBean id="amministratore" class="bean.Amministratore" scope="session"/> 
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -21,8 +21,8 @@
   
   <% if (user.getTipoacc().equals("Tutor_universitario")){%>
   								<jsp:include page="menuTutorUni.jsp"></jsp:include>
-  								<article class="content">
-    <h1>HomepageTirocinante</h1>
+  								 
+    <h1>Homepage Tutor universitario</h1>
     
     <jsp:include page="HomeTurorUni.jsp"></jsp:include>
   <%}
@@ -35,21 +35,21 @@
   <%}
   if (user.getTipoacc().equals("dir_azienda")){%>
   								<jsp:include page="menuDirAz.jsp"></jsp:include>
-  								<article class="content">
+  								 
     <h1>Home Direttore Azienda</h1>
     
     <jsp:include page="HomeDirAz.jsp"></jsp:include>
   <%}
   if (user.getTipoacc().equals("dir_dipartimento")){%>
 								<jsp:include page="menudir_dipartimento.jsp"></jsp:include>
-								<article class="content">
-    <h1>Homedir_dipartimento</h1>
+							 
+    <h1>Home dir_dipartimento</h1>
     
     <jsp:include page="Homedir_dipartimento.jsp"></jsp:include>
 <%}
   if (user.getTipoacc().equals("amministratore")){%>
 	<jsp:include page="menuAdmin.jsp"></jsp:include>
-	<article class="content">
+	 
 <h1>Home Amministratore</h1>
 
 <jsp:include page="HomeAdmin.jsp"></jsp:include>

@@ -16,7 +16,7 @@
 
 <div class="main">
    <%
-   out.print("<p>benvenuto carissimo dirigente: "+DirAz.getEmail()+"</p>");
+   out.print("<p> dirigente: "+DirAz.getEmail()+"</p>");
    %>
   
   </div>

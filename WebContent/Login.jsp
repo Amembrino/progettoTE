@@ -25,7 +25,7 @@
    
        <form action="DoLogin.jsp" method="post">
                                        
-    <input type="text" name="email" placeholder="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{5,3}">
+    <input type="text" name="email" placeholder="email">
 
       <input type="password"  name="pass" placeholder="password" pattern="^[a-zA-Z0-9]{6,}$" title="password tra 6 e 20 caratteri"/>
     

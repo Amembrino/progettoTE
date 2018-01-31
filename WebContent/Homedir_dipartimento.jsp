@@ -18,7 +18,7 @@
 
 <div class="main">
   <h2>home Direttore DIPARTIMENTO</h2>
-  <% out.print("<p>benvenuto carissimo direttore :"+ dirDip.getEmail()+"</p>");%>
+  <% out.print("<p>  direttore :"+ dirDip.getEmail()+"</p>");%>
   
  </div>
 

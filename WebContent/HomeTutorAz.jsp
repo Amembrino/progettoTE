@@ -47,7 +47,7 @@
 
 <div class="main">
   <h2>home Tutor Aziendale</h2>
-    <% out.print("<p> benvenuto "+tutorAz.getEmail().toString()+"</p>");%>
+    <% out.print("<p>   "+tutorAz.getEmail().toString()+"</p>");%>
    </div>
   
 </body>

@@ -30,27 +30,29 @@
 
 <div class="main">
 
-<form name="richiediTirocinioform2" action="doDomanda.jsp" method="post">
  
+<form name="richiediTirocinioform2" action="doDomanda.jsp" method="post">
+ <table>
 <%
 String email= request.getParameter("Email");
 String azienda= request.getParameter("azienda");
 String tutorUni= request.getParameter("tutorUni"); %>
 
 
-   <br>email
-  <input type="text" value="<% out.print(email); %>" name="Email" readonly> 
-  
-  <br> azienda
-  <input type="text" value="<% out.print(azienda); %>" name="azienda" readonly> 
-  <br> Tutor universitario
-  <input type="text" value="<% out.print(tutorUni); %>" name="tutorUni" readonly> 
-  
+   <tr> <td>email</td>
+  <td><input type="text" value="<% out.print(email); %>" name="Email" readonly> </td>
+  </tr>
+   <tr> <td> azienda</td>
+  <td><input type="text" value="<% out.print(azienda); %>" name="azienda" readonly> </td>
+  </tr>
+  <tr> <td> Tutor universitario </td>
+ <td><input type="text" value="<% out.print(tutorUni); %>" name="tutorUni" readonly> </td>
+  </tr> 
   
   
   
  
- <fieldset>  <legend>Tutor Aziendale</legend>
+    <legend>Tutor Aziendale</legend>
  <select name="tutorAzi">
  <%
  ResultSet rs;
@@ -81,14 +83,16 @@ ex.printStackTrace();
         
  </select> 
 
- </fieldset>
  
  
- <input type="submit" value="submit">
+ 
+ <tr><td><input type="submit" value="submit"> </td></tr>
+
+  </table>
 </form>
 
 
- 
+</div> 
  
 </body>
 </html>
