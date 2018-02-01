@@ -1,9 +1,9 @@
  <%@page import="java.sql.*" %>
-<%@page import="Db.Connector" %>
+<%@page import="db.Connector" %>
 
-<%@page import="gestRegTir.Registro"%>
-<%@page import="gestRegTir.RegistroDAO"%>
-<%@page import="gestRegTir.Attività"%>
+<%@page import="tirocinio.registro.gestore.Registro"%>
+<%@page import="tirocinio.registro.gestore.RegistroDAO"%>
+<%@page import="tirocinio.registro.gestore.Attività"%>
 
     <jsp:useBean id="tirocinan" class="bean.Tirocinante" scope="session"/>
   

@@ -1,10 +1,10 @@
-<%@page import=" GestDomTirocino.DomaTirociDAO"%>
+<%@page import=" tirocinio.domanda.gestore.DomaTirociDAO"%>
 <%@page import="bean.DomandaTirocinio"%>
 
 
 
 <%@page import="java.sql.*" %>
-<%@page import="Db.Connector" %>
+<%@page import="db.Connector" %>
   <jsp:useBean id="tirocinan" class="bean.Tirocinante" scope="session"/>
   
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"

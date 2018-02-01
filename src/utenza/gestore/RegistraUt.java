@@ -1,4 +1,4 @@
-package gestioneUtenza;
+package utenza.gestore;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import Db.Connector;
+import db.Connector;
 
 /**
  * Classe RegistraUt, viene usata dall'utenza "Amministratore" per registrare nuovi utenti.

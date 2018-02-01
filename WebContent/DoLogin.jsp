@@ -12,7 +12,7 @@
 <%@page import="bean.DirigenteAzienda"%>
 <%@page import="bean.Amministratore"%> 
 <%@page import="bean.user"%>
-<%@page import="GestAutenticazione.LoginDao"%>
+<%@page import="autenticazione.gestore.LoginDao"%>
 
 <jsp:useBean id="tirocinan" class="bean.Tirocinante" scope="session"/>
 <jsp:useBean id="dirDip" class="bean.DirettoreDip" scope="session"/> 

@@ -4,7 +4,7 @@
 <%@page import="bean.Tirocinante"%>
 <%@page import="bean.tutorAz"%>
 <%@page import="bean.TutorUni"%>
-<%@page import="gestioneUtenza.RegistraUt"%>
+<%@page import="utenza.gestore.RegistraUt"%>
  
 
  <jsp:useBean id="amministratore" class="bean.Amministratore" scope="session"/> 

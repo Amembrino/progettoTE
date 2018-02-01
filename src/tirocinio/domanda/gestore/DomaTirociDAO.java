@@ -1,10 +1,11 @@
 
-package GestDomTirocino;
+package tirocinio.domanda.gestore;
 
-import Db.Connector;
 import bean.DomandaTirocinio;
 import bean.ListDomandeTiro;
-import gestRegTir.createRegistroDAO;
+import db.Connector;
+import tirocinio.registro.gestore.createRegistroDAO;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;

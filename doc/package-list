@@ -1,6 +1,6 @@
-Db
-GestAutenticazione
-GestDomTirocino
+db
+autenticazione.gestore
+tirocinio.domanda.gestore
 bean
-gestRegTir
-gestioneUtenza
+tirocinio.registro.gestore
+utenza.gestore

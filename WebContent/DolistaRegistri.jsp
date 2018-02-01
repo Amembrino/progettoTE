@@ -1,7 +1,7 @@
-<%@page import="gestRegTir.RegistroDAO"%>
+<%@page import="tirocinio.registro.gestore.RegistroDAO"%>
  
   <jsp:useBean id="listaReg"
-             class="gestRegTir.ListaRegistri" 
+             class="tirocinio.registro.gestore.ListaRegistri" 
              scope="request" />
              
    <jsp:useBean id="user" 

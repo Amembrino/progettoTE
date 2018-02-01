@@ -2,7 +2,7 @@
 <%@page import="bean.user"%>
 <%@page import="bean.TutorUni"%>
 <%@page import="bean.DirigenteAzienda"%>
-<%@page import="GestDomTirocino.DomaTirociDAO"%>
+<%@page import="tirocinio.domanda.gestore.DomaTirociDAO"%>
 
   <jsp:useBean id="listaDomande" 
     class="bean.ListDomandeTiro"

@@ -1,9 +1,10 @@
-package GestAutenticazione;
+package autenticazione.gestore;
 
-import Db.Connector;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import db.Connector;
 
  
  

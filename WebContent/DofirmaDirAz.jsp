@@ -1,7 +1,7 @@
   <%@page import="java.sql.*" %>
-<%@page import="Db.Connector" %>
+<%@page import="db.Connector" %>
 
-<%@page import="GestDomTirocino.DomaTirociDAO"%>
+<%@page import="tirocinio.domanda.gestore.DomaTirociDAO"%>
  <jsp:useBean id="DirAz" class="bean.DirigenteAzienda" scope="session"/> 
  
 

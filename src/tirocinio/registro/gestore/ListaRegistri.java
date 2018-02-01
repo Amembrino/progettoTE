@@ -1,7 +1,8 @@
-package gestRegTir;
+package tirocinio.registro.gestore;
 
 import bean.DomandaTirocinio;
-import gestRegTir.Registro;
+import tirocinio.registro.gestore.Registro;
+
 import java.util.ArrayList;
 import java.util.List;
 

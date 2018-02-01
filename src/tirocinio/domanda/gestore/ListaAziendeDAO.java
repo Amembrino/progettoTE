@@ -1,4 +1,4 @@
-package GestDomTirocino;
+package tirocinio.domanda.gestore;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

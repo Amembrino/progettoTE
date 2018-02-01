@@ -1,4 +1,4 @@
- <%@page import="GestDomTirocino.ListaAziendeDAO"%>
+ <%@page import="tirocinio.domanda.gestore.ListaAziendeDAO"%>
  <%@page import="bean.Azienda"%>
 
 <jsp:useBean id="lista"

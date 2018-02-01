@@ -1,6 +1,6 @@
   
  
-<%@page import="GestDomTirocino.DomaTirociDAO"%>
+<%@page import="tirocinio.domanda.gestore.DomaTirociDAO"%>
  <jsp:useBean id="DirettoreDip" class="bean.DirettoreDip" scope="session"/> 
  
 

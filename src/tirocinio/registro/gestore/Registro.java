@@ -1,4 +1,4 @@
-package gestRegTir;
+package tirocinio.registro.gestore;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

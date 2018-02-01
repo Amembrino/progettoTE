@@ -1,10 +1,10 @@
  
 <%@page import="bean.tutorAz"%>
 <%@page import="bean.TutorUni"%>
- <%@page import="gestRegTir.Registro"%>
+ <%@page import="tirocinio.registro.gestore.Registro"%>
 
 <jsp:useBean id="listaReg"
-             class="gestRegTir.ListaRegistri"
+             class="tirocinio.registro.gestore.ListaRegistri"
              scope="request" />
              
  <jsp:useBean id="user" class="bean.user" scope="session"/>

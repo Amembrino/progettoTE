@@ -1,7 +1,7 @@
  
 
-<%@page import="gestRegTir.Registro"%>
-<%@page import="gestRegTir.RegistroDAO"%>
+<%@page import="tirocinio.registro.gestore.Registro"%>
+<%@page import="tirocinio.registro.gestore.RegistroDAO"%>
  
    <jsp:useBean id="tirocinan" class="bean.Tirocinante" scope="session"/>
   

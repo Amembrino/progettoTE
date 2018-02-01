@@ -1,4 +1,4 @@
-package gestRegTir;
+package tirocinio.registro.gestore;
 
 /**
  * Classe Attività, rappresenta una singola attività svolta da un tirocinante che verrà annotata nel suo registro di tirocinio. 

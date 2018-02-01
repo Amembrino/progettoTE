@@ -1,4 +1,4 @@
-package gestRegTir;
+package tirocinio.registro.gestore;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -8,11 +8,10 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Date;
 
-import Db.Connector;
-
 import bean.Azienda;
 import bean.ListaAziende;
 import bean.Tirocinante;
+import db.Connector;
 /**
  * Classe createRegistroDAO, si configura col database per inserire un nuovo registro di tirocinio.
  */

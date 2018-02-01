@@ -1,5 +1,5 @@
  
-<%@page import="GestDomTirocino.DomaTirociDAO"%>
+<%@page import="tirocinio.domanda.gestore.DomaTirociDAO"%>
  <jsp:useBean id="TutorUni" class="bean.TutorUni" scope="session"/> 
  
 
