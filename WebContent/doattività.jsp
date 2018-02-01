@@ -1,7 +1,7 @@
  
 
 <%@page import="tirocinio.registro.gestore.Registro"%>
-<%@page import="tirocinio.registro.gestore.RegistroDAO"%>
+<%@page import="tirocinio.registro.gestore.RegistroDao"%>
  
    <jsp:useBean id="tirocinan" class="bean.Tirocinante" scope="session"/>
   
@@ -19,7 +19,7 @@
  String data =  request.getParameter("date" );
   String com= request.getParameter("comments");
  
-  RegistroDAO Reg= new RegistroDAO();
+  RegistroDao Reg= new RegistroDao();
  
   int Att=Reg.ID_att();
   

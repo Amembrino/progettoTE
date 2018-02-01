@@ -1,4 +1,4 @@
-<%@page import="tirocinio.registro.gestore.RegistroDAO"%>
+<%@page import="tirocinio.registro.gestore.RegistroDao"%>
  
   <jsp:useBean id="listaReg"
              class="tirocinio.registro.gestore.ListaRegistri"
@@ -6,7 +6,7 @@
     
      
      <%
-     RegistroDAO reg= new RegistroDAO();
+     RegistroDao reg= new RegistroDao();
      int id=Integer.parseInt(request.getParameter("iddomanda"));
      
    boolean x = reg.convalidaTaz(id);

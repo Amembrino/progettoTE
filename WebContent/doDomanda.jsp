@@ -1,5 +1,5 @@
 
-<%@page import=" tirocinio.domanda.gestore.DomaTirociDAO"%>
+<%@page import=" tirocinio.domanda.gestore.DomaTirociDao"%>
 <%@page import="bean.DomandaTirocinio"%>
 
  
@@ -24,7 +24,7 @@ System.out.println(tutorAzi);
 //doma.setTutoAzrEmanil(tutorAzi);
 //doma.setTutoUnirEmanil(tutorUni );
 
-DomaTirociDAO dom= new DomaTirociDAO();
+DomaTirociDao dom= new DomaTirociDao();
 dom.compilaDoma(doma); 
  %>
 

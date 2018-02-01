@@ -1,11 +1,11 @@
  
-<%@page import="tirocinio.domanda.gestore.DomaTirociDAO"%>
+<%@page import="tirocinio.domanda.gestore.DomaTirociDao"%>
 
 <jsp:useBean id="tutorAz" class="bean.TutorAz" scope="session"/>
   
   
  <%
-  DomaTirociDAO dom= new  DomaTirociDAO();
+  DomaTirociDao dom= new  DomaTirociDao();
  
  int id=Integer.parseInt(request.getParameter("iddomanda"));
   dom.firmaTAz(id);

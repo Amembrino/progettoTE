@@ -1,7 +1,7 @@
 package bean;
 
 /**
- * Superclasse User, viene estesa dalle classi relative alle singole categorie di utenze. *
+ * Superclasse user, viene estesa dalle classi relative alle singole categorie di utenze. *
  */
 public class User {
   String tipoacc;
@@ -9,7 +9,7 @@ public class User {
 
   /**
  * Costruttore nullo.
- * Istanzia un oggetto di tipo User;
+ * Istanzia un oggetto di tipo user;
  */
 
   public User() {

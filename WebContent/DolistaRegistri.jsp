@@ -1,4 +1,4 @@
-<%@page import="tirocinio.registro.gestore.RegistroDAO"%>
+<%@page import="tirocinio.registro.gestore.RegistroDao"%>
  
   <jsp:useBean id="listaReg"
              class="tirocinio.registro.gestore.ListaRegistri" 
@@ -16,7 +16,7 @@
   <%
  String us= user.getTipoacc();
   
-RegistroDAO reg= new RegistroDAO();
+RegistroDao reg= new RegistroDao();
   
    if( us.equals("tutor_aziendale"))
 	  reg.fillListaRegistri(listaReg, tutorAz.getEmail());

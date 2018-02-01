@@ -1,4 +1,4 @@
- <%@page import="tirocinio.domanda.gestore.ListaAziendeDAO"%>
+ <%@page import="tirocinio.domanda.gestore.ListaAziendeDao"%>
  <%@page import="bean.Azienda"%>
 
 <jsp:useBean id="lista"
@@ -8,7 +8,7 @@
   
      
   <%
-   ListaAziendeDAO Az= new ListaAziendeDAO();
+   ListaAziendeDao Az= new ListaAziendeDao();
   Az.fillListaAziende1(lista);
    
   %>

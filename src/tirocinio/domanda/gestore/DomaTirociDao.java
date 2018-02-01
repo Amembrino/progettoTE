@@ -4,7 +4,7 @@ package tirocinio.domanda.gestore;
 import bean.DomandaTirocinio;
 import bean.ListDomandeTiro;
 import db.Connector;
-import tirocinio.registro.gestore.CreateRegistroDAO;
+import tirocinio.registro.gestore.CreateRegistroDao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -19,9 +19,9 @@ import java.util.Date;
 
  
 /**
- * Classe DomaTirociDAO, Si interfaccia col database per gestire le domande di tirocinio.
+ * Classe DomaTirociDao, Si interfaccia col database per gestire le domande di tirocinio.
  */
-public class DomaTirociDAO {
+public class DomaTirociDao {
 
   String ip = "localhost";
   String port = "3306";
@@ -32,7 +32,7 @@ public class DomaTirociDAO {
   /**
    * Costruttore nullo.
    */
-  public DomaTirociDAO() {
+  public DomaTirociDao() {
   }
 
   /**
@@ -468,7 +468,7 @@ public class DomaTirociDAO {
       System.out.println(sql);
 
       /** Creazione registro in seguito all'accettazione della domanda.*/
-      CreateRegistroDAO cr = new CreateRegistroDAO();
+      CreateRegistroDao cr = new CreateRegistroDao();
       /**vengono prelevati i dati del nuovo registro direttamente dalla domanda.*/
       cr.getDatiDomanda(id);
       /**viene creato il registro nel db*/

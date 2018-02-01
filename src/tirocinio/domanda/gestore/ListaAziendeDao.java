@@ -9,10 +9,10 @@ import bean.Azienda;
 import bean.ListaAziende;
 
 /**
- * Classe ListaAziendeDAO, si configura col database per gestire l'elenco 
+ * Classe ListaAziendeDao, si configura col database per gestire l'elenco 
  * delle aziende convenzionate.
  */
-public class ListaAziendeDAO {
+public class ListaAziendeDao {
 
   /**
    * Prende dal database le aziende convenzionate e le aggiunge alla lista.

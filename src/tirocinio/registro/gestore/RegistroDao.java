@@ -13,9 +13,9 @@ import tirocinio.registro.gestore.ListaRegistri;
 import tirocinio.registro.gestore.Registro;
  
 /**
- * Classe RegistroDAO, si configura col database per gestire il registro di tirocinio.
+ * Classe RegistroDao, si configura col database per gestire il registro di tirocinio.
  */
-public class RegistroDAO {
+public class RegistroDao {
   String ip = "localhost";
   String port = "3306";
   String db = "tirocinioeasy";
@@ -26,7 +26,7 @@ public class RegistroDAO {
 * Costruttore nullo.
 */
 
-  public RegistroDAO(){
+  public RegistroDao(){
   }
 
   /**
