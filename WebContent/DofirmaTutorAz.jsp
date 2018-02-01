@@ -1,7 +1,7 @@
  
 <%@page import="tirocinio.domanda.gestore.DomaTirociDAO"%>
 
-<jsp:useBean id="tutorAz" class="bean.tutorAz" scope="session"/>
+<jsp:useBean id="tutorAz" class="bean.TutorAz" scope="session"/>
   
   
  <%

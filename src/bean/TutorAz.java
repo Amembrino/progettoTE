@@ -4,14 +4,14 @@ package bean;
  * potrà firmare le richieste di tirocinio e convalidare i registri di tirocinio.
  */
 
-public class tutorAz extends user {
+public class TutorAz extends User {
 
   private String nome;
   private String cognome;
   private String email;
   private String password;
 
-  public tutorAz() {
+  public TutorAz() {
     super();
   }
 

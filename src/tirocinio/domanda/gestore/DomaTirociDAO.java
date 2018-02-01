@@ -4,7 +4,7 @@ package tirocinio.domanda.gestore;
 import bean.DomandaTirocinio;
 import bean.ListDomandeTiro;
 import db.Connector;
-import tirocinio.registro.gestore.createRegistroDAO;
+import tirocinio.registro.gestore.CreateRegistroDAO;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -468,7 +468,7 @@ public class DomaTirociDAO {
       System.out.println(sql);
 
       /** Creazione registro in seguito all'accettazione della domanda.*/
-      createRegistroDAO cr = new createRegistroDAO();
+      CreateRegistroDAO cr = new CreateRegistroDAO();
       /**vengono prelevati i dati del nuovo registro direttamente dalla domanda.*/
       cr.getDatiDomanda(id);
       /**viene creato il registro nel db*/

@@ -2,7 +2,7 @@
 <%@page import="org.omg.PortableServer.ForwardRequest"%>
 <%@page import="bean.DirettoreDip"%>
 <%@page import="bean.Tirocinante"%>
-<%@page import="bean.tutorAz"%>
+<%@page import="bean.TutorAz"%>
 <%@page import="bean.TutorUni"%>
 <%@page import="utenza.gestore.RegistraUt"%>
  
@@ -10,7 +10,7 @@
  <jsp:useBean id="amministratore" class="bean.Amministratore" scope="session"/> 
 <jsp:useBean id="tirocinan" class="bean.Tirocinante" scope="request"/>
 <jsp:useBean id="dirDip" class="bean.DirettoreDip" scope="request"/> 
-<jsp:useBean id="tutorAz" class="bean.tutorAz" scope="request"/>
+<jsp:useBean id="tutorAz" class="bean.TutorAz" scope="request"/>
 <jsp:useBean id="TutorUni" class="bean.TutorUni" scope="request"/> 
 <%
  

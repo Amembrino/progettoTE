@@ -5,7 +5,7 @@ package bean;
  * figura che potrà firmare richieste di tirocinio e in futuro compilare e sottomettere 
  * domande di convenzione.
  */
-public class DirigenteAzienda extends user {
+public class DirigenteAzienda extends User {
 
   private String nome;
   private String cognome;

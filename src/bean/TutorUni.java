@@ -4,7 +4,7 @@ package bean;
  * figura che potrà firmare le richieste di tirocinio.
  */
 
-public class TutorUni extends user {
+public class TutorUni extends User {
 
   private String nome;
   private String cognome;

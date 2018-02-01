@@ -7,17 +7,17 @@
 <%@page import="org.omg.PortableServer.ForwardRequest"%>
 <%@page import="bean.DirettoreDip"%>
 <%@page import="bean.Tirocinante"%>
-<%@page import="bean.tutorAz"%>
+<%@page import="bean.TutorAz"%>
 <%@page import="bean.TutorUni"%>
 <%@page import="bean.DirigenteAzienda"%>
 <%@page import="bean.Amministratore"%> 
-<%@page import="bean.user"%>
+<%@page import="bean.User"%>
 <%@page import="autenticazione.gestore.LoginDao"%>
 
 <jsp:useBean id="tirocinan" class="bean.Tirocinante" scope="session"/>
 <jsp:useBean id="dirDip" class="bean.DirettoreDip" scope="session"/> 
-<jsp:useBean id="user" class="bean.user" scope="session"/>
-<jsp:useBean id="tutorAz" class="bean.tutorAz" scope="session"/>
+<jsp:useBean id="user" class="bean.User" scope="session"/>
+<jsp:useBean id="tutorAz" class="bean.TutorAz" scope="session"/>
 <jsp:useBean id="TutorUni" class="bean.TutorUni" scope="session"/> 
 <jsp:useBean id="DirAz" class="bean.DirigenteAzienda" scope="session"/> 
 <jsp:useBean id="amministratore" class="bean.Amministratore" scope="session"/> 

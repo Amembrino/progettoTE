@@ -3,7 +3,7 @@ package bean;
 /**
  *  Rappresenta la tipologia di utente: Amministratore, figura che potrà registrare utenti al sito.
  */
-public class Amministratore extends user {
+public class Amministratore extends User {
   private String nome;
   private String cognome;
   private String email;

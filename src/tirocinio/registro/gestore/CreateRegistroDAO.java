@@ -13,10 +13,10 @@ import bean.ListaAziende;
 import bean.Tirocinante;
 import db.Connector;
 /**
- * Classe createRegistroDAO, si configura col database per inserire un nuovo registro di tirocinio.
+ * Classe CreateRegistroDAO, si configura col database per inserire un nuovo registro di tirocinio.
  */
 
-public class createRegistroDAO {
+public class CreateRegistroDAO {
   String ip = "localhost";
   String port = "3306";
   String db = "tirocinioeasy";
@@ -32,7 +32,7 @@ public class createRegistroDAO {
  * Costruttore nullo.
  */
 
-  public createRegistroDAO() {
+  public CreateRegistroDAO() {
   }
 
   /**

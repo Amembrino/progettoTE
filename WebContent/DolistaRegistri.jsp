@@ -5,11 +5,11 @@
              scope="request" />
              
    <jsp:useBean id="user" 
-    class="bean.user"
+    class="bean.User"
      scope="session"/>   
     
      <jsp:useBean id="tutorAz" 
-    class="bean.tutorAz"
+    class="bean.TutorAz"
      scope="session"/>  
      
  

@@ -2,7 +2,7 @@
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
 
-<%@page import="bean.tutorAz"%>
+<%@page import="bean.TutorAz"%>
 <%@page import="bean.TutorUni"%>
 
 <%@page import="java.sql.DriverManager"%>
@@ -14,8 +14,8 @@
              class="bean.ListDomandeTiro"
              scope="request" />
              
- <jsp:useBean id="user" class="bean.user" scope="session"/>
-<jsp:useBean id="tutorAz" class="bean.tutorAz" scope="session"/>
+ <jsp:useBean id="user" class="bean.User" scope="session"/>
+<jsp:useBean id="tutorAz" class="bean.TutorAz" scope="session"/>
 <jsp:useBean id="TutorUni" class="bean.TutorUni" scope="session"/> 
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"

@@ -4,7 +4,7 @@ package bean;
 * Classe DirettoreDip, reppresenta la tipologia di utente: Direttore di dipartimento, 
 * figura che potrà attivare i tirocini.
 */
-public class DirettoreDip extends user {
+public class DirettoreDip extends User {
 
   private String nome;
   private String cognome;

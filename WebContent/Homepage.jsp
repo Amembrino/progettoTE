@@ -1,5 +1,5 @@
- <jsp:useBean id="user" class="bean.user" scope="session"/>
-<jsp:useBean id="tutorAz" class="bean.tutorAz" scope="session"/>
+ <jsp:useBean id="user" class="bean.User" scope="session"/>
+<jsp:useBean id="tutorAz" class="bean.TutorAz" scope="session"/>
 <jsp:useBean id="TutorUni" class="bean.TutorUni" scope="session"/> 
 <jsp:useBean id="DirAz" class="bean.DirigenteAzienda" scope="session"/> 
 <jsp:useBean id="amministratore" class="bean.Amministratore" scope="session"/> 

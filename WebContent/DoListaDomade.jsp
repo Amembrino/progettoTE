@@ -1,5 +1,5 @@
-<%@page import="bean.tutorAz"%>
-<%@page import="bean.user"%>
+<%@page import="bean.TutorAz"%>
+<%@page import="bean.User"%>
 <%@page import="bean.TutorUni"%>
 <%@page import="bean.DirigenteAzienda"%>
 <%@page import="tirocinio.domanda.gestore.DomaTirociDAO"%>
@@ -9,11 +9,11 @@
      scope="request"/>
      
  <jsp:useBean id="user" 
-    class="bean.user"
+    class="bean.User"
      scope="session"/>   
     
      <jsp:useBean id="tutorAz" 
-    class="bean.tutorAz"
+    class="bean.TutorAz"
      scope="session"/>  
      
       <jsp:useBean id="TutorUni" 
