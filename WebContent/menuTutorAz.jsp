@@ -12,7 +12,7 @@
 
   <div class="sidebar1">
     <ul class="nav">
-        <li><a href="index.jsp">Logout</a></li>
+        <li><a href="doLogout.jsp">Logout</a></li>
         <!-- <li><a href="RegistroTirocinioView.jsp">Visualizza Registro </a></li>-->
         <li><a href="ViewDomadetirocinio.jsp">Firma domanda tirocinio</a></li>
           <li><a href="ConvalidaRegistriView.jsp"> convalida registro tirocinio</a></li></ul>

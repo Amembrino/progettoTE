@@ -1,22 +1,9 @@
-<!doctype html>
+<!doctype html> 
 <html>
 <head>
 <meta charset="utf-8">
 <link rel="stylesheet" type="text/css" href="style.css">
 <title>compila registro</title>
- 
- 
- <script type="text/javascript">
-function validateForm() {
-    var x = document.forms["compilatirocinio"]["bags"].value;
-    var y = document.forms["compilatirocinio"]["date"].value;
-    var z = document.forms["compilatirocinio"]["comments"].value;
-    if (x == ""||y == ""  ||z== ""  ) {
-        alert("non ci possono essere campi mancanti");
-        return false;
-    }
-}
-</script>
 </head>
 
 <body>
@@ -30,10 +17,10 @@ function validateForm() {
   <article class="content">
     <h1>Compila Registro Tirocinio</h1>
  
-  <form name="compilatirocinio" action="doattività.jsp" onsubmit="return validateForm()" method="post">
+  <form name="compilatirocinio" action="doattività.jsp" method="post">
  <div class="tableRow">
 		<p> Ore di attività: </p>
-		<p> <input type="number" name="bags" min="1" max="24"> </p>
+		<p> <input type="number" name="bags" min="1" max="10"> </p>
 	</div>
 	<div class="tableRow label">
 		<p> Data: </p>
@@ -49,14 +36,24 @@ function validateForm() {
 	<div class="tableRow">
 		<p></p>
 		<p> <input type="submit" value="Compila"> </p>
-		 
 	</div>
 </form>
 
 
 
 
- </article>
- </div>
+
+  <!-- end .content --></article>
+  <aside>
+    <h4>Sfondi</h4>
+    <p>Normalmente, il colore di sfondo di un elemento di blocco viene visualizzato solo per tutta la lunghezza del contenuto. Se desiderate visualizzare una linea di divisione anziché un colore, inserite un bordo sul lato del blocco .content  (ma solo se esso conterrà sempre una quantità maggiore di contenuto).</p>
+  </aside>
+  <footer>
+    <p>Ciao a tutti</p>
+    <address>
+      Contenuto indirizzo
+    </address>
+  </footer>
+<!-- end .container --></div>
 </body>
 </html>

@@ -14,6 +14,11 @@ import db.Connector;
  */
 public class LoginDao {
 
+	private String	mail;
+
+	private String	pw;
+	
+	
   /**
     * Costruttore nullo.
     */
@@ -31,8 +36,8 @@ public class LoginDao {
    */
   
   public boolean ricercaAccout(String email, String password, String tipoAcc) throws SQLException { 
-    String mail;
-    String pw;
+    this.mail=email ;
+    this.pw= password;
     Connection conn = Connector.getConnection();
 
     String sql = "SELECT * FROM " + tipoAcc + " WHERE Email='" + email + ""
@@ -55,4 +60,11 @@ public class LoginDao {
          
     return false;     
   }
+//  
+//  public void clear() {
+//      this.pw=null;
+//      this.mail=null;
+//      
+//   }
+//  
 }

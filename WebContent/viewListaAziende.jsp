@@ -12,7 +12,7 @@
              class="bean.ListaAziende"
              scope="request" />
              
-             <jsp:useBean id="azienda"
+             <jsp:useBean id="azienda" 
              class="bean.Azienda"
              scope="request" />
 

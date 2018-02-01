@@ -33,4 +33,6 @@ public class User {
   public void setTipoacc(String tipoacc) {
     this.tipoacc = tipoacc;
   }
+ 
+  
 }

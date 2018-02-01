@@ -12,7 +12,7 @@
 
   <div class="sidebar1">
     <ul class="nav">
-        <li><a href="index.jsp">Logout</a></li>
+        <li><a href="doLogout.jsp">Logout</a></li>
         <li><a href="Registrazione.jsp">Registra utente</a></li>
     <!--       <li><a href="ModificaPassword.jsp">Modifica Password</a></li>-->
             </ul>

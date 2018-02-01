@@ -11,7 +11,7 @@
 
   <div class="sidebar1">
     <ul class="nav">
-  <li><a href="index.jsp">logout</a></li>
+  <li><a href="doLogout.jsp">logout</a></li>
   <li><a href="ViewDomadetirocinio.jsp">ATTIVA tirocinio </a></li>
   </ul>
  

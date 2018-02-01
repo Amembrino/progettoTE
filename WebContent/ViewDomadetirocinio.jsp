@@ -6,7 +6,7 @@
 <%@page import="bean.TutorUni"%>
 
 <%@page import="java.sql.DriverManager"%>
-<%@page import="java.sql.Connection"%>
+<%@page import="java.sql.Connection"%> 
 <%@page import="bean.ListDomandeTiro"%>
 <%@page import="bean.DomandaTirocinio"%>
 

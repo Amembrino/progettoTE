@@ -1,7 +1,7 @@
  
 <%@page import="bean.TutorAz"%>
 <%@page import="bean.TutorUni"%>
- <%@page import="tirocinio.registro.gestore.Registro"%>
+ <%@page import="tirocinio.registro.gestore.*"%>
 
 <jsp:useBean id="listaReg"
              class="tirocinio.registro.gestore.ListaRegistri"

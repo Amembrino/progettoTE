@@ -39,7 +39,7 @@
   
    if( us.equals("tutor_aziendale")){
 	  
-  dom.fillListaDomandeTAZ(listaDomande, tutorAz.getEmail() );
+  dom.fillDomadeTiroTA_DB(listaDomande, tutorAz.getEmail() );
   
   }
   else   if( us.equals("Tutor_universitario")) {

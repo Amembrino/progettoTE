@@ -29,7 +29,7 @@ String email=request.getParameter("email");
 String password= request.getParameter("pass");
    
 LoginDao userdata = new LoginDao();
-    Boolean loginresult= userdata.ricercaAccout(email, password, tipe  );
+    boolean loginresult= userdata.ricercaAccout(email, password, tipe  );
     
     if (loginresult == true && tipe.equals("tirocinante") ) {
     	tirocinan.setEmail(email);

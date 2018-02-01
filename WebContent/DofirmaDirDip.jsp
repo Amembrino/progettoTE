@@ -8,7 +8,7 @@
 		    class="bean.ListDomandeTiro"
 		     scope="request"/>
  <%
-  DomaTirociDao doma= new  DomaTirociDao();
+ DomaTirociDao doma= new  DomaTirociDao();
  
  int id=Integer.parseInt(request.getParameter("iddomanda"));
   doma.firmaDirDip(id);

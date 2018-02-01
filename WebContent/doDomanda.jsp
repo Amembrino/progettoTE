@@ -1,5 +1,5 @@
 
-<%@page import=" tirocinio.domanda.gestore.DomaTirociDao"%>
+<%@page import="tirocinio.domanda.gestore.DomaTirociDao"%>
 <%@page import="bean.DomandaTirocinio"%>
 
  

@@ -12,7 +12,7 @@
 
   <div class="sidebar1">
     <ul class="nav">
-        <li><a href="index.jsp">Logout</a></li>
+        <li><a href="doLogout.jsp">Logout</a></li>
         <li><a href="RegistroTirocinioView.jsp">compila registro</a></li>
         <li><a href="DomandaTirocinioVew.jsp">Compila domanda tirocinio</a></li>
         <li><a href="viewListaAziende.jsp">Consulta Aziende Tirocinanti</a></li></ul>

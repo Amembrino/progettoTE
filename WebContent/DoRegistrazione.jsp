@@ -14,7 +14,7 @@
 <jsp:useBean id="TutorUni" class="bean.TutorUni" scope="request"/> 
 <%
  
-String email=request.getParameter("email");
+String email=request.getParameter("email"); 
 String nome=request.getParameter("nome");
 String cognome=request.getParameter("cognome");
 String password= request.getParameter("password");

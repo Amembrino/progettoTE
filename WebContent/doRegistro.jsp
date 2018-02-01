@@ -12,7 +12,7 @@
 int ID_Tirocinio;
 int Att;	
  
-int ore=Integer.parseInt(request.getParameter("ore"));
+int ore=Integer.parseInt(request.getParameter("ore")); 
 String data =  request.getParameter("date" );
 String com= request.getParameter("comments");
 RegistroDao Reg= new RegistroDao();

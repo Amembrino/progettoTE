@@ -27,7 +27,7 @@
                                        
     <input type="text" name="email" placeholder="email">
 
-      <input type="password"  name="pass" placeholder="password" pattern="[a-zA-Z0-9!é°à]{6,20}$" title="password tra 6 e 20 caratteri"/>
+      <input type="password"  name="pass" placeholder="password" pattern="^[a-zA-Z0-9!é°à]{6,20}$" title="password tra 6 e 20 caratteri"/>
     
      <select name="tipo">
     <option value="tirocinante">Tirocinante</option>
