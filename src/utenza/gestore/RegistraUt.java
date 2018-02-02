@@ -1,14 +1,12 @@
 package utenza.gestore;
 
+import db.Connector;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+//import java.sql.PreparedStatement;
+//import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
-import com.sun.org.apache.bcel.internal.generic.RETURN;
-
-import db.Connector;
+//import com.sun.org.apache.bcel.internal.generic.RETURN;
 
 /**
  * Classe RegistraUt, viene usata dall'utenza "Amministratore" per registrare nuovi utenti.
@@ -113,12 +111,12 @@ public class RegistraUt {
 */
 
   public boolean setPassword(String password) {
-    boolean y= false;
-	  if ((password.length() >= 6) && (password.length() <= 20)) {
+    boolean y = false;
+    if ((password.length() >= 6) && (password.length() <= 20)) {
       Password = password;
-        y=true;
+      y = true;
     }
-   return y;
+    return y;
   }
 
   /**
@@ -147,9 +145,8 @@ public class RegistraUt {
  */
   
   public boolean insertAccount(int tipoUtente) throws SQLException {
-   boolean flag=false;
-	  
-	  Connection conn = Connector.getConnection();
+    boolean flag = false;
+    Connection conn = Connector.getConnection();
     Statement st = null;
 
     String sql = "INSERT INTO ";
@@ -178,9 +175,10 @@ public class RegistraUt {
     System.out.println(sql);
     try {
       st = conn.createStatement();
-      int x =st.executeUpdate(sql);
-      flag=true;
-      
+      int x = st.executeUpdate(sql);
+      if (x > 0) {
+        flag = true;
+      }
       st.close();
       conn.close();
    
@@ -188,7 +186,7 @@ public class RegistraUt {
       throw new RuntimeException("Database error in registra utenet", e);
     }
    
-	return flag;
+    return flag;
   }
   
 }

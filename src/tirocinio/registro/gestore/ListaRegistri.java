@@ -1,13 +1,9 @@
 package tirocinio.registro.gestore;
 
-import bean.DomandaTirocinio;
-import tirocinio.registro.gestore.Registro;
-
+//import bean.DomandaTirocinio;
 import java.util.ArrayList;
 import java.util.List;
-
-
-
+import tirocinio.registro.gestore.Registro;
 
 /**
  * Classe ListaRegistri, serve a gestire l'elenco dei registri di tirocinio.

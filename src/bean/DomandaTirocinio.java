@@ -152,6 +152,7 @@ public class DomandaTirocinio {
 * Restituisce l'email del tutor universitario (tipo string).
 * @return tutoUnirEmanil;
 */
+  
   public String getTutoUnirEmanil() {
     return tutoUnirEmanil;
   }

@@ -1,14 +1,12 @@
 package tirocinio.registro.gestore;
 
+import db.Connector;
 import java.sql.Connection;
-import java.sql.DriverManager;
- 
+//import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Date;
-
-import db.Connector;
 import tirocinio.registro.gestore.ListaRegistri;
 import tirocinio.registro.gestore.Registro;
  
@@ -85,7 +83,7 @@ public class RegistroDao {
 
   public boolean compilaRegistro(int ore, String data, String comm, int id, int Att) {
   
-	boolean  att= false;
+    boolean att = false;
     Connection conn = null;
     Statement stmt = null;
     String sql = " INSERT INTO  attività  (ID_Attività, Data, Ora,"
@@ -94,14 +92,12 @@ public class RegistroDao {
     try {
       conn = Connector.getConnection();
       stmt = conn.createStatement();
-    if (!(comm.isEmpty()) || ore>0   ){
-    
-    	int x = stmt.executeUpdate(sql);
-    
+      if (!(comm.isEmpty()) || ore > 0) {
+        int x = stmt.executeUpdate(sql);
         att = (x > 0); 
-    }
-    stmt.close();
-    conn.close();
+      }
+      stmt.close();
+      conn.close();
     
     } catch (SQLException e) {
       // TODO Auto-generated catch block
@@ -161,10 +157,10 @@ public class RegistroDao {
       System.out.println(sql);
       st.close();
       newConnection.close();
-    }catch (Exception e) {
+    } catch (Exception e) {
       // TODO: handle exception
     }
     System.out.println(action);
-	return action;
+    return action;
   }
 }

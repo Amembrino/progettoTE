@@ -29,8 +29,7 @@ public class Connector {
         con = DriverManager.getConnection("jdbc:mysql://" + ip + ":" + port
          + "/" + db, username, password);
         return con; 
-        }
-      catch (SQLException ex) {
+      } catch (SQLException ex) {
         // log an exception. fro example:
         System.out.println("Failed to create the database connection."); 
       }

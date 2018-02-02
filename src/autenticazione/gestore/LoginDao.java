@@ -1,24 +1,20 @@
 package autenticazione.gestore;
 
+import db.Connector;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import db.Connector;
-
- 
- 
 /**
  * Classe LoginDao, Permette l'autentificazione dell'untenza e l'accesso alla propria area utente.
  *
  */
 public class LoginDao {
 
-	private String	mail;
+  private String mail;
 
-	private String	pw;
-	
-	
+  private String pw;
+ 
   /**
     * Costruttore nullo.
     */
@@ -36,8 +32,8 @@ public class LoginDao {
    */
   
   public boolean ricercaAccout(String email, String password, String tipoAcc) throws SQLException { 
-    this.mail=email ;
-    this.pw= password;
+    this.mail = email;
+    this.pw = password;
     Connection conn = Connector.getConnection();
 
     String sql = "SELECT * FROM " + tipoAcc + " WHERE Email='" + email + ""
@@ -60,11 +56,9 @@ public class LoginDao {
          
     return false;     
   }
-//  
-//  public void clear() {
-//      this.pw=null;
-//      this.mail=null;
-//      
-//   }
-//  
+  //  
+  //  public void clear() {
+  //    this.pw=null;
+  //    this.mail=null;
+  //  }
 }

@@ -1,17 +1,18 @@
 package tirocinio.registro.gestore;
 
+//import bean.Azienda;
+//import bean.ListaAziende;
+//import bean.Tirocinante;
+import db.Connector;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
+//import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Date;
+//import java.util.Date;
 
-import bean.Azienda;
-import bean.ListaAziende;
-import bean.Tirocinante;
-import db.Connector;
+
 /**
  * Classe CreateRegistroDao, si configura col database per inserire un nuovo registro di tirocinio.
  */

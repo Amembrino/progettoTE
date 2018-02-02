@@ -1,12 +1,11 @@
 package tirocinio.domanda.gestore;
 
+import bean.Azienda;
+import bean.ListaAziende;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
-import bean.Azienda;
-import bean.ListaAziende;
 
 /**
  * Classe ListaAziendeDao, si configura col database per gestire l'elenco 
@@ -64,6 +63,7 @@ public class ListaAziendeDao {
  * Richiama il metodo fillListaAziende catturandone eccezioni.
 * @param Azienda oggetto della classe ListaAziende
 */
+  
   public void fillListaAziende1(ListaAziende Azienda) {
 
     try {

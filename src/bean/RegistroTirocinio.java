@@ -27,11 +27,11 @@ public class RegistroTirocinio {
   
   public RegistroTirocinio(int ID_Tirocinio, Date data_att, int Convalida_Tutor_Az, 
       String Tirocinante_Email, String Tutor_Aziendale_Email) {
-    this.ID_Tirocinio=ID_Tirocinio;
-    this.data_att=data_att;
-    this.Convalida_Tutor_Az=Convalida_Tutor_Az;
-    this.Tirocinante_Email=Tirocinante_Email;
-    this.Tutor_Aziendale_Email=Tutor_Aziendale_Email;
+    this.ID_Tirocinio = ID_Tirocinio;
+    this.data_att = data_att;
+    this.Convalida_Tutor_Az = Convalida_Tutor_Az;
+    this.Tirocinante_Email = Tirocinante_Email;
+    this.Tutor_Aziendale_Email = Tutor_Aziendale_Email;
   }
 
   /**

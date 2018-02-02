@@ -28,7 +28,7 @@ public class Azienda {
 * @param convenzionata Valore booleano, indica se l'azienda risulta già convenzionata o no.
 */
   
-public Azienda(String nome, String sede_Operativa, String sede_Amministrativa, 
+  public Azienda(String nome, String sede_Operativa, String sede_Amministrativa, 
     String dir_AziendaEmail, String tutor_AziendaEmail, int id_Azienda, 
     Boolean convenzionata) { 
     this.sede_Operativa = sede_Operativa;
