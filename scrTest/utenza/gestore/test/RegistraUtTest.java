@@ -98,10 +98,10 @@ public class RegistraUtTest {
   @Test
   public void testInsertAccount() throws SQLException {
     int num = 3;
-    boolean flag = user2.InsertAccount(num);
+    boolean flag = user2.insertAccount(num);
     assertEquals(flag,true);
     assertNotNull(user2);
-    assertTrue(user2.InsertAccount(num));
-    assertFalse(user2.InsertAccount(num));
+    assertTrue(user2.insertAccount(num));
+    assertFalse(user2.insertAccount(num));
   }
 }
