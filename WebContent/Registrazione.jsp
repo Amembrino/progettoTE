@@ -36,7 +36,7 @@
     
     <input type="text" name="cognome" placeholder="cognome"/>
 
-      <input type="password"  name="password" placeholder="password"  pattern="^[a-zA-Z0-9]{6,}$  title="password tra 6 e 20 caratteri"" />
+      <input type="password"  name="password" placeholder="password"  pattern="^[a-zA-Z0-9!é°à]{6,20}$"  title="password tra 6 e 20 caratteri alfanumerici "   />
       
       <script type="text/javascript">
       if(pattern)

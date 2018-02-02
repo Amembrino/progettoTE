@@ -1,5 +1,4 @@
-  <%@page import="java.sql.*" %>
-<%@page import="db.Connector" %>
+  
 
 <%@page import="tirocinio.domanda.gestore.DomaTirociDao"%>
  <jsp:useBean id="DirAz" class="bean.DirigenteAzienda" scope="session"/> 
@@ -9,33 +8,16 @@
 		    class="bean.ListDomandeTiro"
 		     scope="request"/>
  <%
+ // richiamo la classe che gestisce le domandedi tirocinio
  DomaTirociDao dom = new DomaTirociDao();
 	
-int id=Integer.parseInt(request.getParameter("iddomanda"));
-dom.firmaDirAz(id);
-
- /**Connection con= Connector.getConnection();
- ResultSet rs;
-	
- String query3="SELECT azienda.Dir_AziendaEmail FROM domanda_di_tirocinio, Azienda where domanda_di_tirocinio.Id_Documento='"+id+"' ";
-	try{
-		java.sql.Statement  stmt3 = con.createStatement();
-		 rs=stmt3.executeQuery(query3);
-		 
-while(rs.next())
-		 {
-dom.compilaDoma(doma, rs.getString("Dir_AziendaEmail"));
-		 }
-
-stmt3.close();
-con.close();
-	 }
-	catch(Exception ex){System.out.println(ex);
-	 }
-*/
-
  
- //dom.fillListaDomandeTAZ(listaDomande, tutorAz.getEmail());
+ //id della domanda da firmsre che passo 
+int id=Integer.parseInt(request.getParameter("iddomanda"));
 
+ // metodo che appone la firma alla domanda di tirocinio
+ dom.firmaDirAz(id);
+ 
+  
  %>
-<jsp:forward page="Homepage.jsp" />
+<jsp:forward page="ViewDomadetirocinio.jsp" />

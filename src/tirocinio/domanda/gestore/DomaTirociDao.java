@@ -23,11 +23,12 @@ import java.util.Date;
  */
 public class DomaTirociDao {
 
-  String ip = "localhost";
-  String port = "3306";
-  String db = "tirocinioeasy";
-  String username = "root";
-  String password = "root";
+  boolean flag = false;
+//  String ip = "localhost";
+//  String port = "3306";
+//  String db = "tirocinioeasy";
+//  String username = "root";
+//  String password = "root";
 
   /**
    * Costruttore nullo.
@@ -72,7 +73,7 @@ public class DomaTirociDao {
    * @throws SQLException Gestisce errori nelle interrogazioni al database.
    */
   public boolean compilaDoma(DomandaTirocinio Data) throws SQLException {
-    boolean flag = false;
+     
     java.util.Date Dat  = new java.util.Date();
     new java.sql.Date(Dat.getTime());
     SimpleDateFormat dt1 = new SimpleDateFormat("yyyy-MM-dd");
@@ -88,7 +89,7 @@ public class DomaTirociDao {
         + "VALUES (?,?,?,?,?,?,?,?,?,?) ";
     connection = Connector.getConnection();
     st = connection.prepareStatement(sql2);
-
+     
     int c = getMaxOrd();
     c++;
     System.out.println(c);
@@ -104,10 +105,17 @@ public class DomaTirociDao {
     st.setString(9, "Fulgenzio@unisa.it");
     st.setString(10,Data.getTutoAzrEmanil());
 
-    st.executeUpdate();
-    System.out.println(Data.getTutoUnirEmanil());
-    return true;
+   int x = st.executeUpdate();
+    if (x > 0) {
+    	flag = true;
+    }
+    System.out.println(Data.getTutoUnirEmanil()+".con flag.."+flag);
+    return flag;
   }
+  
+  
+  
+  
   
   /**
    * Seleziona, dal database, la lista delle domande inerenti un determinato tutor aziendale.
@@ -117,8 +125,9 @@ public class DomaTirociDao {
    * @throws ClassNotFoundException  Gestisce errori nel caricamento delle classi.
    */
   public boolean fillDomadeTiroTA_DB(ListDomandeTiro listaDomande, String taz) 
-      throws SQLException, ClassNotFoundException {
-    Connection newConnection = null;
+              throws SQLException, ClassNotFoundException {
+      
+	  Connection newConnection = null;
     // PreparedStatement preparedStatement = null;
 
     String nome = taz;
@@ -134,7 +143,7 @@ public class DomaTirociDao {
     int firma_dir_dip;
     Date data;
       
-    //STEP 2: Register JDBC driver
+    //STEP 2: crea connessione
     newConnection = Connector.getConnection();
     try {
       java.sql.Statement st  = newConnection.createStatement();
@@ -155,7 +164,12 @@ public class DomaTirociDao {
             firma_tutor_aziendale, firma_dir_az, firma_dir_dip, TutorUniversitarioEmail, 
             TirocinanteEmail, TutorAziendaleEmail);
         listaDomande.aggiungi(doma);
+        if (!rs.isBeforeFirst() ) {    
+            flag= true; 
+      } 
       }
+      
+      
 
       st.close();
       newConnection.close();
@@ -163,8 +177,12 @@ public class DomaTirociDao {
     } catch (SQLException  e) {
       e.printStackTrace();
     }
-    return true;
+    return flag;
   }
+  
+  
+  
+  
 
   /**
    * Seleziona, dal database, la lista delle domande inerenti un determinato dirigente aziendale.
@@ -177,6 +195,8 @@ public class DomaTirociDao {
   public boolean fillDomadeTiroDAz_DB(ListDomandeTiro listaDomande, String daz) 
       throws SQLException, ClassNotFoundException {
     Connection newConnection = null;
+    
+    
     // PreparedStatement preparedStatement = null;
     String nome = daz;
     String sql = "SELECT domanda_di_tirocinio.* FROM domanda_di_tirocinio, Azienda "
@@ -195,11 +215,8 @@ public class DomaTirociDao {
     Date data;
       
     //STEP 2: Register JDBC driver
-    Class.forName("com.mysql.jdbc.Driver");
-   
-    newConnection = DriverManager.getConnection("jdbc:mysql://" + ip + ":"
-        + port + "/" + db, username, password);
-    try {
+     newConnection = Connector.getConnection();
+     
       java.sql.Statement st  = newConnection.createStatement();
       ResultSet rs = st.executeQuery(sql);
      
@@ -219,33 +236,22 @@ public class DomaTirociDao {
             firma_tutor_aziendale, firma_dir_az, firma_dir_dip, TutorUniversitarioEmail, 
             TirocinanteEmail, TutorAziendaleEmail);
         listaDomande.aggiungi(doma);
+
+        if (!rs.isBeforeFirst() ) {    
+              flag = true; 
+        } 
       }
 
       st.close();
       newConnection.close();
-    } catch (SQLException  e) {
-      e.printStackTrace();
-    }
-    return true;
+   
+	return flag;
+   
   }
 
-  /**
-  * Richiama il metodo fillDomadeTiroTA_DB.
-  * @param domande Domande di tirocinio inerenti il tutor aziendale.
-  * @param taz Indirizzo email del tutor aziendale.
-  */
-  public void fillListaDomandeTAZ (ListDomandeTiro domande,  String taz) {
-    try {
-      fillDomadeTiroTA_DB(domande, taz);
-    } catch (ClassNotFoundException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-    } catch (SQLException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-    }
-  }
-
+  
+  
+  
   /**
    * Seleziona, dal database, la lista delle domande inerenti un determinato tutor universitario.
   * @param listaDomande (domande di tirocinio) oggetto della classe ListDomandetiro, 
@@ -265,8 +271,7 @@ public class DomaTirociDao {
     //STEP 2: Register JDBC driver
     Class.forName("com.mysql.jdbc.Driver");
 
-    newConnection = DriverManager.getConnection("jdbc:mysql://" + ip + ":"
-        + port + "/" + db, username, password);
+    newConnection =  Connector.getConnection();
     try {
       java.sql.Statement st  = newConnection.createStatement();
       ResultSet rs = st.executeQuery(sql);
@@ -297,22 +302,7 @@ public class DomaTirociDao {
     return true;
   }
 
-  /**
-  * Richiama il metodo fillDomadeTiroTu_DB.
-  * @param domande Domande di tirocinio inerenti il tutor universitario.
-  * @param TUNI Indirizzo email del tutor universitario.
-  */
-  public void fillListaDomandeTUNI(ListDomandeTiro domande,  String TUNI) {
-    try {
-      fillDomadeTiroTu_DB(domande, TUNI);
-    } catch (ClassNotFoundException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-    } catch (SQLException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-    }
-  }
+ 
 
   /**
   * Riempie la lista delle domande di tirocinio inerenti il direttore di dipartimento.
@@ -321,7 +311,8 @@ public class DomaTirociDao {
   * @return true
   */
   public boolean  fillListaDomandeDirDip(ListDomandeTiro listaDomande, String dirdip) {
-    String mail = dirdip;
+      boolean flag = false;
+	  String mail = dirdip;
     Connection newConnection = Connector.getConnection();
     try {
       java.sql.Statement st  = newConnection.createStatement();
@@ -349,13 +340,20 @@ public class DomaTirociDao {
             firma_tutor_aziendale, firma_dir_az, firma_dir_dip, TutorUniversitarioEmail, 
             TirocinanteEmail, TutorAziendaleEmail);
         listaDomande.aggiungi(doma);
+        
+        if (!rs.isBeforeFirst() ) {    
+            flag= true; 
+      } 
       }
 
     } catch (SQLException  e) {
       e.printStackTrace();
     }
-    return true;
+    return flag;
   }
+  
+  
+  
 
   /**
   * Metodo per la firma delle domande di tirocinio da parte del tutor aziendale.
@@ -363,21 +361,8 @@ public class DomaTirociDao {
   * @return true
   */
   public boolean firmaTAz(int id) {
-    Connection conn = null;
-
-    try {
-      Class.forName("com.mysql.jdbc.Driver");
-    } catch (ClassNotFoundException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-    }
-    try {
-      conn = DriverManager.getConnection("jdbc:mysql://" + ip + ":"
-          + port + "/" + db, username, password);
-    } catch (SQLException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-    }
+	  Connection conn = Connector.getConnection();
+   
   
     try {
       int firma = 1;
@@ -385,8 +370,10 @@ public class DomaTirociDao {
       String sql = "UPDATE domanda_di_tirocinio  SET Firma_Tutor_Aziendale = "
           + firma + " WHERE Id_Documento= '" + id + "' ";
       System.out.println(sql);
-      stmt.executeUpdate(sql);
-       
+    int x =  stmt.executeUpdate(sql);
+       if (x > 0) {
+       flag = true;
+       }
       stmt.close();
       conn.close();
 
@@ -394,27 +381,30 @@ public class DomaTirociDao {
       ex.printStackTrace();
     }
  
-    return true;
+    return flag;
   }
 
+  
+  
   /**
    * Metodo per la firma delle domande di tirocinio da parte del tutor universitario.
    * @param id Identificativo della domanda di tirocinio.
    * @return true
    */
   public boolean firmaTuni(int id) {
-    Connection conn = null;
-
-   ((Connector) conn).getConnection();
-
-    try {
+     
+	  Connection conn = Connector.getConnection();
+  
+	  try {
       int firma = 1;
       java.sql.Statement stmt = conn.createStatement();
       String sql = "UPDATE domanda_di_tirocinio  SET Firma_tutor_Universitario= "
           + firma + " WHERE Id_Documento= '" + id + "' ";
       System.out.println(sql);
-      stmt.executeUpdate(sql);
-
+     int x = stmt.executeUpdate(sql);
+      if (x > 0) {
+   	   flag = true;
+      }
       stmt.close();
       conn.close();
 
@@ -422,9 +412,11 @@ public class DomaTirociDao {
       ex.printStackTrace();
     }
 
-    return true;
+    return flag;
   }
 
+  
+  
   
   /**
    * Metodo per la firma delle domande di tirocinio da parte del dirigente aziendale.
@@ -440,8 +432,10 @@ public class DomaTirociDao {
       String sql = "UPDATE domanda_di_tirocinio  SET Firma_dirigente_az= "
           + firma + " WHERE Id_Documento= '" + id + "' ";
       System.out.println(sql);
-      stmt.executeUpdate(sql);
-
+     int x =  stmt.executeUpdate(sql);
+      if (x > 0) {
+      	   flag = true;
+         }
       stmt.close();
       conn.close();
 
@@ -449,7 +443,7 @@ public class DomaTirociDao {
       ex.printStackTrace();
     }
 
-    return true;
+    return flag;
   }
 
   /**
@@ -458,7 +452,7 @@ public class DomaTirociDao {
    * @return true
    */
   public boolean firmaDirDip(int id) {
-	  Connection conn = Connector.getConnection();
+    Connection conn = Connector.getConnection();
 
     try {
       int firma = 1;

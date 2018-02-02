@@ -28,9 +28,14 @@ int numTipoUtente= Integer.parseInt(numUtente);
 RegistraUt registraUtente = new RegistraUt(email,nome,cognome,password,adminemail);
 
  
-   registraUtente.insertAccount(numTipoUtente);
-    
+ boolean x = registraUtente.insertAccount(numTipoUtente);
+  if (x){
 
-%>
+    	%>
 
 <jsp:forward page="Homepage.jsp" />
+
+  <%
+      }
+
+         %>

@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import com.sun.org.apache.bcel.internal.generic.RETURN;
+
 import db.Connector;
 
 /**
@@ -110,10 +112,13 @@ public class RegistraUt {
 * @param password Password dell'utente da registrare
 */
 
-  public void setPassword(String password) {
-    if ((password.length() >= 6) && (password.length() <= 20)) {
+  public boolean setPassword(String password) {
+    boolean y= false;
+	  if ((password.length() >= 6) && (password.length() <= 20)) {
       Password = password;
+        y=true;
     }
+   return y;
   }
 
   /**
@@ -141,8 +146,10 @@ public class RegistraUt {
  * @throws SQLException Gestisce errori legati al database
  */
   
-  public void insertAccount(int tipoUtente) throws SQLException {
-    Connection conn = Connector.getConnection();
+  public boolean insertAccount(int tipoUtente) throws SQLException {
+   boolean flag=false;
+	  
+	  Connection conn = Connector.getConnection();
     Statement st = null;
 
     String sql = "INSERT INTO ";
@@ -171,11 +178,17 @@ public class RegistraUt {
     System.out.println(sql);
     try {
       st = conn.createStatement();
-      st.executeUpdate(sql);
+      int x =st.executeUpdate(sql);
+      flag=true;
+      
+      st.close();
+      conn.close();
+   
     } catch (SQLException e) {
       throw new RuntimeException("Database error in registra utenet", e);
     }
-    st.close();
-    conn.close();
+   
+	return flag;
   }
+  
 }

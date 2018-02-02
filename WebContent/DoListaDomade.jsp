@@ -43,7 +43,7 @@
   
   }
   else   if( us.equals("Tutor_universitario")) {
-	dom.fillListaDomandeTUNI(listaDomande, TutorUni.getEmail() );
+	dom.fillDomadeTiroTu_DB(listaDomande, TutorUni.getEmail() );
   }
   else   if( us.equals("dir_azienda")) {
 		dom.fillDomadeTiroDAz_DB(listaDomande, DirAz.getEmail());
