@@ -90,7 +90,12 @@ public class DomaTirociDao {
         + "VALUES (?,?,?,?,?,?,?,?,?,?) ";
     connection = Connector.getConnection();
     st = connection.prepareStatement(sql2);
-     
+    
+    if (domandaPresente(Data.getTirocinanteEmail())){
+    	connection.close();
+    	return false;
+    }
+   
     int c = getMaxOrd();
     c++;
     System.out.println(c);
@@ -110,6 +115,7 @@ public class DomaTirociDao {
 
     int x = st.executeUpdate();
     if (x > 0) {
+    	  
       flag = true;
     }
     System.out.println(Data.getTutoUnirEmanil() + ".con flag.." + flag);
@@ -271,10 +277,8 @@ public class DomaTirociDao {
     String nome = TUNI;
     String sql = "select * from domanda_di_tirocinio where Tutor_UniversitarioEmail='"
         + nome + "' and Firma_tutor_Universitario='0'";
-    //STEP 2: Register JDBC driver
-    Class.forName("com.mysql.jdbc.Driver");
-
-    newConnection =  Connector.getConnection();
+  
+     newConnection =  Connector.getConnection();
     try {
       java.sql.Statement st  = newConnection.createStatement();
       ResultSet rs = st.executeQuery(sql);
@@ -481,4 +485,44 @@ public class DomaTirociDao {
 
     return true;
   }
+  
+  
+  public boolean domandaPresente (String tirEm) {
+
+      Connection newConnection = Connector.getConnection();
+
+         String sql = "SELECT  TirocinanteEmail FROM domanda_di_tirocinio WHERE TirocinanteEmail='"+ tirEm +"'";
+  
+        
+        try {
+
+          java.sql.Statement st  = newConnection.createStatement();
+
+         ResultSet rs = st.executeQuery(sql);
+
+           while (rs.next()) {
+           String tirEmail = rs.getString("TirocinanteEmail");
+
+            if(tirEmail.toString().equals(tirEm)){
+  
+                    flag = true; 
+                  
+            	}
+                     
+          }
+ 
+          st.close();
+
+          newConnection.close();
+
+        } catch (SQLException  e) {
+
+          e.printStackTrace();
+
+        }
+System.out.println(sql +".tirocinante che invia la domanda è presente..."+flag);
+        return flag;
+
+ }
+  
 }

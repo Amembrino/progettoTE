@@ -25,7 +25,7 @@ ID_Tirocinio=Reg.selectId(tirocinan.getEmail());
  if (ID_Tirocinio==0){
 	 
 	 %>
-	   <jsp:forward page="registrononfatto.jsp" />
+	   <jsp:forward page="ERRORE.jsp" />
 	   <%  
  }
 Reg.compilaRegistro(ore, data, com, ID_Tirocinio, Att);

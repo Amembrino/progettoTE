@@ -25,7 +25,13 @@ System.out.println(tutorAzi);
 //doma.setTutoUnirEmanil(tutorUni );
 
 DomaTirociDao dom= new DomaTirociDao();
-dom.compilaDoma(doma); 
+ 
+boolean x=dom.compilaDoma(doma); 
+if (x==false){
+	 
+	%>	<jsp:forward page="ERRORE.jsp" /><%
+}
+
  %>
 
  

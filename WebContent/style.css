@@ -21,7 +21,7 @@ a img { /*  Questo selettore rimuove il bordo blu predefinito visualizzato in al
 }
 /* ~~ L'applicazione di stili ai collegamenti del sito deve rispettare questo ordine, compreso il gruppo di selettori che creano l'effetto hover. ~~ */
 a:link {
-	color: #ff0000;
+	color: #ffffff;
 	text-decoration: underline; /*  A meno che non vogliate personalizzare
 	 i collegamenti in un modo molto particolare, è bene applicare la sottolineatura 
 	 per permetterne una rapida identificazione visiva.  */
