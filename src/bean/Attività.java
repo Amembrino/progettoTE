@@ -1,4 +1,4 @@
-package tirocinio.registro.gestore;
+package bean;
 
 /**
  * Classe Attività, rappresenta una singola attività svolta da un tirocinante che verrà annotata nel suo registro di tirocinio. 

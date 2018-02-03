@@ -12,6 +12,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 //import java.util.Date;
 
+import bean.Registro;
+
 
 /**
  * Classe CreateRegistroDao, si configura col database per inserire un nuovo registro di tirocinio.

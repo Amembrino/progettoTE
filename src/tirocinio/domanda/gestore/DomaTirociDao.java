@@ -69,14 +69,14 @@ public class DomaTirociDao {
      
   /**
    * Memorizza una domanda di tirocinio nel database.
-   * @param Data Domanda di tirocinio sottomessa.
+   * @param data Domanda di tirocinio sottomessa.
    * @return true
    * @throws SQLException Gestisce errori nelle interrogazioni al database.
    */
-  public boolean compilaDoma(DomandaTirocinio Data) throws SQLException {
+  public boolean compilaDoma(DomandaTirocinio data) throws SQLException {
      
-    java.util.Date Dat = new java.util.Date();
-    new java.sql.Date(Dat.getTime());
+    java.util.Date dat = new java.util.Date();
+    new java.sql.Date(dat.getTime());
 
     
 
@@ -91,9 +91,9 @@ public class DomaTirociDao {
     connection = Connector.getConnection();
     st = connection.prepareStatement(sql2);
     
-    if (domandaPresente(Data.getTirocinanteEmail())){
-    	connection.close();
-    	return false;
+    if (domandaPresente(data.getTirocinanteEmail())) {
+      connection.close();
+      return false;
     }
    
     int c = getMaxOrd();
@@ -101,24 +101,23 @@ public class DomaTirociDao {
     System.out.println(c);
     st.setInt(1, c);
     SimpleDateFormat dt1 = new SimpleDateFormat("yyyy-MM-dd");
-    String da = dt1.format(Dat);
+    String da = dt1.format(dat);
     // st.setString(2,Data.getAzienda() );
     st.setString(2,da);
     st.setInt(3, 0);
     st.setInt(4, 0);
     st.setInt(5, 0);
     st.setInt(6, 0);
-    st.setString(7, Data.getTutoUnirEmanil());
-    st.setString(8, Data.getTirocinanteEmail());
+    st.setString(7, data.getTutoUnirEmanil());
+    st.setString(8, data.getTirocinanteEmail());
     st.setString(9, "Fulgenzio@unisa.it");
-    st.setString(10,Data.getTutoAzrEmanil());
+    st.setString(10,data.getTutoAzrEmanil());
 
     int x = st.executeUpdate();
     if (x > 0) {
-    	  
       flag = true;
     }
-    System.out.println(Data.getTutoUnirEmanil() + ".con flag.." + flag);
+    System.out.println(data.getTutoUnirEmanil() + ".con flag.." + flag);
     return flag;
   }
   
@@ -133,7 +132,7 @@ public class DomaTirociDao {
    * @throws SQLException Gestisce errori nelle interrogazioni al database.
    * @throws ClassNotFoundException  Gestisce errori nel caricamento delle classi.
    */
-  public boolean fillDomadeTiroTA_DB(ListDomandeTiro listaDomande, String taz) 
+  public boolean fillDomandeTutorAz(ListDomandeTiro listaDomande, String taz) 
               throws SQLException, ClassNotFoundException {
       
     Connection newConnection = null;
@@ -142,14 +141,14 @@ public class DomaTirociDao {
     String nome = taz;
     String sql = "select * from domanda_di_tirocinio where Tutor_Aziendale_Email= '"
         + nome + "' and Firma_Tutor_Aziendale='0'";
-    String TutorUniversitarioEmail;
-    String TirocinanteEmail;
-    String TutorAziendaleEmail;
+    String tutorUniEmail;
+    String tirEmail;
+    String tutorAzEmail;
     int id;
-    int FirmatutorUniversitario;
-    int firma_tutor_aziendale;
-    int firma_dir_az;
-    int firma_dir_dip;
+    int firmaTutorUni;
+    int firmaTutorAz;
+    int firmaDirAz;
+    int firmaDirDip;
     Date data;
       
     //STEP 2: crea connessione
@@ -161,17 +160,17 @@ public class DomaTirociDao {
         //Retrieve by column name
         id  = rs.getInt("Id_Documento");
         data = rs.getDate("Data");
-        FirmatutorUniversitario = rs.getInt("Firma_tutor_universitario");
-        firma_tutor_aziendale = rs.getInt("Firma_tutor_aziendale");
-        firma_dir_az = rs.getInt("Firma_dirigente_az");
-        firma_dir_dip = rs.getInt("Firma_dir_dip");
-        TutorUniversitarioEmail = rs.getString("Tutor_UniversitarioEmail");
-        TirocinanteEmail = rs.getString("TirocinanteEmail");
-        TutorAziendaleEmail = rs.getString("Tutor_Aziendale_Email");
+        firmaTutorUni = rs.getInt("Firma_tutor_universitario");
+        firmaTutorAz = rs.getInt("Firma_tutor_aziendale");
+        firmaDirAz = rs.getInt("Firma_dirigente_az");
+        firmaDirDip = rs.getInt("Firma_dir_dip");
+        tutorUniEmail = rs.getString("Tutor_UniversitarioEmail");
+        tirEmail = rs.getString("TirocinanteEmail");
+        tutorAzEmail = rs.getString("Tutor_Aziendale_Email");
          
-        DomandaTirocinio doma = new DomandaTirocinio(id, FirmatutorUniversitario, 
-            firma_tutor_aziendale, firma_dir_az, firma_dir_dip, TutorUniversitarioEmail, 
-            TirocinanteEmail, TutorAziendaleEmail);
+        DomandaTirocinio doma = new DomandaTirocinio(id, firmaTutorUni, 
+                firmaTutorAz, firmaDirAz, firmaDirDip, tutorUniEmail, 
+                tirEmail, tutorAzEmail);
         listaDomande.aggiungi(doma);
         if (!rs.isBeforeFirst()) {    
           flag = true; 
@@ -201,7 +200,7 @@ public class DomaTirociDao {
    * @throws SQLException Gestisce errori nelle interrogazioni al database.
    * @throws ClassNotFoundException Gestisce errori nel caricamento delle classi.
    */
-  public boolean fillDomadeTiroDAz_DB(ListDomandeTiro listaDomande, String daz) 
+  public boolean fillDomandeDirAz(ListDomandeTiro listaDomande, String daz) 
       throws SQLException, ClassNotFoundException {
     Connection newConnection = null;
     
@@ -213,14 +212,14 @@ public class DomaTirociDao {
         + "AND azienda.Dir_AziendaEmail='" + nome + "' "
         + "AND domanda_di_tirocinio.Firma_dirigente_az=" + 0 + " ";
     //String dirAzEm;
-    String TutorUniversitarioEmail;
-    String TirocinanteEmail;
-    String TutorAziendaleEmail;
+    String tutorUniEmail;
+    String tirEmail;
+    String tutorAzEmail;
     int id;
-    int FirmatutorUniversitario;
-    int firma_tutor_aziendale;
-    int firma_dir_az;
-    int firma_dir_dip;
+    int firmaTutorUni;
+    int firmaTutorAz;
+    int firmaDirAz;
+    int firmaDirDip;
     Date data;
       
     //STEP 2: Register JDBC driver
@@ -233,17 +232,17 @@ public class DomaTirociDao {
       //Retrieve by column name
       id  = rs.getInt("Id_Documento");
       data = rs.getDate("Data");
-      FirmatutorUniversitario = rs.getInt("Firma_tutor_universitario");
-      firma_tutor_aziendale = rs.getInt("Firma_tutor_aziendale");
-      firma_dir_az = rs.getInt("Firma_dirigente_az");
-      firma_dir_dip = rs.getInt("Firma_dir_dip");
-      TutorUniversitarioEmail = rs.getString("Tutor_UniversitarioEmail");
-      TirocinanteEmail = rs.getString("TirocinanteEmail");
-      TutorAziendaleEmail = rs.getString("Tutor_Aziendale_Email");
+      firmaTutorUni = rs.getInt("Firma_tutor_universitario");
+      firmaTutorAz = rs.getInt("Firma_tutor_aziendale");
+      firmaDirAz = rs.getInt("Firma_dirigente_az");
+      firmaDirDip = rs.getInt("Firma_dir_dip");
+      tutorUniEmail = rs.getString("Tutor_UniversitarioEmail");
+      tirEmail = rs.getString("TirocinanteEmail");
+      tutorAzEmail = rs.getString("Tutor_Aziendale_Email");
        
-      DomandaTirocinio doma = new DomandaTirocinio(id, FirmatutorUniversitario, 
-          firma_tutor_aziendale, firma_dir_az, firma_dir_dip, TutorUniversitarioEmail, 
-          TirocinanteEmail, TutorAziendaleEmail);
+      DomandaTirocinio doma = new DomandaTirocinio(id, firmaTutorUni, 
+              firmaTutorAz, firmaDirAz, firmaDirDip, tutorUniEmail, 
+              tirEmail, tutorAzEmail);
       listaDomande.aggiungi(doma);
 
       if (!rs.isBeforeFirst()) {    
@@ -265,20 +264,20 @@ public class DomaTirociDao {
    * Seleziona, dal database, la lista delle domande inerenti un determinato tutor universitario.
   * @param listaDomande (domande di tirocinio) oggetto della classe ListDomandetiro, 
   *     l'arraylist viene riempito da una query al db.
-  * @param TUNI Indirizzo email del tutor aziendale.
+  * @param tutorUni Indirizzo email del tutor aziendale.
   * @return true
   * @throws SQLException Gestisce errori nelle interrogazioni al database.
   * @throws ClassNotFoundException Gestisce errori nel caricamento delle classi.
   */
-  public boolean fillDomadeTiroTu_DB(ListDomandeTiro listaDomande, String TUNI) 
+  public boolean fillDomandeTutorUni(ListDomandeTiro listaDomande, String tutorUni) 
       throws SQLException, ClassNotFoundException {
     Connection newConnection = null;
     //PreparedStatement preparedStatement = null;
-    String nome = TUNI;
+    String nome = tutorUni;
     String sql = "select * from domanda_di_tirocinio where Tutor_UniversitarioEmail='"
         + nome + "' and Firma_tutor_Universitario='0'";
   
-     newConnection =  Connector.getConnection();
+    newConnection =  Connector.getConnection();
     try {
       java.sql.Statement st  = newConnection.createStatement();
       ResultSet rs = st.executeQuery(sql);
@@ -288,17 +287,17 @@ public class DomaTirociDao {
         //Retrieve by column name
         int id  = rs.getInt("Id_Documento");
         //Date data = rs.getDate("Data");
-        int FirmatutorUniversitario = rs.getInt("Firma_tutor_universitario");
-        int firma_tutor_aziendale = rs.getInt("Firma_tutor_aziendale");
-        int firma_dir_az = rs.getInt("Firma_dirigente_az"); 
-        int firma_dir_dip = rs.getInt("Firma_dir_dip");
-        String TutorUniversitarioEmail = rs.getString("Tutor_UniversitarioEmail");
-        String TirocinanteEmail = rs.getString("TirocinanteEmail");
-        String TutorAziendaleEmail = rs.getString("Tutor_Aziendale_Email");
+        int firmaTutorUni = rs.getInt("Firma_tutor_universitario");
+        int firmaTutorAz = rs.getInt("Firma_tutor_aziendale");
+        int firmaDirAz = rs.getInt("Firma_dirigente_az");
+        int firmaDirDip = rs.getInt("Firma_dir_dip");
+        String tutorUniEmail = rs.getString("Tutor_UniversitarioEmail");
+        String tirEmail = rs.getString("TirocinanteEmail");
+        String tutorAzEmail = rs.getString("Tutor_Aziendale_Email");
 
-        DomandaTirocinio doma = new DomandaTirocinio(id,FirmatutorUniversitario, 
-            firma_tutor_aziendale, firma_dir_az, firma_dir_dip, TutorUniversitarioEmail, 
-            TirocinanteEmail, TutorAziendaleEmail);
+        DomandaTirocinio doma = new DomandaTirocinio(id, firmaTutorUni, 
+                firmaTutorAz, firmaDirAz, firmaDirDip, tutorUniEmail, 
+                tirEmail, tutorAzEmail);
         listaDomande.aggiungi(doma);
       }
       st.close();
@@ -329,23 +328,30 @@ public class DomaTirociDao {
           + "and Firma_dirigente_az= " + 1 + " "
           + "and Firma_dir_dip=" + 0 + " ";
       ResultSet rs = st.executeQuery(sql);
-
+      String tutorUniEmail;
+      String tirEmail;
+      String tutorAzEmail;
+      int id;
+      int firmaTutorUni;
+      int firmaTutorAz;
+      int firmaDirAz;
+      int firmaDirDip;
       while (rs.next()) {
 
         //Retrieve by column name
-        int id  = rs.getInt("Id_Documento");
+        id  = rs.getInt("Id_Documento");
         //Date data = rs.getDate("Data");
-        int FirmatutorUniversitario = rs.getInt("Firma_tutor_universitario");
-        int firma_tutor_aziendale = rs.getInt("Firma_tutor_aziendale");
-        int firma_dir_az = rs.getInt("Firma_dirigente_az");
-        int firma_dir_dip = rs.getInt("Firma_dir_dip");
-        String TutorUniversitarioEmail = rs.getString("Tutor_UniversitarioEmail");
-        String TirocinanteEmail = rs.getString("TirocinanteEmail");
-        String TutorAziendaleEmail = rs.getString("Tutor_Aziendale_Email");
+        firmaTutorUni = rs.getInt("Firma_tutor_universitario");
+        firmaTutorAz = rs.getInt("Firma_tutor_aziendale");
+        firmaDirAz = rs.getInt("Firma_dirigente_az");
+        firmaDirDip = rs.getInt("Firma_dir_dip");
+        tutorUniEmail = rs.getString("Tutor_UniversitarioEmail");
+        tirEmail = rs.getString("TirocinanteEmail");
+        tutorAzEmail = rs.getString("Tutor_Aziendale_Email");
         
-        DomandaTirocinio doma = new DomandaTirocinio(id, FirmatutorUniversitario, 
-            firma_tutor_aziendale, firma_dir_az, firma_dir_dip, TutorUniversitarioEmail, 
-            TirocinanteEmail, TutorAziendaleEmail);
+        DomandaTirocinio doma = new DomandaTirocinio(id,firmaTutorUni, 
+                firmaTutorAz, firmaDirAz, firmaDirDip, tutorUniEmail, 
+                tirEmail, tutorAzEmail);
         listaDomande.aggiungi(doma);
         
         if (!rs.isBeforeFirst()) {    
@@ -488,41 +494,25 @@ public class DomaTirociDao {
   
   
   public boolean domandaPresente (String tirEm) {
-
-      Connection newConnection = Connector.getConnection();
-
-         String sql = "SELECT  TirocinanteEmail FROM domanda_di_tirocinio WHERE TirocinanteEmail='"+ tirEm +"'";
-  
-        
-        try {
-
-          java.sql.Statement st  = newConnection.createStatement();
-
-         ResultSet rs = st.executeQuery(sql);
-
-           while (rs.next()) {
-           String tirEmail = rs.getString("TirocinanteEmail");
-
-            if(tirEmail.toString().equals(tirEm)){
-  
-                    flag = true; 
-                  
-            	}
-                     
-          }
- 
-          st.close();
-
-          newConnection.close();
-
-        } catch (SQLException  e) {
-
-          e.printStackTrace();
-
+    Connection newConnection = Connector.getConnection();
+    String sql = "SELECT  TirocinanteEmail FROM domanda_di_tirocinio "
+        + "WHERE TirocinanteEmail='" + tirEm + "'";
+    try {
+      java.sql.Statement st  = newConnection.createStatement();
+      ResultSet rs = st.executeQuery(sql);
+      while (rs.next()) {
+        String tirEmail = rs.getString("TirocinanteEmail");
+        if (tirEmail.toString().equals(tirEm)) {
+          flag = true; 
         }
-System.out.println(sql +".tirocinante che invia la domanda è presente..."+flag);
-        return flag;
-
- }
-  
+                     
+      }
+      st.close();
+      newConnection.close();
+    } catch (SQLException  e) {
+      e.printStackTrace();
+    }
+    System.out.println(sql + ".tirocinante che invia la domanda è presente..." + flag);
+    return flag;
+  }
 }

@@ -1,6 +1,6 @@
  
 
-<%@page import="tirocinio.registro.gestore.Registro"%>
+<%@page import="bean.Registro"%>
 <%@page import="tirocinio.registro.gestore.RegistroDao"%>
   
    <jsp:useBean id="tirocinan" class="bean.Tirocinante" scope="session"/>

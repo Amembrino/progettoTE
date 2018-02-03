@@ -8,8 +8,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Date;
 import tirocinio.registro.gestore.ListaRegistri;
-import tirocinio.registro.gestore.Registro;
  
+import bean.Registro;
 /**
  * Classe RegistroDao, si configura col database per gestire il registro di tirocinio.
  */
@@ -92,7 +92,7 @@ public class RegistroDao {
     try {
       conn = Connector.getConnection();
       stmt = conn.createStatement();
-      if (!(comm.isEmpty()) || ore > 0) {
+      if ((!(comm.isEmpty())) || ore > 0) {
         int x = stmt.executeUpdate(sql);
         att = (x > 0); 
       }

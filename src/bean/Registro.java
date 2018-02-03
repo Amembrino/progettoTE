@@ -1,4 +1,4 @@
-package tirocinio.registro.gestore;
+package bean;
 
 import java.text.SimpleDateFormat;
 //import java.util.Date;
