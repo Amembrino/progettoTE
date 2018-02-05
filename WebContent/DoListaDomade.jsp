@@ -39,14 +39,14 @@
   
    if( us.equals("tutor_aziendale")){
 	  
-  dom.fillDomadeTiroTA_DB(listaDomande, tutorAz.getEmail() );
+  dom.fillDomandeTutorAz(listaDomande, tutorAz.getEmail() );
   
   }
   else   if( us.equals("Tutor_universitario")) {
-	dom.fillDomadeTiroTu_DB(listaDomande, TutorUni.getEmail() );
+	dom.fillDomandeTutorUni(listaDomande, TutorUni.getEmail() );
   }
   else   if( us.equals("dir_azienda")) {
-		dom.fillDomadeTiroDAz_DB(listaDomande, DirAz.getEmail());
+		dom.fillDomandeDirAz(listaDomande,DirAz.getEmail());
 	  }
   else   if( us.equals("dir_dipartimento")) {
 		dom.fillListaDomandeDirDip(listaDomande, dirDip.getEmail() );

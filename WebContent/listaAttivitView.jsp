@@ -1,25 +1,32 @@
-  
-<%@page import="bean.Attivity"%> 
+ 
+ 
+<%@page import="bean.Attivity"%>
 <%@page import="bean.Registro"%> 
 <%@page import="bean.TutorAz"%>
- 
+<%@page import="bean.TutorUni"%>
  
 
-<jsp:useBean id="listaReg"
-             class="tirocinio.registro.gestore.ListaRegistri"
-             scope="request" />
+ <jsp:useBean id="listaA" 
+    class="tirocinio.registro.gestore.ListaAttività"
+     scope="request"/>
              
- <jsp:useBean id="user" class="bean.User" scope="session"/>
-<jsp:useBean id="tutorAz" class="bean.TutorAz" scope="session"/>
-<jsp:useBean id="TutorUni" class="bean.TutorUni" scope="session"/> 
+ <jsp:useBean id="user" 
+ class="bean.User" 
+ scope="session"/>
+
+<jsp:useBean id="tutorAz"
+ class="bean.TutorAz" 
+ scope="session"/>
+  
  
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title> registri</title>
+<title>attività</title>
 <link rel="stylesheet" type="text/css" href="style.css">
 
 <style>
@@ -64,29 +71,48 @@ tr:nth-child(even) {
     <div id="searchresult">        
      <table>  
      <thead>
-     <tr>    <th>ID_Tirocinio</th> <th> convalida</th> <th>mail tirocinante</th>  </tr>
+     <tr>    <th>ID_attività</th> <th> ore attività</th> <th>date</th> <th>descrizione </th>   </tr>
      
      </thead>
      <tbody>
 <% 
      
 
+     
 
-      for (Registro reg : listaReg.getRegistri() ) {
+      for (Attivity att : listaA.getAttività() ) {
             out.print("<tr>");
                      
-                    out.print("<td><p>"+ reg.getId()+"</p></td>");
-                    out.print("<td><p>" +reg.getConv()+"</p></td>");
-                    out.print("<td><a href=\"DolistaAttività.jsp?mail="+reg.getTir_em()+"\">visuliazza attività di  " +reg.getTir_em()+"</a></td>");
-                // if (user.getTipoacc().equals("tutor_aziendale")){// completa con Doconvalida
-                 //   out.print("<td> <a href=\"Doconvalida.jsp?iddomanda="+reg.getId() +"\">convalida registro</a> </td>");
-               //  }
-                    out.print("</tr>");                
+                    out.print("<td><p>"+ att.getId()+"</p></td>");
+                    out.print("<td><p>"+ att.getOra()+"</p></td>");
+                    out.print("<td><p>"+ att.getData()+"</p></td>");
+                    out.print("<td><p class=/"id/">" +att.getDescrizione()+"</p></td>");
+                 //   out.print("<td><p>"+att.getRegistroID() +"</p></td>");
+                
+                          int x= att.getRegistroID();           
+                  
+                          out.print("</tr>");  
+                                      
    }     
-                %>
-                </tbody>
+out.print("<a href=\"Doconvalida.jsp?id="+x+"\">convalida attività del registro "+att.getRegistroID() +"</a>");  
+
+       
+%> 
+ <tr>
+ <script>
+var x = document.getElementsByClassName("id");
+document.getElementById("demo").innerHTML = 
+'The first paragraph (index 0) with class="intro": ' + x[0].innerHTML;
+</script>
+ 
+ 
+ </tr>
+</tbody>  
+             
+              
    </table>
-      </div>
+   
+     </div>
             </div>
 </body>
 </html>

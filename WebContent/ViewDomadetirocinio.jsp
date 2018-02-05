@@ -1,6 +1,4 @@
-<%@page import="java.sql.SQLException"%>
-<%@page import="java.sql.ResultSet"%>
-<%@page import="java.sql.Statement"%>
+ 
 
 <%@page import="bean.TutorAz"%>
 <%@page import="bean.TutorUni"%>

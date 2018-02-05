@@ -13,9 +13,9 @@
   <div class="sidebar1">
     <ul class="nav">
         <li><a href="doLogout.jsp">Logout</a></li>
-        <li><a href="RegistroTirocinioView.jsp">compila registro</a></li>
+        <li><a href="CompilaRegistroView.jsp">compila registro</a></li>
         <li><a href="DomandaTirocinioVew.jsp">Compila domanda tirocinio</a></li>
-        <li><a href="viewListaAziende.jsp">Consulta Aziende Tirocinanti</a></li></ul>
+        <li><a href="DoListaAziende.jsp">Consulta Aziende Tirocinanti</a></li></ul>
    <!-- <aside>
        <p>progetto is</p>
     </aside>

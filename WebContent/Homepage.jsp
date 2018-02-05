@@ -21,39 +21,54 @@
   
   <% if (user.getTipoacc().equals("Tutor_universitario")){%>
   								<jsp:include page="menuTutorUni.jsp"></jsp:include>
-  								 
+  							<article class="content">	 
     <h1>Homepage Tutor universitario</h1>
     
     <jsp:include page="HomeTurorUni.jsp"></jsp:include>
+    </article>
   <%}
+  
+  
   if (user.getTipoacc().equals("tutor_aziendale")){%>
   								<jsp:include page="menuTutorAz.jsp"></jsp:include>
   								<article class="content">
     <h1>HomeTutorAziendale</h1>
     
     <jsp:include page="HomeTutorAz.jsp"></jsp:include>
+    							</article>
   <%}
+  
+  
   if (user.getTipoacc().equals("dir_azienda")){%>
   								<jsp:include page="menuDirAz.jsp"></jsp:include>
-  								 
+  								 <article class="content">
     <h1>Home Direttore Azienda</h1>
     
     <jsp:include page="HomeDirAz.jsp"></jsp:include>
+    					</article>
   <%}
+  
+  
   if (user.getTipoacc().equals("dir_dipartimento")){%>
 								<jsp:include page="menudir_dipartimento.jsp"></jsp:include>
-							 
-    <h1>Home dir_dipartimento</h1>
+							 <article class="content">
+  					  <h1>Home dir_dipartimento</h1>
     
-    <jsp:include page="Homedir_dipartimento.jsp"></jsp:include>
+   			  <jsp:include page="Homedir_dipartimento.jsp"></jsp:include>
+   							 </article>
 <%}
+  
+  
   if (user.getTipoacc().equals("amministratore")){%>
-	<jsp:include page="menuAdmin.jsp"></jsp:include>
-	 
+				<jsp:include page="menuAdmin.jsp"></jsp:include>
+	 				 <article class="content">
 <h1>Home Amministratore</h1>
 
 <jsp:include page="HomeAdmin.jsp"></jsp:include>
+</article>
 <%}
+ 
+  
   if (user.getTipoacc().equals("tirocinante")){%> 
 								<jsp:include page="menuStudente.jsp"></jsp:include>
 								<article class="content">
@@ -65,10 +80,7 @@
     
     
   <!-- end .content --></article>
-  <article class="content">
-    
-   
-  <!-- end .content --></article>
+ 
    
 <!-- end .container --></div>
 </body>

@@ -6,19 +6,21 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Time;
 import java.util.Date;
+import tirocinio.registro.gestore.ListaAttività;
 import tirocinio.registro.gestore.ListaRegistri;
- 
+import bean.Attivity;
 import bean.Registro;
 /**
  * Classe RegistroDao, si configura col database per gestire il registro di tirocinio.
  */
 public class RegistroDao {
-  String ip = "localhost";
-  String port = "3306";
-  String db = "tirocinioeasy";
-  String username = "root";
-  String password = "root";
+//  String ip = "localhost";
+//  String port = "3306";
+//  String db = "tirocinioeasy";
+//  String username = "root";
+//  String password = "root";
    
   /**
 * Costruttore nullo.
@@ -53,7 +55,7 @@ public class RegistroDao {
   }
 
   /**
- * Metodo che restituisce l'identificativo dell'attività inserita nel registro.
+ * Metodo che restituisce l'identificativo dell'ULTIMA attività inserita nel registro.
  * @return idA
  * @throws SQLException Gestisce errori nelle interrogazioni al database.
  */
@@ -62,14 +64,14 @@ public class RegistroDao {
     int idA = 0;
     Connection newConnection2 = Connector.getConnection();
     java.sql.Statement st2  = newConnection2.createStatement();
-    String sql2 = "SELECT MAX(ID_Attività)AS ID FROM `attività`";
+    String sql2 = "SELECT MAX(ID_Attività)AS ID FROM attività";
     ResultSet rs2 = st2.executeQuery(sql2);
     while (rs2.next()) {
       idA = rs2.getInt("ID");
     }
     rs2.close();
     newConnection2.close();
-    return idA;
+    return idA++;
   }
 
   /**
@@ -81,20 +83,20 @@ public class RegistroDao {
  * @param Att Identificativo dell'attività.
  */
 
-  public boolean compilaRegistro(int ore, String data, String comm, int id, int Att) {
+  public boolean compilaRegistro(int ore, String data, String comm, int id, int idatt) {
   
-    boolean att = false;
+    boolean flag = false;
     Connection conn = null;
     Statement stmt = null;
     String sql = " INSERT INTO  attività  (ID_Attività, Data, Ora,"
-        + " Descrizione, Registro_TirocinioID) " + "VALUES ('" + Att + "','"
+        + " Descrizione, Registro_TirocinioID) " + "VALUES ('" + idatt + "','"
         + data + "','" + ore + "','" + comm + "','" + id + "')";
     try {
       conn = Connector.getConnection();
       stmt = conn.createStatement();
       if ((!(comm.isEmpty())) || ore > 0) {
         int x = stmt.executeUpdate(sql);
-        att = (x > 0); 
+        flag = (x > 0); 
       }
       stmt.close();
       conn.close();
@@ -104,7 +106,7 @@ public class RegistroDao {
       e.printStackTrace();
     }
     System.out.println(sql);
-    return att;
+    return flag;
     
   }
 
@@ -163,4 +165,37 @@ public class RegistroDao {
     System.out.println(action);
     return action;
   }
+  
+  
+  public void  fillListaattività(ListaAttività lista , String mail) {
+	    Connection newConnection = Connector.getConnection();
+	    try {
+	      java.sql.Statement st  = newConnection.createStatement();
+	      String sql = "SELECT *"
+	      		+ " FROM attività, registro_tirocinio   WHERE Tirocinante_Email='"+mail+"'"
+	      		+ " and  ID_Tirocinio=  Registro_TirocinioID";
+	      ResultSet rs = st.executeQuery(sql); 
+	      System.out.println(sql);
+	      while (rs.next()) {
+	        int iD_Attività = rs.getInt("ID_Attività");
+	        Date data = rs.getDate("Data");
+	        Time ora = rs.getTime("Ora");
+	        String descrizione = rs.getString("Descrizione");
+	        int idregTiro = rs.getInt("Registro_TirocinioID");
+	      
+	        
+	        Attivity att = new Attivity(iD_Attività, data,ora, descrizione, idregTiro);
+	        lista.aggiungi(att);
+	        
+	      }
+	    
+	      st.close();
+	      newConnection.close();
+	    } catch (Exception e) {
+	      e.printStackTrace();
+	    }
+	  }
+  
+  
+  
 }

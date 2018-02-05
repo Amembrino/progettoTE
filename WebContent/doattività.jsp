@@ -1,5 +1,5 @@
  
-
+<%@page import="bean.Attivity"%>
 <%@page import="bean.Registro"%>
 <%@page import="tirocinio.registro.gestore.RegistroDao"%>
   
@@ -19,16 +19,22 @@
 
    RegistroDao Reg= new RegistroDao();
  
-    int Att=Reg.ID_att();
-   
+    int idatt=Reg.ID_att();
+   idatt++;
    ID_Tirocinio=Reg.selectId(tirocinan.getEmail());
   
-   boolean y = Reg.compilaRegistro(ore, data, com, ID_Tirocinio, Att);
+   boolean y = Reg.compilaRegistro(ore, data, com, ID_Tirocinio, idatt);
      if (y){
     	  %>
-    	   <jsp:forward page="CompilaRegistroView.jsp" />  
+    	   <jsp:forward page="Homepage.jsp" />  
      	  <%
-     }   	
+     }  
+     
+     if (ID_Tirocinio==0){
+    	 %>
+	   <jsp:forward page="ERRORE.jsp"/>  
+	  <%
+     }
    %>
    
   

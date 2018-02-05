@@ -16,7 +16,7 @@
 
 <div class="main">
    <%
-   out.print("<p> :"+tirocinan.getEmail()+"</p>"); 
+   out.print("<p> "+tirocinan.getEmail()+"</p>"); 
    %>
   
   </div>

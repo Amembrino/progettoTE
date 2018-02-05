@@ -1,4 +1,6 @@
 <%@page import="tirocinio.registro.gestore.RegistroDao"%>
+ <%@page import="bean.Attivity"%>
+ <%@page import="bean.Registro"%> 
  
   <jsp:useBean id="listaReg"
              class="tirocinio.registro.gestore.ListaRegistri" 
@@ -23,7 +25,6 @@ RegistroDao reg= new RegistroDao();
   
 
   %>
-    <jsp:forward page="ConvalidaRegistriView.jsp"></jsp:forward>
-    
+   <jsp:forward page="ConvalidaRegistriView.jsp"></jsp:forward>
     
     
