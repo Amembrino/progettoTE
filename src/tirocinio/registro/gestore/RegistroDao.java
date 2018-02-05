@@ -167,6 +167,45 @@ public class RegistroDao {
   }
   
   
+  public boolean setRegistroFalse(int id) {
+
+      Connection newConnection = Connector.getConnection();
+
+      boolean action = false;
+
+      try {
+
+        String sql = "UPDATE registro_tirocinio SET Convalida="
+
+            + 0 + " WHERE ID_Tirocinio=" + id + " ";
+
+        Statement st = newConnection.createStatement();
+
+        int count = st.executeUpdate(sql);
+
+        action = (count > 0);  
+
+    
+
+        System.out.println(sql);
+
+        st.close();
+
+        newConnection.close();
+
+      } catch (Exception e) {
+
+        // TODO: handle exception
+
+      }
+
+      System.out.println(action);
+
+      return action;
+
+    }
+  
+  
   public void  fillListaattività(ListaAttività lista , String mail) {
 	    Connection newConnection = Connector.getConnection();
 	    try {

@@ -24,17 +24,30 @@
    ID_Tirocinio=Reg.selectId(tirocinan.getEmail());
   
    boolean y = Reg.compilaRegistro(ore, data, com, ID_Tirocinio, idatt);
-     if (y){
-    	  %>
-    	   <jsp:forward page="Homepage.jsp" />  
-     	  <%
-     }  
-     
-     if (ID_Tirocinio==0){
-    	 %>
-	   <jsp:forward page="ERRORE.jsp"/>  
-	  <%
-     }
-   %>
+
+   if (y){
+
+       Reg.setRegistroFalse(ID_Tirocinio);
+
+        %>
+
+         <jsp:forward page="Homepage.jsp" />  
+
+        <%
+
+   }  
+
    
+
+   if (ID_Tirocinio==0){
+
+       %>
+
+     <jsp:forward page="ERRORE.jsp"/>  
+
+    <%
+
+   }
+
+ 
   

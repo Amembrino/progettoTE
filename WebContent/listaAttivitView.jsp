@@ -96,7 +96,7 @@ scope="session"/>
          
          <form action="Doconvalida.jsp">
        <b>convalida registro con id </b> 
-         <input type="submit"  name="id" value= "<%out.print(attività.getRegistroID());%>" value="Edit">
+         <input type="submit"  name="id" value= "     <%out.print(attività.getRegistroID());%>       " value=" convalida  ">
          </form>
       </div>
    </div>
