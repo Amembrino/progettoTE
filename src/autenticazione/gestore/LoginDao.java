@@ -15,6 +15,7 @@ public class LoginDao {
 
   private String pw;
  
+  //ok
   /**
     * Costruttore nullo.
     */
