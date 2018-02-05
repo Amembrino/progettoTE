@@ -1,4 +1,6 @@
   
+ <%@page import="bean.Registro"%>
+  
  
  <%@page import="tirocinio.registro.gestore.RegistroDao"%>
   
@@ -14,18 +16,22 @@
 class="bean.TutorAz" 
 scope="session"/>
 
- 
+ <jsp:useBean id="attività" 
+class="bean.Attività" 
+scope="session"/>
+
+ <jsp:useBean id="registr" 
+class="bean.Registro" 
+scope="session"/>
 
 <% 
 
 String mail= request.getParameter("mail");
 RegistroDao reg= new RegistroDao();
 
-// attivit.setRegistroID(reg.selectId("mail"));
+attività.setRegistroID(reg.selectId(mail));
 
 reg.fillListaattività(listaA, mail);
-
  
 %>
-
  <jsp:forward page="listaAttivitView.jsp"></jsp:forward>

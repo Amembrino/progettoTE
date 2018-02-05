@@ -1,5 +1,5 @@
   
-<%@page import="bean.Attivity"%> 
+<%@page import="bean.Attività"%> 
 <%@page import="bean.Registro"%> 
 <%@page import="bean.TutorAz"%>
  
@@ -12,6 +12,7 @@
  <jsp:useBean id="user" class="bean.User" scope="session"/>
 <jsp:useBean id="tutorAz" class="bean.TutorAz" scope="session"/>
 <jsp:useBean id="TutorUni" class="bean.TutorUni" scope="session"/> 
+
  
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -22,23 +23,7 @@
 <title> registri</title>
 <link rel="stylesheet" type="text/css" href="style.css">
 
-<style>
-table {
-    border-collapse: collapse;
-    border-spacing: 0;
-    width: 50%;
-    border: 1px solid #ddd;
-}
-
-th, td {
-    text-align: left;
-    padding: 1px;
-}
  
-tr:nth-child(even) {
-    background-color: #f2f2f2
-}
-</style>
 
 </head>
 <body>
@@ -78,10 +63,11 @@ tr:nth-child(even) {
                     out.print("<td><p>"+ reg.getId()+"</p></td>");
                     out.print("<td><p>" +reg.getConv()+"</p></td>");
                     out.print("<td><a href=\"DolistaAttività.jsp?mail="+reg.getTir_em()+"\">visuliazza attività di  " +reg.getTir_em()+"</a></td>");
-                // if (user.getTipoacc().equals("tutor_aziendale")){// completa con Doconvalida
-                 //   out.print("<td> <a href=\"Doconvalida.jsp?iddomanda="+reg.getId() +"\">convalida registro</a> </td>");
-               //  }
-                    out.print("</tr>");                
+              
+                    out.print("</tr>");          
+                    // if (user.getTipoacc().equals("tutor_aziendale")){// completa con Doconvalida
+                    //   out.print("<tr><td> <a href=\"Doconvalida.jsp?iddomanda="+reg.getId() +"\">convalida registro</a> </td></tr>");
+                    //}
    }     
                 %>
                 </tbody>

@@ -1,6 +1,6 @@
  
  
-<%@page import="bean.Attivity"%>
+<%@page import="bean.Attività"%>
 <%@page import="bean.Registro"%> 
 <%@page import="bean.TutorAz"%>
 <%@page import="bean.TutorUni"%>
@@ -17,8 +17,16 @@
 <jsp:useBean id="tutorAz"
  class="bean.TutorAz" 
  scope="session"/>
-  
  
+ <jsp:useBean id="registr" 
+class="bean.Registro" 
+scope="session"/>
+ 
+  <jsp:useBean id="attività" 
+class="bean.Attività" 
+scope="session"/>
+ 
+  
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -28,24 +36,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>attività</title>
 <link rel="stylesheet" type="text/css" href="style.css">
-
-<style>
-table {
-    border-collapse: collapse;
-    border-spacing: 0;
-    width: 50%;
-    border: 1px solid #ddd;
-}
-
-th, td {
-    text-align: left;
-    padding: 1px;
-}
+<link rel="stylesheet" type="text/css" href="table.css">
  
-tr:nth-child(even) {
-    background-color: #f2f2f2
-}
-</style>
 
 </head>
 <body>
@@ -71,7 +63,7 @@ tr:nth-child(even) {
     <div id="searchresult">        
      <table>  
      <thead>
-     <tr>    <th>ID_attività</th> <th> ore attività</th> <th>date</th> <th>descrizione </th>   </tr>
+     <tr>    <th>     ID_attività   </th> <th>   ore attività   </th> <th>   date  </th> <th>     descrizione      </th>  </tr>
      
      </thead>
      <tbody>
@@ -79,40 +71,34 @@ tr:nth-child(even) {
      
 
      
-
-      for (Attivity att : listaA.getAttività() ) {
+ 
+      for (Attività att : listaA.getAttività() ) {
             out.print("<tr>");
                      
                     out.print("<td><p>"+ att.getId()+"</p></td>");
                     out.print("<td><p>"+ att.getOra()+"</p></td>");
                     out.print("<td><p>"+ att.getData()+"</p></td>");
-                    out.print("<td><p class=/"id/">" +att.getDescrizione()+"</p></td>");
-                 //   out.print("<td><p>"+att.getRegistroID() +"</p></td>");
+                    out.print("<td><p>" +att.getDescrizione()+"</p></td>");
+                    
+       
+   int x= att.getRegistroID();   
+ 
                 
-                          int x= att.getRegistroID();           
-                  
-                          out.print("</tr>");  
+   out.print("</tr>");   
+   
                                       
-   }     
-out.print("<a href=\"Doconvalida.jsp?id="+x+"\">convalida attività del registro "+att.getRegistroID() +"</a>");  
+   }  
+//out.print("<a  class=\"demo\" href=\"Doconvalida.jsp?id="+x+"\">convalida attività del registro "+att.getRegistroID() +"</a>");  
 
        
-%> 
- <tr>
- <script>
-var x = document.getElementsByClassName("id");
-document.getElementById("demo").innerHTML = 
-'The first paragraph (index 0) with class="intro": ' + x[0].innerHTML;
-</script>
- 
- 
- </tr>
-</tbody>  
-             
-              
-   </table>
-   
-     </div>
-            </div>
+%>   </tbody>  
+         </table>
+         
+         <form action="Doconvalida.jsp">
+       <b>convalida registro con id </b> 
+         <input type="submit"  name="id" value= "<%out.print(attività.getRegistroID());%>" value="Edit">
+         </form>
+      </div>
+   </div>
 </body>
 </html>

@@ -1,5 +1,5 @@
 <%@page import="tirocinio.registro.gestore.RegistroDao"%>
- <%@page import="bean.Attivity"%>
+ 
  <%@page import="bean.Registro"%> 
  
   <jsp:useBean id="listaReg"

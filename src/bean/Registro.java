@@ -8,6 +8,8 @@ import java.text.SimpleDateFormat;
  * vengono compilati dai tirocinanti inserendoci nuove attività
  *  e vengono convalidati dai tutor aziendali.
  */
+
+
 public class Registro {
 
   private int id;
@@ -37,6 +39,10 @@ public class Registro {
     this.conv = conv;
     this.tir_em = tir_em;
     this.tut_az_em = tut_az_em;
+  }
+  
+  public   Registro() {
+		
   }
   /**
  * Metodo di accesso.

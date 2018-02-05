@@ -10,7 +10,7 @@ import java.sql.Time;
 import java.util.Date;
 import tirocinio.registro.gestore.ListaAttività;
 import tirocinio.registro.gestore.ListaRegistri;
-import bean.Attivity;
+import bean.Attività;
 import bean.Registro;
 /**
  * Classe RegistroDao, si configura col database per gestire il registro di tirocinio.
@@ -184,7 +184,7 @@ public class RegistroDao {
 	        int idregTiro = rs.getInt("Registro_TirocinioID");
 	      
 	        
-	        Attivity att = new Attivity(iD_Attività, data,ora, descrizione, idregTiro);
+	        Attività att = new Attività(iD_Attività, data,ora, descrizione, idregTiro);
 	        lista.aggiungi(att);
 	        
 	      }

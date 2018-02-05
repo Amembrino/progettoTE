@@ -4,9 +4,9 @@ import java.sql.Time;
 import java.util.Date;
 
 /**
- * Classe Attivity, rappresenta una singola attività svolta da un tirocinante che verrà annotata nel suo registro di tirocinio. 
+ * Classe Attività, rappresenta una singola attività svolta da un tirocinante che verrà annotata nel suo registro di tirocinio. 
  */
-public class Attivity
+public class Attività
 {
   private Date data;
   private String luogo;
@@ -17,7 +17,7 @@ public class Attivity
 	
   /**
  * Costruttore parametrico
- * Istanzia un oggetto "Attivity" che rappresenta un attività svolta nel registro di tirocinio di un tirocinante.
+ * Istanzia un oggetto "Attività" che rappresenta un attività svolta nel registro di tirocinio di un tirocinante.
  * @param iD_Attività Numero identificativo dell'attività svolta.
  * @param data2 Data in cui si è svolta l'attività.
  * @param ora2 Durata dell'attività
@@ -26,12 +26,16 @@ public class Attivity
  * @param RegistroID ID del Registro di tirocinio cui appartiene l'attività
  */
 
-  public Attivity(int iD_Attività, Date data2, Time ora2, String descrizione2, int RegistroID) {
+  public Attività(int iD_Attività, Date data2, Time ora2, String descrizione2, int RegistroID) {
     this.id=iD_Attività;
     this.data=data2;
     this.ora=ora2;
     this.Descrizione=descrizione2;
     this.RegistroID=RegistroID;
+  }
+  
+  public Attività(){
+	  
   }
   
   

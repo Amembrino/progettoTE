@@ -1,5 +1,5 @@
  
-<%@page import="bean.Attivity"%>
+<%@page import="bean.Attività"%>
 <%@page import="bean.Registro"%>
 <%@page import="tirocinio.registro.gestore.RegistroDao"%>
   
