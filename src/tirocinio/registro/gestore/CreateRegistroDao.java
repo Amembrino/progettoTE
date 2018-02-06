@@ -46,7 +46,7 @@ public class CreateRegistroDao {
 
     String query = "SELECT * FROM domanda_di_tirocinio WHERE Id_Documento=" + id;
     try {
-      java.sql.Statement stmt = con.createStatement();
+      java.sql.Statement stmt = con.createStatement(); 
       rs = stmt.executeQuery(query);
       
       while (rs.next()) {

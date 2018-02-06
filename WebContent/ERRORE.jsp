@@ -14,7 +14,7 @@
 if (window.confirm('errore cliccando ok tornerai alla home ')) 
 {
 window.location.href='Homepage.jsp';
-};
+}
 </script>
 </body>
 </html>
