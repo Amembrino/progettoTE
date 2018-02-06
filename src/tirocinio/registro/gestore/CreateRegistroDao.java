@@ -20,11 +20,8 @@ import bean.Registro;
  */
 
 public class CreateRegistroDao {
-  String ip = "localhost";
-  String port = "3306";
-  String db = "tirocinioeasy";
-  String username = "root";
-  String password = "root";
+ 
+	boolean flag=false;
 
   Statement st;
   ResultSet rs;
@@ -43,18 +40,22 @@ public class CreateRegistroDao {
  * @param id Identificativo della domanda di tirocinio
  */
   
-  public void getDatiDomanda(int id) { 
-    Connection con = Connector.getConnection();
+  public boolean getDatiDomanda(int id) { 
+  
+	  Connection con = Connector.getConnection();
 
     String query = "SELECT * FROM domanda_di_tirocinio WHERE Id_Documento=" + id;
     try {
       java.sql.Statement stmt = con.createStatement();
       rs = stmt.executeQuery(query);
-
+      
       while (rs.next()) {
         Tirocinante = rs.getString("TirocinanteEmail");
         Tutor_Aziendale_Email = rs.getString("Tutor_Aziendale_Email");
       }
+      if (!rs.isBeforeFirst()) {    
+          flag = true;
+          } 
       stmt.close();
       con.close();
     } catch (Exception ex) { 
@@ -64,6 +65,7 @@ public class CreateRegistroDao {
     Registro rg = new Registro(id,0,Tirocinante, Tutor_Aziendale_Email);
     /**Preleva la data odierna dal Registro creato.*/
     data = rg.getData();
+	return flag;
   }
 
   /**
@@ -72,13 +74,10 @@ public class CreateRegistroDao {
  * @param Convalida_Tutor_Az Campo convalida del registro da parte del tutor aziendale.
  */
 
-  public void CreaRegistro(int ID_Tirocinio, int Convalida_Tutor_Az) {
-    try {
-      Class.forName("com.mysql.jdbc.Driver");
-    } catch (ClassNotFoundException e) {
-      e.printStackTrace();
-    }
-    Connection conn = null;
+  public boolean CreaRegistro(int ID_Tirocinio, int Convalida_Tutor_Az) {
+   
+   try{ 
+	Connection conn = Connector.getConnection();
     Statement stmt = null;
     System.out.println(Tirocinante.toString());
     String t = Tirocinante;
@@ -88,19 +87,19 @@ public class CreateRegistroDao {
         + "Tirocinante_Email, Tutor_Aziendale_Email)" + " VALUES ('" + ID_Tirocinio + "', '"
         + data + "', '" + Convalida_Tutor_Az + "', '" + t + "','" + tu + "');";
 
-    try {
-      conn = DriverManager.getConnection("jdbc:mysql://" + ip + ":" + port + "/"
-          + db, username, password);
-
-      stmt = conn.createStatement();
-      stmt.executeUpdate(sql);
-
+     stmt = conn.createStatement();
+    int x =  stmt.executeUpdate(sql); 
+    flag = (x > 0); 
       stmt.close();
       conn.close();
-    } catch (SQLException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-    }
-    System.out.println(sql);
+      System.out.println(sql);
   }
+     catch (Exception e) {
+		e.printStackTrace();
+	}
+   return flag;
+  
+}
+  
+  
 }

@@ -88,17 +88,16 @@ LoginDao userdata = new LoginDao();
        <%
        
     } 
-    else{%>
-      
-    <script language="javascript">
-    alert("non trovato ");	//Java Script alert message
-    </script>
-    <%
-    out.print( email.toString()+"...non trovato");
+    else{
+    out.print("<script>");
+    out.print( "alert('non trovato ')");
+    out.print("</script>");
+  //  response.sendRedirect("Login.jsp");
+ 
       }
    
     %>
     
     
-    <jsp:forward page="Login.jsp" />
+    
 

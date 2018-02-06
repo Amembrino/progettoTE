@@ -46,12 +46,12 @@ td, th {
     <section> <div id="main">
                 
   <div id="searchconsole">
-                    <form id="theform" name="theform" action="DoListaAziende.jsp" method="POST">
+                  <!--    <form id="theform" name="theform" action="DoListaAziende.jsp" method="POST">
                          
                         <span><input type="submit" value="cerca"></span>
                     </form>
                     
-                      <div id="searchresult"> 
+                      <div id="searchresult"> -->
                     
                     <span style="font-family: Garamond; font-size: 11px; color: #000;">
                              <table width="80%" border="1" align="center" bgcolor="#79B9F4">

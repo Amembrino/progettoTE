@@ -40,7 +40,7 @@
    
 
    if (ID_Tirocinio==0){
-
+       
        %>
 
      <jsp:forward page="ERRORE.jsp"/>  
