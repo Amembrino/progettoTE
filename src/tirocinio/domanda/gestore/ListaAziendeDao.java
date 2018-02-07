@@ -2,6 +2,8 @@ package tirocinio.domanda.gestore;
 
 import bean.Azienda;
 import bean.ListaAziende;
+import db.Connector;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -11,7 +13,7 @@ import java.sql.SQLException;
  * Classe ListaAziendeDao, si configura col database per gestire l'elenco 
  * delle aziende convenzionate.
  */
-public class ListaAziendeDao {
+public class ListaAziendeDao  implements ListaAziendeDaoInterface{
 
   /**
    * Prende dal database le aziende convenzionate e le aggiunge alla lista.
@@ -23,17 +25,15 @@ public class ListaAziendeDao {
     Connection newConnection = null;
 
     String sql = "select * from azienda";
+ 
 
-    Class.forName("com.mysql.jdbc.Driver");
+//    String ip = "localhost";
+//    String port = "3306";
+//    String db = "tirocinioeasy";
+//    String username = "root";
+//    String password = "root";
 
-    String ip = "localhost";
-    String port = "3306";
-    String db = "tirocinioeasy";
-    String username = "root";
-    String password = "root";
-
-    newConnection = DriverManager.getConnection("jdbc:mysql://" + ip + ":"
-        + port + "/" + db, username, password);
+    newConnection = Connector.getConnection();
 
     try {
       java.sql.Statement st  = newConnection.createStatement();
@@ -59,21 +59,6 @@ public class ListaAziendeDao {
       e.printStackTrace();
     }
   }
-  /**
- * Richiama il metodo fillListaAziende catturandone eccezioni.
-* @param Azienda oggetto della classe ListaAziende
-*/
   
-  public void fillListaAziende1(ListaAziende Azienda) {
-
-    try {
-      fillListaAziende(Azienda);
-    } catch (ClassNotFoundException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-    } catch (SQLException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-    }
-  }
+    
 }
