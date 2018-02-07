@@ -299,13 +299,20 @@ public class DomaTirociDao {
                 firmaTutorAz, firmaDirAz, firmaDirDip, tutorUniEmail, 
                 tirEmail, tutorAzEmail);
         listaDomande.aggiungi(doma);
+        if (!rs.isBeforeFirst()) {    
+            flag = true; 
+          } 
+        }
+        
+        
+
+        st.close();
+        newConnection.close();
+
+      } catch (SQLException  e) {
+        e.printStackTrace();
       }
-      st.close();
-      newConnection.close();
-    } catch (SQLException  e) {
-      e.printStackTrace();
-    }
-    return true;
+      return flag;
   }
 
  
@@ -480,8 +487,11 @@ public class DomaTirociDao {
       /**viene creato il registro nel db*/
       cr.CreaRegistro(id, 0);
       java.sql.Statement stmt = conn.createStatement();
-      stmt.executeUpdate(sql);
-
+      
+      int x =  stmt.executeUpdate(sql);
+      if (x > 0) {
+        flag = true;
+      }
       stmt.close();
       conn.close();
 
@@ -489,7 +499,7 @@ public class DomaTirociDao {
       ex.printStackTrace();
     }
 
-    return true;
+    return flag;
   }
   
   
