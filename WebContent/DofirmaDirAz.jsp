@@ -1,6 +1,6 @@
   
 
-<%@page import="tirocinio.domanda.gestore.DomaTirociDao"%>
+<%@page import="tirocinio.domanda.gestore.DomandaTirociDao"%>
  <jsp:useBean id="DirAz" class="bean.DirigenteAzienda" scope="session"/> 
  
 
@@ -9,7 +9,7 @@
 		     scope="request"/>
  <%
  // richiamo la classe che gestisce le domandedi tirocinio
- DomaTirociDao dom = new DomaTirociDao();
+ DomandaTirociDao dom = new DomandaTirociDao();
 	
  
  //id della domanda da firmsre che passo 

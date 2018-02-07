@@ -57,7 +57,9 @@ public class DomandaTirocinio {
     this.Firma_tutor_universitario = firma_tutor_universitario;
     this.Firma_tutor_aziendale = firma_tutor_aziendale;
   }
-
+  public DomandaTirocinio(){
+	  
+  }
   /**
 * Metodo di Accesso.
 * @return Id_Documento identificativo univoco del documento.

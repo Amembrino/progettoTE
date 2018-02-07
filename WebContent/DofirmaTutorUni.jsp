@@ -1,5 +1,5 @@
  
-<%@page import="tirocinio.domanda.gestore.DomaTirociDao"%>
+<%@page import="tirocinio.domanda.gestore.DomandaTirociDao"%>
  <jsp:useBean id="TutorUni" class="bean.TutorUni" scope="session"/> 
  
 
@@ -7,7 +7,7 @@
 		    class="bean.ListDomandeTiro"
 		     scope="request"/>
  <%
-  DomaTirociDao dom= new  DomaTirociDao();
+ DomandaTirociDao dom= new  DomandaTirociDao();
  
  int id=Integer.parseInt(request.getParameter("iddomanda"));
   dom.firmaTuni(id);

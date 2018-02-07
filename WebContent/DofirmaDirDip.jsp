@@ -1,6 +1,6 @@
   
  
-<%@page import="tirocinio.domanda.gestore.DomaTirociDao"%>
+<%@page import="tirocinio.domanda.gestore.DomandaTirociDao"%>
  <jsp:useBean id="DirettoreDip" class="bean.DirettoreDip" scope="session"/> 
  
 
@@ -8,7 +8,7 @@
 		    class="bean.ListDomandeTiro"
 		     scope="request"/>
  <%
- DomaTirociDao doma= new  DomaTirociDao();
+ DomandaTirociDao doma= new  DomandaTirociDao();
  
  int id=Integer.parseInt(request.getParameter("iddomanda"));
   doma.firmaDirDip(id);
