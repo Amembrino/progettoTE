@@ -30,11 +30,11 @@
    
     </select>
                                        
-    <input type="email" name="email" placeholder="email"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{5,3}" />
+    <input type="email" name="email" placeholder="email"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{5,3}" required="required" />
     
-    <input type="text" name="nome" placeholder="nome"/>
+    <input type="text" name="nome" placeholder="nome"  required="required"/>
     
-    <input type="text" name="cognome" placeholder="cognome"/>
+    <input type="text" name="cognome" placeholder="cognome" required="required"/>
 
       <input type="password"  name="password" placeholder="password"  pattern="^[a-zA-Z0-9!é°à]{6,20}$"  title="password tra 6 e 20 caratteri alfanumerici "   />
       
