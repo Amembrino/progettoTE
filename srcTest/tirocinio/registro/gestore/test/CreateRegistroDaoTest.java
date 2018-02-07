@@ -4,24 +4,31 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import bean.DomandaTirocinio;
 import tirocinio.registro.gestore.CreateRegistroDao;
 
-import java.sql.SQLException;
-import org.junit.Assert;
-import org.junit.Test;
-
 public class CreateRegistroDaoTest {
-	private CreateRegistroDao crd = new CreateRegistroDao();
-	private DomandaTirocinio doma = new DomandaTirocinio(5, 1, 1,1,1, "CDelizia@unisa.it", "alfredoangrisani@studenti.unisa.it",  "AntonioPenna@azienda.it");
-	
-	
-	@Test
-	public void CreaRegistroTest() throws SQLException, ClassNotFoundException {
-		boolean flag = crd.CreaRegistro(5, 0);
-	    assertNotNull(crd);
- 
-        assertTrue(crd.CreaRegistro(5, 0));
-	}
+private boolean flag;
+private CreateRegistroDao cr=new CreateRegistroDao();
+  @Test
+  public void testgetDatiTrue() {
+    int id=3; 
+    flag=cr.getDatiDomanda(id);
+    assertEquals(flag,true);
+    assertNotEquals(flag,false);
+  }
+  @Test
+  public void testgetDatiFalse() {
+  int id=3; 
+    flag=cr.getDatiDomanda(id);
+    assertEquals(flag,false); //fail perché si aspetta un true
+    assertNotEquals(flag,true);
+  }
+  @Test
+  public void testCreaRegistro() {
+  int id=3; int c=1;
+    flag=cr.CreaRegistro(id,c);
+    assertEquals(flag,false);
+    assertNotEquals(flag,true);
+  }
 
 }
