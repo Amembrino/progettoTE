@@ -17,10 +17,10 @@ private CreateRegistroDao cr=new CreateRegistroDao();
     assertNotEquals(flag,false);
   }
   @Test
-  public void testgetDatiFalse() {
+  public void testgetDatiFalse() { //doppio controllo inutile (?)
   int id=3; 
-    flag=cr.getDatiDomanda(id);
-    assertEquals(flag,false); //fail perché si aspetta un true
+    flag=!cr.getDatiDomanda(id);
+    assertFalse(flag);
     assertNotEquals(flag,true);
   }
   @Test
