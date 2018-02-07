@@ -436,6 +436,15 @@ public class DomaTirociDao implements DomaTirociDaoInterface {
    * @return true
    */
   public boolean firmaDirAz(int id) {
+	return attivaTirocinio(id);
+}
+
+/**
+   * Metodo per la firma delle domande di tirocinio da parte del dirigente aziendale.
+   * @param id Identificativo della domanda di tirocinio.
+   * @return true
+   */
+  public boolean attivaTirocinio(int id) {
     Connection conn = Connector.getConnection();
      
     try {

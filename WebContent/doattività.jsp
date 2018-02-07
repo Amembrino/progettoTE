@@ -4,7 +4,7 @@
 <%@page import="tirocinio.registro.gestore.RegistroDao"%>
   
    <jsp:useBean id="tirocinan" class="bean.Tirocinante" scope="session"/>
-     
+      <jsp:useBean id="attività" class="bean.Attività" scope="session"/>
  
   <%
   
