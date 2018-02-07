@@ -22,7 +22,7 @@ import tirocinio.registro.gestore.CreateRegistroDao;
 /**
  * Classe DomaTirociDao, Si interfaccia col database per gestire le domande di tirocinio.
  */
-public class DomaTirociDao {
+public class DomaTirociDao implements DomaTirociDaoInterface {
 
   boolean flag = false;
   //  String ip = "localhost";

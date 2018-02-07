@@ -19,7 +19,7 @@ import bean.Registro;
  * Classe CreateRegistroDao, si configura col database per inserire un nuovo registro di tirocinio.
  */
 
-public class CreateRegistroDao {
+public class CreateRegistroDao implements createRegistrDaoInterface {
  
 	boolean flag=false;
 

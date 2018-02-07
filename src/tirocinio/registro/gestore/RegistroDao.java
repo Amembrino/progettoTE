@@ -15,12 +15,8 @@ import bean.Registro;
 /**
  * Classe RegistroDao, si configura col database per gestire il registro di tirocinio.
  */
-public class RegistroDao {
-//  String ip = "localhost";
-//  String port = "3306";
-//  String db = "tirocinioeasy";
-//  String username = "root";
-//  String password = "root";
+public class RegistroDao  implements RegistroDaoInterface{
+ 
    
   /**
 * Costruttore nullo.
