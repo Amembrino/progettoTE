@@ -32,7 +32,7 @@ function validateForm() {
   <form name="compilatirocinio" action="doattività.jsp" onsubmit="return validateForm()"  method="post">
  <div class="tableRow">
 		<p> Ore di attività: </p>
-		<p> <input type="number" name="bags" min="1" max="24"> </p>
+		<p> <input type="time" name="bags" min="1" max="10"> </p>
 	</div>
 	<div class="tableRow label">
 		<p> Data: </p>

@@ -57,7 +57,9 @@ public class RegistraUt {
 */
   
   public void setEmail(String email) {
-    Email = email;
+	  if (!(email.equals(""))){
+		  Email = email;
+	  }
   }
   /**
 * Metodo di accesso.
@@ -75,7 +77,9 @@ public class RegistraUt {
 */
 
   public void setNome(String nome) {
-    Nome = nome;
+	  if (!(nome.equals(null))){
+		  Nome = nome;
+	  }
   }
   /**
 * Metodo di accesso.
@@ -93,7 +97,9 @@ public class RegistraUt {
 */
   
   public void setCognome(String cognome) {
-    Cognome = cognome;
+	  if (!(cognome.equals(""))){
+		  Cognome = cognome;
+	  }
   }
   /**
 * Metodo di accesso.

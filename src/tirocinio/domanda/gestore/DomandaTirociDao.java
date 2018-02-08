@@ -72,6 +72,7 @@ public class DomandaTirociDao implements DomaTirociDaoInterface {
    * @param data Domanda di tirocinio sottomessa.
    * @return true
    * @throws SQLException Gestisce errori nelle interrogazioni al database.
+   * @pre not domandaPresente(String emailTirocinante).
    */
   public boolean compilaDoma(DomandaTirocinio data) throws SQLException {
      
@@ -437,21 +438,14 @@ public class DomandaTirociDao implements DomaTirociDaoInterface {
   
   
   
-  /**
-   * Metodo per la firma delle domande di tirocinio da parte del dirigente aziendale.
-   * @param id Identificativo della domanda di tirocinio.
-   * @return true
-   */
-  public boolean firmaDirAz(int id) {
-	return attivaTirocinio(id);
-}
+
 
 /**
    * Metodo per la firma delle domande di tirocinio da parte del dirigente aziendale.
    * @param id Identificativo della domanda di tirocinio.
    * @return true
    */
-  public boolean attivaTirocinio(int id) {
+  public boolean firmaDirAz(int id) {// ex attivaTirocinio
     Connection conn = Connector.getConnection();
      
     try {
@@ -473,13 +467,24 @@ public class DomandaTirociDao implements DomaTirociDaoInterface {
 
     return flag;
   }
+  
+  
+  
+  /**
+   * Metodo per la firma delle domande di tirocinio da parte del dirigente di dipartimento.
+   * @param id Identificativo della domanda di tirocinio.
+   * @return true
+   */
+  public boolean firmaDirDip(int id) {
+	return attivaTirocinio(id);
+}
 
   /**
    * Metodo per la firma delle domande di tirocinio da parte del direttore di dipartimento.
    * @param id Identificativo della domanda di tirocinio.
    * @return true
    */
-  public boolean firmaDirDip(int id) {
+  public boolean attivaTirocinio(int id) {
     Connection conn = Connector.getConnection();
 
     try {
