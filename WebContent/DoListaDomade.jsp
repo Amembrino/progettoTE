@@ -2,7 +2,7 @@
 <%@page import="bean.User"%>
 <%@page import="bean.TutorUni"%>
 <%@page import="bean.DirigenteAzienda"%>
-<%@page import="tirocinio.domanda.gestore.DomaTirociDao"%>
+<%@page import="tirocinio.domanda.gestore.DomandaTirociDao"%>
 
   <jsp:useBean id="listaDomande" 
     class="bean.ListDomandeTiro"
@@ -35,7 +35,7 @@
   
   out.print(DirAz.getEmail());
   
-   DomaTirociDao dom= new  DomaTirociDao();
+  DomandaTirociDao dom= new  DomandaTirociDao();
   
    if( us.equals("tutor_aziendale")){
 	  

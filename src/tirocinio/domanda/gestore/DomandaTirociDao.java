@@ -20,9 +20,9 @@ import tirocinio.registro.gestore.CreateRegistroDao;
 
  
 /**
- * Classe DomaTirociDao, Si interfaccia col database per gestire le domande di tirocinio.
+ * Classe DomandaTirociDao, Si interfaccia col database per gestire le domande di tirocinio.
  */
-public class DomaTirociDao implements DomaTirociDaoInterface {
+public class DomandaTirociDao implements DomaTirociDaoInterface {
 
   boolean flag = false;
   //  String ip = "localhost";
@@ -34,7 +34,7 @@ public class DomaTirociDao implements DomaTirociDaoInterface {
   /**
    * Costruttore nullo.
    */
-  public DomaTirociDao() {
+  public DomandaTirociDao() {
   }
 
   /**
@@ -443,6 +443,15 @@ public class DomaTirociDao implements DomaTirociDaoInterface {
    * @return true
    */
   public boolean firmaDirAz(int id) {
+	return attivaTirocinio(id);
+}
+
+/**
+   * Metodo per la firma delle domande di tirocinio da parte del dirigente aziendale.
+   * @param id Identificativo della domanda di tirocinio.
+   * @return true
+   */
+  public boolean attivaTirocinio(int id) {
     Connection conn = Connector.getConnection();
      
     try {

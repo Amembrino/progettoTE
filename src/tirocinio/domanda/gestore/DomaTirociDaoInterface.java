@@ -24,6 +24,8 @@ public interface DomaTirociDaoInterface {
 	 public boolean firmaTuni(int id) ;
 	 
 	 public boolean firmaDirAz(int id) ;
+
+	public boolean attivaTirocinio(int id) ;
 	 
 	 public boolean firmaDirDip(int id);
 	 

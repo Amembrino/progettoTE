@@ -1,7 +1,7 @@
 
-<%@page import="tirocinio.domanda.gestore.DomaTirociDao"%>
+<%@page import="tirocinio.domanda.gestore.DomandaTirociDao"%>
 <%@page import="bean.DomandaTirocinio"%>
-
+<jsp:useBean id="doma" class="bean.DomandaTirocinio" scope="request"/> 
  
 <%
 //String nome= request.getParameter("nome");
@@ -16,15 +16,15 @@ System.out.println(email);
 System.out.println(tutorUni);
 System.out.println(tutorAzi);
  
-//doma.setAutore(nome);
-  DomandaTirocinio doma=new DomandaTirocinio(1,0,0,0,0,tutorUni,email,tutorAzi);
+ //doma.setAutore(nome);
+ // DomandaTirocinio doma=new DomandaTirocinio(1,0,0,0,0,tutorUni,email,tutorAzi);
  
-//doma.setTirocinanteEmail(email);
-//doma.setAzienda(azienda);
-//doma.setTutoAzrEmanil(tutorAzi);
-//doma.setTutoUnirEmanil(tutorUni );
+ doma.setTirocinanteEmail(email);
+ doma.setAzienda(azienda);
+ doma.setTutoAzrEmanil(tutorAzi);
+ doma.setTutoUnirEmanil(tutorUni );
 
-DomaTirociDao dom= new DomaTirociDao();
+DomandaTirociDao dom= new  DomandaTirociDao();
  
 boolean x=dom.compilaDoma(doma); 
 if (x==false){

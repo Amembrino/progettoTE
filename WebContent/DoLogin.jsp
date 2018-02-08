@@ -92,7 +92,7 @@ LoginDao userdata = new LoginDao();
     out.print("<script>");
     out.print( "alert('non trovato ')");
     out.print("</script>");
-  //  response.sendRedirect("Login.jsp");
+  response.sendRedirect("Login.jsp");
  
       }
    

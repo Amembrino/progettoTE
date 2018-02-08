@@ -27,7 +27,11 @@ public class DomandaTirociDaoTest {
   @Test
   public void testgetMaxOrd() throws SQLException {
     assertNotNull(dom.getMaxOrd());
+ 
+    assertTrue(dom.getMaxOrd()==11);
+ 
     assertTrue(dom.getMaxOrd()==8);
+ 
   }
   
   @Test
@@ -92,7 +96,7 @@ public class DomandaTirociDaoTest {
     dom.firmaTAz(id);
     dom.firmaTuni(id);
     dom.firmaDirDip(id);
-    dom.firmaDirAz(id);
+    dom.attivaTirocinio(id);
     assertNotNull(dom);
   }
   
@@ -102,7 +106,7 @@ public class DomandaTirociDaoTest {
     assertTrue(dom.firmaTAz(id));
     assertTrue(dom.firmaTuni(id));
     assertTrue(dom.firmaDirDip(id));
-    assertTrue(dom.firmaDirAz(id));
+    assertTrue(dom.attivaTirocinio(id));
     
   }
   
@@ -112,7 +116,7 @@ public class DomandaTirociDaoTest {
     assertFalse(dom.firmaTAz(id));
     assertFalse(dom.firmaTuni(id));
     assertFalse(dom.firmaDirDip(id));
-    assertFalse(dom.firmaDirAz(id));
+    assertFalse(dom.attivaTirocinio(id));
   }
 
   @Test
