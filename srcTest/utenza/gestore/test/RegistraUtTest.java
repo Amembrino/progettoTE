@@ -14,10 +14,10 @@ import org.junit.Test;
 import utenza.gestore.RegistraUt;
 
 public class RegistraUtTest {
-  private RegistraUt user2 = new RegistraUt("R.Girobolli1@studenti.unisa.it",
-         "Ringo", "Girobolli", "Zucchina", "admin@tirocinioeasy.it");
+  private RegistraUt user2 = new RegistraUt("D.Adinolfi@studenti.unisa.it",
+         "Dario", "Adinolfi", "Zucchina", "admin@tirocinioeasy.it");
   
-  @Test
+/**  @Test
   public void testRegistraUt() {
     RegistraUt user = new RegistraUt("R.Girobolli1@studenti.unisa.it",
          "Ringo", "Girobolli", "Zucchina", "admin@tirocinioeasy.it");
@@ -94,14 +94,49 @@ public class RegistraUtTest {
     user2.setAdminEmail("admin@tirocinioeasy.it");
     assertNotNull(user2);
   }
+*/
 
   @Test
-  public void testInsertAccount() throws SQLException {
+  public void testRegistrazioneCredenzialiValide() throws SQLException {
     int num = 3;
-    boolean flag = user2.insertAccount(num);
-    assertEquals(flag,true);
     assertNotNull(user2);
     assertTrue(user2.insertAccount(num));
-    assertFalse(user2.insertAccount(num));
+  }
+  @Test
+  public void testRegistrazionePasswordErrata() throws SQLException {
+    int num = 3;
+    RegistraUt user3 = new RegistraUt("D.Adinolfi@studenti.unisa.it",
+            "Dario", "Adinolfi", "Zuc", "admin@tirocinioeasy.it");
+    assertNotNull(user3);
+    assertEquals(user3.insertAccount(num),false);
+  }
+  @Test
+  public void testRegistrazioneMailErrata() throws SQLException {
+    int num = 3;
+    RegistraUt user3 = new RegistraUt("D.Adinolfistudenti.unisa.it",
+            "Dario", "Adinolfi", "Zucchina", "admin@tirocinioeasy.it");
+    assertNotNull(user3);
+    assertFalse(user3.insertAccount(num));
+  }
+  
+  @Test
+  public void testRegistrazioneCampiNulli() throws SQLException {
+    int num = 3;
+    RegistraUt user3 = new RegistraUt("",
+            "Dario", "Adinolfi", "Zucchina", "admin@tirocinioeasy.it");
+    RegistraUt user4 = new RegistraUt("D.Adinolfi@studenti.unisa.it",
+            "Dario", "Adinolfi", "", "admin@tirocinioeasy.it");
+    RegistraUt user5 = new RegistraUt("D.Adinolfi@studenti.unisa.it",
+            "", "", "Zucchina", "admin@tirocinioeasy.it");
+    RegistraUt user6 = new RegistraUt("",
+            "", "", "", "admin@tirocinioeasy.it");
+    assertNotNull(user3);
+    assertNotNull(user4);
+    assertNotNull(user5);
+    assertNotNull(user6);
+    assertFalse(user3.insertAccount(num));
+    assertFalse(user4.insertAccount(num));
+    assertFalse(user5.insertAccount(num));
+    assertFalse(user6.insertAccount(num));
   }
 }
