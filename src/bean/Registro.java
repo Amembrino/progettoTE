@@ -42,7 +42,7 @@ public class Registro {
   }
   
   public   Registro() {
-		
+
   }
   /**
  * Metodo di accesso.

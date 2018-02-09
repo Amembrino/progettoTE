@@ -17,13 +17,12 @@ public class RegistraUtTest {
   private RegistraUt user2 = new RegistraUt("D.Adinolfi@studenti.unisa.it",
          "Dario", "Adinolfi", "Zucchina", "admin@tirocinioeasy.it");
   
-  /**  @Test
+  /** Classi di test. @Test
   public void testRegistraUt() {
     RegistraUt user = new RegistraUt("R.Girobolli1@studenti.unisa.it",
          "Ringo", "Girobolli", "Zucchina", "admin@tirocinioeasy.it");
     assertNotNull(user);
-
-    }
+  }
 
   @Test
   public void testGetEmail() {
