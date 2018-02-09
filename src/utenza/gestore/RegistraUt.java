@@ -18,6 +18,7 @@ public class RegistraUt {
   private String Cognome;
   private String Password;
   private String AdminEmail;
+  private Boolean error=true;
   /**
 * Costruttore nullo.
 */
@@ -61,9 +62,10 @@ public class RegistraUt {
 	  
 	   if (email.contains("@")){
 		  Email = email;
-     }if (!(email.equals(null))){
-    	 Email = "errore";
-     }
+		  error=true;
+     }else
+    	 error=false;
+     
     
 	 
   }
@@ -83,7 +85,8 @@ public class RegistraUt {
 */
 
   public void setNome(String nome) {
-	  if (!(nome.equals(null))){
+	  if ((nome.equals(""))){
+		  error=false;
 		  Nome = nome;
 	  }
   }
@@ -103,9 +106,10 @@ public class RegistraUt {
 */
   
   public void setCognome(String cognome) {
-	  if (!(cognome.equals(""))){
+	  if ((cognome.equals("")))
+		   error=false;
 		  Cognome = cognome;
-	  }
+	  
   }
   /**
 * Metodo di accesso.
@@ -128,6 +132,7 @@ public class RegistraUt {
       Password = password;
       y = true;
     }
+    else error=false;
     return y;
   }
 
@@ -161,8 +166,9 @@ public class RegistraUt {
     Connection conn = Connector.getConnection();
     Statement st = null;
 
-    if (Email.equals("errore")){
-    	return flag;
+    if (!error){
+    	conn.close();
+    	return false;
     }
     
     String sql = "INSERT INTO ";
