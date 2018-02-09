@@ -7,15 +7,15 @@ import static org.junit.Assert.assertTrue;
 
 import bean.DomandaTirocinio;
 import bean.ListDomandeTiro;
-import tirocinio.domanda.gestore.DomaTirociDao;
- 
+
+import tirocinio.domanda.gestore.DomandaTirociDao;
 
 import java.sql.SQLException;
 import org.junit.Assert;
 import org.junit.Test;
 
 public class DomandaTirociDaoTest {
-  private DomaTirociDao dom = new DomaTirociDao();
+  private DomandaTirociDao dom = new DomandaTirociDao();
   private DomandaTirocinio doma = new DomandaTirocinio(5, 0, 0, 0, 0, "CDelizia@unisa.it", 
       "alfredoangrisani@studenti.unisa.it",  "AntonioPenna@azienda.it");
   

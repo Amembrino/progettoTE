@@ -49,6 +49,7 @@ public class RegistraUt {
 */
   public String getEmail() {
     return Email;
+    
   }
   /**
 * Metodo di modifica
@@ -57,9 +58,16 @@ public class RegistraUt {
 */
   
   public void setEmail(String email) {
-	  if (!(email.equals(""))){
+	  if  (!email.equals("")) {
+	   if (email.contains("@")){
 		  Email = email;
-	  }
+     }if (!(email.equals(null))){
+    	 Email = "errore";
+     }
+    
+		  
+		  
+   }
   }
   /**
 * Metodo di accesso.
@@ -155,6 +163,10 @@ public class RegistraUt {
     Connection conn = Connector.getConnection();
     Statement st = null;
 
+    if (Email.equals("errore")){
+    	return flag;
+    }
+    
     String sql = "INSERT INTO ";
     if (tipoUtente == 1) {
       sql = sql + "dir_azienda";
