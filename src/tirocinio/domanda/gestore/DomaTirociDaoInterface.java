@@ -19,7 +19,7 @@ public interface DomaTirociDaoInterface {
   public boolean fillDomandeTutorUni(ListDomandeTiro listaDomande, String tutorUni)
       throws SQLException, ClassNotFoundException;
 
-  public boolean  fillListaDomandeDirDip(ListDomandeTiro listaDomande, String dirdip);
+  public boolean fillListaDomandeDirDip(ListDomandeTiro listaDomande, String dirdip);
 
   public boolean firmaTAz(int id);
 

@@ -6,7 +6,9 @@ package bean;
 
 public class TutorAz extends User {
  
-
+  /**
+ * Costruttore dell'oggetto tutor aziendale.
+ */
   public TutorAz() {
     super();
   }
