@@ -7,24 +7,27 @@ body {
 	color: #000;
 }
 /* ~~ Selettori tag/elemento ~~ */
-ul, ol, dl { /*  A causa delle differenze tra i browser, Ë buona norma impostare a zero il margine e la spaziatura interna negli elenchi. Per uniformit‡, potete specificare qui i valori desiderati, oppure nelle voci di elenco (LI, DT, DD) contenute negli elenchi. Tenete presente che le impostazioni effettuate qui verranno applicate a cascata all'elenco .nav a meno che non scegliate di scrivere un selettore pi˘ specifico. */
+ul, ol, dl { /*  A causa delle differenze tra i browser, √® buona norma impostare a zero il margine e la spaziatura interna negli elenchi. Per uniformit√†, potete specificare qui i valori desiderati, oppure nelle voci di elenco (LI, DT, DD) contenute negli elenchi. Tenete presente che le impostazioni effettuate qui verranno applicate a cascata all'elenco .nav a meno che non scegliate di scrivere un selettore pi√π specifico. */
 	padding: 0;
 	margin: 0;
 }
 h1, h2, h3, h4, h5, h6, p {
-	margin-top: 0;	 /* La rimozione del margine superiore permette di aggirare il problema che si crea quando i margini possono fuoriuscire dal blocco che li contiene. Il margine inferiore che rimane permetter‡ di distanziare gli elementi che seguono.  */
+	margin-top: 0;	 /* La rimozione del margine superiore permette di aggirare il problema che si crea quando i margini possono fuoriuscire dal blocco che li contiene. Il margine inferiore che rimane permetter√† di distanziare gli elementi che seguono.  */
 	padding-right: 15px;
-	padding-left: 15px; /* L'aggiunta di una spaziatura ai lati degli elementi contenuti nei blocchi, anzichÈ direttamente nei blocchi stessi, consente di evitare ogni calcolo matematico relativo ai riquadri. Come metodo alternativo si puÚ anche utilizzare un blocco nidificato con spaziatura laterale. */
+	padding-left: 15px; /* L'aggiunta di una spaziatura ai lati degli elementi contenuti nei blocchi, anzich√© direttamente nei blocchi stessi, consente di evitare ogni calcolo matematico relativo ai riquadri. Come metodo alternativo si pu√≤ anche utilizzare un blocco nidificato con spaziatura laterale. */
 }
-a img { /*  Questo selettore rimuove il bordo blu predefinito visualizzato in alcuni browser intorno a un'immagine quando Ë circondata da un collegamento.   */
+a img { /*  Questo selettore rimuove il bordo blu predefinito visualizzato in alcuni browser intorno a un'immagine quando √® circondata da un collegamento.   */
 	border: none;
 }
 /* ~~ L'applicazione di stili ai collegamenti del sito deve rispettare questo ordine, compreso il gruppo di selettori che creano l'effetto hover. ~~ */
 a:link {
 	color: #000;
 	text-decoration: underline; /*  A meno che non vogliate personalizzare
-	 i collegamenti in un modo molto particolare, Ë bene applicare la sottolineatura 
+	 i collegamenti in un modo molto particolare, √® bene applicare la sottolineatura 
 	 per permetterne una rapida identificazione visiva.  */
+}
+#searchresult a:link{
+	color: blue;
 }
 #searchresult a:link{
 	color: blue;
@@ -40,7 +43,7 @@ a:hover,   { /*  Questo gruppo di selettori conferisce alla navigazione tramite 
 	background-color: #FFFFFF;
 	margin: 0 auto; /*  Il valore automatico sui lati, abbinato alla larghezza, produce un layout centrato.  */
 }
-/* ~~ All'intestazione non viene assegnata una larghezza. Estender‡ l'intera larghezza del layout.  ~~ */
+/* ~~ All'intestazione non viene assegnata una larghezza. Estender√† l'intera larghezza del layout.  ~~ */
 header {
 	background-color: #1686FC;
 }
@@ -48,11 +51,11 @@ header {
 
 1) La spaziatura viene applicata solo al lato superiore e/o inferiore degli elementi di blocco. Agli elementi all'interno di questi blocchi viene applicata una spaziatura sui lati. In questo modo si evita ogni calcolo matematico relativo ai riquadri. Tenete presente che se aggiungete spaziatura laterale o bordi al blocco stesso, andranno ad aggiungersi alla larghezza definita per produrre la larghezza *totale*. Potete anche scegliere di rimuovere la spaziatura dell'elemento nell'elemento di blocco e inserire un secondo blocco al suo interno con larghezza nulla e con la spaziatura necessaria per la struttura che state creando.
 
-2) Non Ë stato applicato alcun margine alle colonne perchÈ sono tutte con float. Se dovete aggiungere un margine, evitate di applicarlo sul lato verso il quale avviene il float (ad esempio, un margine destro su un blocco impostato per un float verso destra). Spesso Ë possibile utilizzare una spaziatura come alternativa. Per i blocchi in cui questa regola deve essere ignorata, dovete aggiungere una dichiarazione "display:inline" alla regola dell'elemento di blocco per risolvere un bug di alcune versioni di Internet Explorer, a causa del quale il margine viene raddoppiato.
+2) Non √® stato applicato alcun margine alle colonne perch√© sono tutte con float. Se dovete aggiungere un margine, evitate di applicarlo sul lato verso il quale avviene il float (ad esempio, un margine destro su un blocco impostato per un float verso destra). Spesso √® possibile utilizzare una spaziatura come alternativa. Per i blocchi in cui questa regola deve essere ignorata, dovete aggiungere una dichiarazione "display:inline" alla regola dell'elemento di blocco per risolvere un bug di alcune versioni di Internet Explorer, a causa del quale il margine viene raddoppiato.
 
-3) PoichÈ le classi possono essere utilizzate pi˘ volte in un documento (e a un elemento possono essere applicate pi˘ classi), alle colonne sono stati assegnati dei nomi di classe anzichÈ degli ID. Ad esempio, sarebbe possibile impilare due blocchi per barre laterali, se necessario. Potete tranquillamente sostituire i nomi con degli ID se preferite, a condizione che li utilizziate una sola volta per documento.
+3) Poich√© le classi possono essere utilizzate pi√π volte in un documento (e a un elemento possono essere applicate pi√π classi), alle colonne sono stati assegnati dei nomi di classe anzich√© degli ID. Ad esempio, sarebbe possibile impilare due blocchi per barre laterali, se necessario. Potete tranquillamente sostituire i nomi con degli ID se preferite, a condizione che li utilizziate una sola volta per documento.
 
-4) Se preferite la barra di navigazione a sinistra anzichÈ a destra, Ë sufficiente applicare alle colonne un float nella direzione opposta (tutte a sinistra anzichÈ a destra) in modo da eseguirne il rendering in ordine inverso. Non Ë necessario spostare i blocchi all'interno del codice HTML.
+4) Se preferite la barra di navigazione a sinistra anzich√© a destra, √® sufficiente applicare alle colonne un float nella direzione opposta (tutte a sinistra anzich√© a destra) in modo da eseguirne il rendering in ordine inverso. Non √® necessario spostare i blocchi all'interno del codice HTML.
 
 */
 .sidebar1 {
@@ -75,7 +78,7 @@ aside {
 
 /* ~~ Questo selettore raggruppato fornisce spazio agli elenchi dell'area .content ~~ */
 .content ul, .content ol {
-	padding: 0 15px 15px 40px; /*  Questa spaziatura rispecchia la spaziatura destra nella regola di intestazione e paragrafo riportata sopra. La spaziatura Ë stata applicata al lato inferiore per garantire uno spazio tra gli altri elementi negli elenchi e a sinistra per creare il rientro. PuÚ essere regolata a piacere.  */
+	padding: 0 15px 15px 40px; /*  Questa spaziatura rispecchia la spaziatura destra nella regola di intestazione e paragrafo riportata sopra. La spaziatura √® stata applicata al lato inferiore per garantire uno spazio tra gli altri elementi negli elenchi e a sinistra per creare il rientro. Pu√≤ essere regolata a piacere.  */
 }
 
 /* ~~ Gli stili dell'elenco di navigazione (rimovibili se scegliete di utilizzare un menu flyout reimpostato come Spry) ~~ */
@@ -89,8 +92,8 @@ ul.nav li {
 }
 ul.nav a, ul.nav a:visited { /*  Raggruppando questi selettori si fa in modo che i collegamenti mantengano l'aspetto di pulsante anche dopo che sono stati visitati  */
 	padding: 5px 5px 5px 15px;
-	display: block; /*  Specifica le propriet‡ block del collegamento facendo sÏ che riempia l'intero LI che lo contiene. Fa in modo che l'intera area risponda a un clic del mouse.  */
-	width: 160px;  /*Questa larghezza rende cliccabile l'intero pulsante in IE6. Se non avete bisogno di supportare IE6, puÚ essere rimossa. Calcolate la larghezza corretta sottraendo la spaziatura di questo collegamento dalla larghezza del contenitore della barra laterale.  */
+	display: block; /*  Specifica le propriet√† block del collegamento facendo s√¨ che riempia l'intero LI che lo contiene. Fa in modo che l'intera area risponda a un clic del mouse.  */
+	width: 160px;  /*Questa larghezza rende cliccabile l'intero pulsante in IE6. Se non avete bisogno di supportare IE6, pu√≤ essere rimossa. Calcolate la larghezza corretta sottraendo la spaziatura di questo collegamento dalla larghezza del contenitore della barra laterale.  */
 	text-decoration: none;
 	background-color: #55B2ED;
 }
@@ -99,23 +102,23 @@ ul.nav a:hover, ul.nav a:active, ul.nav a:focus { /*  Cambia il colore dello sfo
 	color: #FFF;
 }
 
-/* ~~ Il piË di pagina ~~ */
+/* ~~ Il pi√® di pagina ~~ */
 footer {
 	padding: 10px 0;
 	background-color: #1686FC;
 	position: relative;/* fornisce hasLayout a IE6 per ottenere un clearing corretto */
-	clear: both; /* questa propriet‡ clear obbliga il .container a tenere conto di dove terminano le colonne e a contenerle */
+	clear: both; /* questa propriet√† clear obbliga il .container a tenere conto di dove terminano le colonne e a contenerle */
 }
 /* ~~ Classi float/clear varie ~~ */
-.fltrt {  /* questa classe puÚ essere utilizzata per applicare un float a un elemento a destra nella pagina. L'elemento con float deve precedere l'elemento al quale deve essere affiancato sulla pagina. */
+.fltrt {  /* questa classe pu√≤ essere utilizzata per applicare un float a un elemento a destra nella pagina. L'elemento con float deve precedere l'elemento al quale deve essere affiancato sulla pagina. */
 	float: right;
 	margin-left: 8px;
 }
-.fltlft { /* questa classe puÚ essere utilizzata per applicare un float a un elemento a sinistra nella pagina. L'elemento con float deve precedere l'elemento al quale deve essere affiancato sulla pagina. */
+.fltlft { /* questa classe pu√≤ essere utilizzata per applicare un float a un elemento a sinistra nella pagina. L'elemento con float deve precedere l'elemento al quale deve essere affiancato sulla pagina. */
 	float: left;
 	margin-right: 8px;
 }
-.clearfloat { /* questa classe puÚ essere inserita in un <br /> o in un blocco vuoto come elemento finale subito dopo l'ultimo blocco con float (all'interno del .container) se il footer viene rimosso o estratto dal .container */
+.clearfloat { /* questa classe pu√≤ essere inserita in un <br /> o in un blocco vuoto come elemento finale subito dopo l'ultimo blocco con float (all'interno del .container) se il footer viene rimosso o estratto dal .container */
 	clear:both;
 	height:0;
 	font-size: 1px;
