@@ -18,7 +18,7 @@ public class RegistraUt {
   private String Cognome;
   private String Password;
   private String AdminEmail;
-  private Boolean error=true;
+  private Boolean error = true;
   /**
 * Costruttore nullo.
 */
@@ -59,16 +59,14 @@ public class RegistraUt {
 */
   
   public void setEmail(String email) {
-	  
-	   if (email.contains("@")){
-		  Email = email;
-		  error=true;
-     }else
-    	 error=false;
-     
-    
-	 
+    if (email.contains("@")) {
+      Email = email;
+      error = true;
+    } else {
+      error = false;
+    }
   }
+  
   /**
 * Metodo di accesso.
 * Restituisce il nome del nuovo utente
@@ -85,10 +83,10 @@ public class RegistraUt {
 */
 
   public void setNome(String nome) {
-	  if ((nome.equals(""))){
-		  error=false;
-		  Nome = nome;
-	  }
+    if ((nome.equals(""))) {
+      error = false;
+      Nome = nome;
+    }
   }
   /**
 * Metodo di accesso.
@@ -106,10 +104,11 @@ public class RegistraUt {
 */
   
   public void setCognome(String cognome) {
-	  if ((cognome.equals("")))
-		   error=false;
-		  Cognome = cognome;
-	  
+    if ((cognome.equals(""))) {
+      error = false;
+    }
+    Cognome = cognome;
+
   }
   /**
 * Metodo di accesso.
@@ -131,8 +130,9 @@ public class RegistraUt {
     if ((password.length() >= 6) && (password.length() <= 20)) {
       Password = password;
       y = true;
+    } else {
+      error = false;
     }
-    else error=false;
     return y;
   }
 
@@ -166,9 +166,9 @@ public class RegistraUt {
     Connection conn = Connector.getConnection();
     Statement st = null;
 
-    if (!error){
-    	conn.close();
-    	return false;
+    if (!error) {
+      conn.close();
+      return false;
     }
     
     String sql = "INSERT INTO ";

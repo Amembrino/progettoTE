@@ -5,7 +5,7 @@ import bean.ListaAziende;
 import db.Connector;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
+//import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -13,7 +13,7 @@ import java.sql.SQLException;
  * Classe ListaAziendeDao, si configura col database per gestire l'elenco 
  * delle aziende convenzionate.
  */
-public class ListaAziendeDao  implements ListaAziendeDaoInterface{
+public class ListaAziendeDao  implements ListaAziendeDaoInterface {
 
   /**
    * Prende dal database le aziende convenzionate e le aggiunge alla lista.
@@ -27,11 +27,11 @@ public class ListaAziendeDao  implements ListaAziendeDaoInterface{
     String sql = "select * from azienda";
  
 
-//    String ip = "localhost";
-//    String port = "3306";
-//    String db = "tirocinioeasy";
-//    String username = "root";
-//    String password = "root";
+    //  String ip = "localhost";
+    //  String port = "3306";
+    //  String db = "tirocinioeasy";
+    //  String username = "root";
+    //  String password = "root";
 
     newConnection = Connector.getConnection();
 

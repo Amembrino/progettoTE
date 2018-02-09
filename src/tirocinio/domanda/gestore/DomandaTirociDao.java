@@ -301,19 +301,19 @@ public class DomandaTirociDao implements DomaTirociDaoInterface {
                 tirEmail, tutorAzEmail);
         listaDomande.aggiungi(doma);
         if (!rs.isBeforeFirst()) {    
-            flag = true; 
-          } 
-        }
-        
-        
-
-        st.close();
-        newConnection.close();
-
-      } catch (SQLException  e) {
-        e.printStackTrace();
+          flag = true; 
+        } 
       }
-      return flag;
+        
+        
+
+      st.close();
+      newConnection.close();
+
+    } catch (SQLException  e) {
+      e.printStackTrace();
+    }
+    return flag;
   }
 
  
@@ -440,7 +440,7 @@ public class DomandaTirociDao implements DomaTirociDaoInterface {
   
 
 
-/**
+  /**
    * Metodo per la firma delle domande di tirocinio da parte del dirigente aziendale.
    * @param id Identificativo della domanda di tirocinio.
    * @return true
@@ -476,8 +476,8 @@ public class DomandaTirociDao implements DomaTirociDaoInterface {
    * @return true
    */
   public boolean firmaDirDip(int id) {
-	return attivaTirocinio(id);
-}
+    return attivaTirocinio(id);
+  }
 
   /**
    * Metodo per la firma delle domande di tirocinio da parte del direttore di dipartimento.
@@ -516,8 +516,12 @@ public class DomandaTirociDao implements DomaTirociDaoInterface {
     return flag;
   }
   
-  
-  public boolean domandaPresente (String tirEm) {
+  /**
+   * Controlla se è presente la domanda di tirocinio dello studente.
+   * @param tirEm Indirizzo email del tirocinante.
+   * @return true se la domanda è già presente.
+   */
+  public boolean domandaPresente(String tirEm) {
     Connection newConnection = Connector.getConnection();
     String sql = "SELECT  TirocinanteEmail FROM domanda_di_tirocinio "
         + "WHERE TirocinanteEmail='" + tirEm + "'";

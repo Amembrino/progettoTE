@@ -1,18 +1,19 @@
 package tirocinio.registro.gestore;
 
 //import bean.Azienda;
+import bean.Registro;
 //import bean.ListaAziende;
 //import bean.Tirocinante;
 import db.Connector;
 import java.sql.Connection;
-import java.sql.DriverManager;
+//import java.sql.DriverManager;
 //import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
+//import java.sql.SQLException;
 import java.sql.Statement;
 //import java.util.Date;
 
-import bean.Registro;
+
 
 
 /**
@@ -21,7 +22,7 @@ import bean.Registro;
 
 public class CreateRegistroDao implements createRegistrDaoInterface {
  
-	boolean flag=false;
+  boolean flag = false;
 
   Statement st;
   ResultSet rs;
@@ -42,9 +43,9 @@ public class CreateRegistroDao implements createRegistrDaoInterface {
   
   public boolean getDatiDomanda(int id) { 
   
-	  Connection con = Connector.getConnection();
+    Connection con = Connector.getConnection();
 
-    String query = "SELECT * FROM domanda_di_tirocinio WHERE Id_Documento=" + id;
+    String query = "SELECT * FROM domanda_di_tirocinio WHERE Id_Documento="+ id+" ";
     try {
       java.sql.Statement stmt = con.createStatement(); 
       rs = stmt.executeQuery(query);
@@ -54,8 +55,8 @@ public class CreateRegistroDao implements createRegistrDaoInterface {
         Tutor_Aziendale_Email = rs.getString("Tutor_Aziendale_Email");
       }
       if (!rs.isBeforeFirst()) {    
-          flag = true;
-          } 
+        flag = true;
+      }
       stmt.close();
       con.close();
     } catch (Exception ex) { 
@@ -65,7 +66,7 @@ public class CreateRegistroDao implements createRegistrDaoInterface {
     Registro rg = new Registro(id,0,Tirocinante, Tutor_Aziendale_Email);
     /**Preleva la data odierna dal Registro creato.*/
     data = rg.getData();
-	return flag;
+    return flag;
   }
 
   /**
@@ -76,30 +77,29 @@ public class CreateRegistroDao implements createRegistrDaoInterface {
 
   public boolean CreaRegistro(int ID_Tirocinio, int Convalida_Tutor_Az) {
    
-   try{ 
-	Connection conn = Connector.getConnection();
-    Statement stmt = null;
-    System.out.println(Tirocinante.toString());
-    String t = Tirocinante;
-    String tu = Tutor_Aziendale_Email;
+    try { 
+      Connection conn = Connector.getConnection();
+      Statement stmt = null;
+      System.out.println(Tirocinante.toString());
+      String t = Tirocinante;
+      String tu = Tutor_Aziendale_Email;
     
-    String sql = " INSERT INTO  registro_tirocinio (ID_Tirocinio, Data_Attivazione, Convalida, "
-        + "Tirocinante_Email, Tutor_Aziendale_Email)" + " VALUES ('" + ID_Tirocinio + "', '"
-        + data + "', '" + Convalida_Tutor_Az + "', '" + t + "','" + tu + "');";
+      String sql = " INSERT INTO  registro_tirocinio (ID_Tirocinio, Data_Attivazione, Convalida, "
+          + "Tirocinante_Email, Tutor_Aziendale_Email)" + " VALUES ('" + ID_Tirocinio + "', '"
+          + data + "', '" + Convalida_Tutor_Az + "', '" + t + "','" + tu + "');";
 
-     stmt = conn.createStatement();
-    int x =  stmt.executeUpdate(sql); 
-    flag = (x > 0); 
+      stmt = conn.createStatement();
+      int x =  stmt.executeUpdate(sql); 
+      flag = (x > 0); 
       stmt.close();
       conn.close();
       System.out.println(sql);
-  }
-     catch (Exception e) {
-		e.printStackTrace();
-	}
-   return flag;
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+    return flag;
   
-}
+  }
   
   
 }

@@ -162,75 +162,80 @@ public class RegistroDao  implements RegistroDaoInterface{
     return action;
   }
   
-  
+  /**
+   * Imposta come non convalidato il registro utente.
+   * @param id Identificativo del registro di tirocinio.
+   * @return true se il registro viene segnato come non convalidato.
+   */
   public boolean setRegistroFalse(int id) {
 
-      Connection newConnection = Connector.getConnection();
+    Connection newConnection = Connector.getConnection();
 
-      boolean action = false;
+    boolean action = false;
 
-      try {
+    try {
 
-        String sql = "UPDATE registro_tirocinio SET Convalida="
+      String sql = "UPDATE registro_tirocinio SET Convalida="
+          + 0 + " WHERE ID_Tirocinio=" + id + " ";
 
-            + 0 + " WHERE ID_Tirocinio=" + id + " ";
+      Statement st = newConnection.createStatement();
 
-        Statement st = newConnection.createStatement();
+      int count = st.executeUpdate(sql);
 
-        int count = st.executeUpdate(sql);
-
-        action = (count > 0);  
+      action = (count > 0);  
 
     
 
-        System.out.println(sql);
+      System.out.println(sql);
 
-        st.close();
+      st.close();
 
-        newConnection.close();
+      newConnection.close();
 
-      } catch (Exception e) {
+    } catch (Exception e) {
 
-        // TODO: handle exception
-
-      }
-
-      System.out.println(action);
-
-      return action;
+      // TODO: handle exception
 
     }
+
+    System.out.println(action);
+
+    return action;
+
+  }
   
-  
+  /**
+   * Metodo che riempie lalista delle attività svolte nel registro di tirocinio di un tirocinante.
+   * @param lista Lista delle attività del tirocinante.
+   * @param mail Indirizzo email del tirocinante.
+   */
   public void  fillListaattività(ListaAttività lista , String mail) {
-	    Connection newConnection = Connector.getConnection();
-	    try {
-	      java.sql.Statement st  = newConnection.createStatement();
-	      String sql = "SELECT *"
-	      		+ " FROM attività, registro_tirocinio   WHERE Tirocinante_Email='"+mail+"'"
-	      		+ " and  ID_Tirocinio=  Registro_TirocinioID";
-	      ResultSet rs = st.executeQuery(sql); 
-	      System.out.println(sql);
-	      while (rs.next()) {
-	        int iD_Attività = rs.getInt("ID_Attività");
-	        Date data = rs.getDate("Data");
-	        Time ora = rs.getTime("Ora");
-	        String descrizione = rs.getString("Descrizione");
-	        int idregTiro = rs.getInt("Registro_TirocinioID");
+    Connection newConnection = Connector.getConnection();
+	try {
+	  java.sql.Statement st  = newConnection.createStatement();
+	  String sql = "SELECT *"
+	      + " FROM attività, registro_tirocinio   WHERE Tirocinante_Email='"+mail+"'"
+	      + " and  ID_Tirocinio=  Registro_TirocinioID";
+	  ResultSet rs = st.executeQuery(sql); 
+	  System.out.println(sql);
+	  while (rs.next()) {
+	    int iD_Attività = rs.getInt("ID_Attività");
+	    Date data = rs.getDate("Data");
+	    Time ora = rs.getTime("Ora");
+	    String descrizione = rs.getString("Descrizione");
+	    int idregTiro = rs.getInt("Registro_TirocinioID");
 	      
 	        
-	        Attività att = new Attività(iD_Attività, data,ora, descrizione, idregTiro);
-	        lista.aggiungi(att);
+	    Attività att = new Attività(iD_Attività, data,ora, descrizione, idregTiro);
+	    lista.aggiungi(att);
 	        
-	      }
-	    
-	      st.close();
-	      newConnection.close();
-	    } catch (Exception e) {
-	      e.printStackTrace();
-	    }
 	  }
-  
-  
+	    
+	  st.close();
+	  newConnection.close();
+	} catch (Exception e) {
+	  e.printStackTrace();
+	}
+  }
   
 }

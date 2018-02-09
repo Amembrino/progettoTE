@@ -1,10 +1,10 @@
 package tirocinio.domanda.gestore;
 
-import java.sql.SQLException;
-
 import bean.ListaAziende;
+import java.sql.SQLException;
 
 public interface ListaAziendeDaoInterface {
 
-	 public void fillListaAziende(ListaAziende Azienda) throws SQLException, ClassNotFoundException ;
+  public void fillListaAziende(ListaAziende Azienda)
+      throws SQLException, ClassNotFoundException;
 }

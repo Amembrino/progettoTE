@@ -3,10 +3,10 @@ package tirocinio.domanda.gestore.test;
 import static org.junit.Assert.assertNotNull;
 
 import bean.ListaAziende;
-import tirocinio.domanda.gestore.ListaAziendeDao;
-
-import java.sql.SQLException;
 import org.junit.Test;
+import tirocinio.domanda.gestore.ListaAziendeDao;
+import java.sql.SQLException;
+
 
 public class ListaAziendeDaoTest {
 

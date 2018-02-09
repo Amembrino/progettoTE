@@ -9,15 +9,16 @@ import java.sql.SQLException;
 import org.junit.Test;
 
 /**
+ * Classe per testare il metodo di ricerca account al'interno del database.
  * @author Alfredo
  *
  */
 public class RicercaAccountTest {
 
-    /**
+  /**
      * Test method for {@link autenticazione.gestore.LoginDao#RicercaAccout(java.lang.String,
      * java.lang.String, java.lang.String)}.
-     * @throws SQLException 
+     * @throws SQLException Gestisce gli errori nel database.
      */
   @Test
   public void testRicercaAccout() throws SQLException {

@@ -1,27 +1,23 @@
 package tirocinio.registro.gestore;
 
+import bean.Attività;
 import java.util.ArrayList;
 import java.util.List;
  
- 
-import bean.Attività;
- 
- 
-
 public class ListaAttività {
 
-	private List<Attività> attivity;
+  private List<Attività> attivity;
 	
 	
-	public ListaAttività() {
-		this.attivity = new ArrayList<Attività>();
-	}
+  public ListaAttività() {
+    this.attivity = new ArrayList<Attività>();
+  }
 	
-	 public List<Attività> getAttività() {
-		    return attivity;
-		  }
+  public List<Attività> getAttività() {
+    return attivity;
+  }
 	
-	 public void aggiungi(Attività reg) {
-		 attivity.add(reg);
-		  }
+  public void aggiungi(Attività reg) {
+    attivity.add(reg);
+  }
 }
