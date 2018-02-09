@@ -445,7 +445,7 @@ public class DomandaTirociDao implements DomaTirociDaoInterface {
    * @param id Identificativo della domanda di tirocinio.
    * @return true
    */
-  public boolean firmaDirAz(int id) {// ex attivaTirocinio
+  public boolean firmaDirAz(int id) { 
     Connection conn = Connector.getConnection();
      
     try {
