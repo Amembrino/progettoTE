@@ -58,16 +58,14 @@ public class RegistraUt {
 */
   
   public void setEmail(String email) {
-	  if  (!email.equals("")) {
+	  
 	   if (email.contains("@")){
 		  Email = email;
      }if (!(email.equals(null))){
     	 Email = "errore";
      }
     
-		  
-		  
-   }
+	 
   }
   /**
 * Metodo di accesso.
