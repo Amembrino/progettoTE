@@ -8,7 +8,7 @@ public interface RegistroDaoInterface {
 	
   public int ID_att() throws SQLException;
 	
-  public boolean compilaRegistro(int ore, String data, String comm, int id, int idatt);
+  public boolean compilaRegistro(float ore, String data, String comm, int id, int idatt);
 	
   public void  fillListaRegistri(ListaRegistri listaReg, String mail) ;
 	

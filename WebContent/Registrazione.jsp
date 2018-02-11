@@ -11,7 +11,7 @@
 
 <div class="container">
   <header>
-    <a href="#"><img src="https://i.imgur.com/hQ9S6Em.png" width="864" height="187" alt=""/></a> 
+    <a href="#"><img src="https://i.imgur.com/pkhmzDx.png" width="864" height="187" alt=""/></a> 
   </header>
   <jsp:include page="menuAdmin.jsp"></jsp:include>
   

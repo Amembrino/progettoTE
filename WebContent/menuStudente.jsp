@@ -14,6 +14,7 @@
     <ul class="nav">
         <li><a href="doLogout.jsp">Logout</a></li>
         <li><a href="CompilaRegistroView.jsp">compila registro</a></li>
+        <li><a href="dolistaAttStudente.jsp">visualizza registro</a></li>
         <li><a href="DomandaTirocinioVew.jsp">Compila domanda tirocinio</a></li>
         <li><a href="DoListaAziende.jsp">Consulta Aziende Tirocinanti</a></li></ul>
    <!-- <aside>

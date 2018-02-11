@@ -1,6 +1,5 @@
 package bean;
 
-import java.sql.Time;
 import java.util.Date;
 
 /**
@@ -11,7 +10,7 @@ public class Attività
   private Date data;
   private String luogo;
   private String Descrizione;
-  private Time ora;
+  private float ora;
   private int id;
   private int RegistroID;
 	
@@ -26,7 +25,7 @@ public class Attività
  * @param RegistroID ID del Registro di tirocinio cui appartiene l'attività
  */
 
-  public Attività(int iD_Attività, Date data2, Time ora2, String descrizione2, int RegistroID) {
+  public Attività(int iD_Attività, Date data2, float ora2, String descrizione2, int RegistroID) {
     this.id=iD_Attività;
     this.data=data2;
     this.ora=ora2;
@@ -81,7 +80,7 @@ public class Attività
  * @return ora
  */
 
-  public Time getOra() {
+  public float getOra() {
     return ora;
   }
   /**
@@ -90,7 +89,7 @@ public class Attività
  * @param ora Durata dell'attività svolta espressa come ore.
  */
   
-  public void setOra(Time ora) {
+  public void setOra(float ora) {
     this.ora = ora;
   }
   /**

@@ -13,8 +13,12 @@
   
   int ID_Tirocinio;
 	
-   int ore=Integer.parseInt(request.getParameter("bags"));
-   String data =  request.getParameter("date" );
+   float ore=Float.parseFloat(request.getParameter("bags"));
+  // float oredcec=ore;
+   //if (((oredcec*10)%10)>6){
+ 
+   //}
+    String data =  request.getParameter("date" );
    String com= request.getParameter("comments");
 
    RegistroDao Reg= new RegistroDao();

@@ -6,7 +6,6 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.sql.Time;
 import java.util.Date;
 import tirocinio.registro.gestore.ListaAttivit‡;
 import tirocinio.registro.gestore.ListaRegistri;
@@ -79,7 +78,7 @@ public class RegistroDao  implements RegistroDaoInterface{
  * @param Att Identificativo dell'attivit‡.
  */
 
-  public boolean compilaRegistro(int ore, String data, String comm, int id, int idatt) {
+  public boolean compilaRegistro(float ore, String data, String comm, int id, int idatt) {
   
     boolean flag = false;
     Connection conn = null;
@@ -205,7 +204,7 @@ public class RegistroDao  implements RegistroDaoInterface{
   }
   
   /**
-   * Metodo che riempie lalista delle attivit‡ svolte nel registro di tirocinio di un tirocinante.
+   * Metodo che crea lalista delle attivit‡ svolte nel registro di tirocinio di un tirocinante.
    * @param lista Lista delle attivit‡ del tirocinante.
    * @param mail Indirizzo email del tirocinante.
    */
@@ -215,13 +214,13 @@ public class RegistroDao  implements RegistroDaoInterface{
 	  java.sql.Statement st  = newConnection.createStatement();
 	  String sql = "SELECT *"
 	      + " FROM attivit‡, registro_tirocinio   WHERE Tirocinante_Email='"+mail+"'"
-	      + " and  ID_Tirocinio=  Registro_TirocinioID";
+	      + " and  ID_Tirocinio= Registro_TirocinioID";
 	  ResultSet rs = st.executeQuery(sql); 
 	  System.out.println(sql);
 	  while (rs.next()) {
 	    int iD_Attivit‡ = rs.getInt("ID_Attivit‡");
 	    Date data = rs.getDate("Data");
-	    Time ora = rs.getTime("Ora");
+	    float ora = rs.getFloat("Ora");
 	    String descrizione = rs.getString("Descrizione");
 	    int idregTiro = rs.getInt("Registro_TirocinioID");
 	      
@@ -237,5 +236,43 @@ public class RegistroDao  implements RegistroDaoInterface{
 	  e.printStackTrace();
 	}
   }
+  
+  /**
+   * Metodo che crea lalista delle attivit‡ svolte nel registro di tirocinio di un tirocinante.
+   * @param lista Lista delle attivit‡ del tirocinante.
+   * @param mail Indirizzo email del tirocinante.
+   */
+  public void  fillListaattivit‡Stud(ListaAttivit‡ lista , String mail) {
+    Connection newConnection = Connector.getConnection();
+	try {
+	  java.sql.Statement st  = newConnection.createStatement();
+	  String sql = "SELECT attivit‡.* "
+	  		+ "FROM attivit‡, registro_tirocinio  "
+	  		+ "WHERE Tirocinante_Email='"+ mail +"' "
+	  		+ "AND Registro_TirocinioID=(SELECT registro_tirocinio.ID_Tirocinio "
+	  		+ "FROM registro_tirocinio WHERE "
+	  		+ "Tirocinante_Email='" + mail +"')";
+	  ResultSet rs = st.executeQuery(sql); 
+	  System.out.println(sql);
+	  while (rs.next()) {
+	    int iD_Attivit‡ = rs.getInt("ID_Attivit‡");
+	    Date data = rs.getDate("Data");
+	    float ora = rs.getFloat("Ora");
+	    String descrizione = rs.getString("Descrizione");
+	    int idregTiro = rs.getInt("Registro_TirocinioID");
+	      
+	        
+	    Attivit‡ att = new Attivit‡(iD_Attivit‡, data,ora, descrizione, idregTiro);
+	    lista.aggiungi(att);
+	        
+	  }
+	    
+	  st.close();
+	  newConnection.close();
+	} catch (Exception e) {
+	  e.printStackTrace();
+	}
+  }
+  
   
 }

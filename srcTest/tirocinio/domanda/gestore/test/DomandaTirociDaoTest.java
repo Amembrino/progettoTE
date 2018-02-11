@@ -7,15 +7,15 @@ import static org.junit.Assert.assertTrue;
 
 import bean.DomandaTirocinio;
 import bean.ListDomandeTiro;
-
-import tirocinio.domanda.gestore.DomandaTirociDao;
+import tirocinio.domanda.gestore.DomaTirociDao;
+ 
 
 import java.sql.SQLException;
 import org.junit.Assert;
 import org.junit.Test;
 
 public class DomandaTirociDaoTest {
-  private DomandaTirociDao dom = new DomandaTirociDao();
+  private DomaTirociDao dom = new DomaTirociDao();
   private DomandaTirocinio doma = new DomandaTirocinio(5, 0, 0, 0, 0, "CDelizia@unisa.it", 
       "alfredoangrisani@studenti.unisa.it",  "AntonioPenna@azienda.it");
   
@@ -27,11 +27,7 @@ public class DomandaTirociDaoTest {
   @Test
   public void testgetMaxOrd() throws SQLException {
     assertNotNull(dom.getMaxOrd());
- 
-    assertTrue(dom.getMaxOrd()==11);
- 
     assertTrue(dom.getMaxOrd()==8);
- 
   }
   
   @Test
@@ -96,7 +92,7 @@ public class DomandaTirociDaoTest {
     dom.firmaTAz(id);
     dom.firmaTuni(id);
     dom.firmaDirDip(id);
-    dom.attivaTirocinio(id);
+    dom.firmaDirAz(id);
     assertNotNull(dom);
   }
   
@@ -106,7 +102,7 @@ public class DomandaTirociDaoTest {
     assertTrue(dom.firmaTAz(id));
     assertTrue(dom.firmaTuni(id));
     assertTrue(dom.firmaDirDip(id));
-    assertTrue(dom.attivaTirocinio(id));
+    assertTrue(dom.firmaDirAz(id));
     
   }
   
@@ -116,7 +112,7 @@ public class DomandaTirociDaoTest {
     assertFalse(dom.firmaTAz(id));
     assertFalse(dom.firmaTuni(id));
     assertFalse(dom.firmaDirDip(id));
-    assertFalse(dom.attivaTirocinio(id));
+    assertFalse(dom.firmaDirAz(id));
   }
 
   @Test

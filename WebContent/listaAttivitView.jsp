@@ -1,5 +1,4 @@
  
- 
 <%@page import="bean.Attività"%>
 <%@page import="bean.Registro"%> 
 <%@page import="bean.TutorAz"%>
@@ -52,18 +51,11 @@ scope="session"/>
 	
   <div class="main">
                 
-               <!--  <div id="searchconsole">
-                    <form id="theform" name="theform" action="DolistaRegistri.jsp" method="POST">
-                         
-                        <span><input type="submit" value="cerca"></span>
-                    </form>  
-                    
-                </div>-->
               
     <div id="searchresult">        
      <table>  
      <thead>
-     <tr>    <th>     ID_attività   </th> <th>   ore attività   </th> <th>   date  </th> <th>     descrizione      </th>  </tr>
+     <tr>    <th>     ID_attività   </th>  <th>   date  </th><th>   ore attività   </th> <th>     descrizione      </th>  </tr>
      
      </thead>
      <tbody>
@@ -76,8 +68,8 @@ scope="session"/>
             out.print("<tr>");
                      
                     out.print("<td><p>"+ att.getId()+"</p></td>");
-                    out.print("<td><p>"+ att.getOra()+"</p></td>");
                     out.print("<td><p>"+ att.getData()+"</p></td>");
+                    out.print("<td><p>"+ att.getOra()+"</p></td>");
                     out.print("<td><p>" +att.getDescrizione()+"</p></td>");
                     
        
@@ -88,7 +80,6 @@ scope="session"/>
    
                                       
    }  
-//out.print("<a  class=\"demo\" href=\"Doconvalida.jsp?id="+x+"\">convalida attività del registro "+att.getRegistroID() +"</a>");  
 
        
 %>   </tbody>  
