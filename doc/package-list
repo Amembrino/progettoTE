@@ -1,6 +1,6 @@
-db
 autenticazione.gestore
-tirocinio.domanda.gestore
 bean
+db
+tirocinio.domanda.gestore
 tirocinio.registro.gestore
 utenza.gestore
