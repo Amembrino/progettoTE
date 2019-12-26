@@ -1,5 +1,5 @@
 #                              tirocinioEasy
-progetto nato per sviluppare un software che permetta di far interfacciare gli studenti con le azienda.
+progetto nato per sviluppare un software che permetta di far interfacciare gli studenti con le aziende.
 ##  
 
 
